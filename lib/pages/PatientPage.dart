@@ -9,11 +9,7 @@ class PatientPage extends StatelessWidget {
         backgroundColor: Colors.amber[500],
         title: Text("Pantalla de Pacientes"),
       ),
-      body: Container(
-        child: Column(
-          children: [Text("Pacientes"), Patientlist()],
-        ),
-      ),
+      body: Container(child: Patientlist()),
     );
   }
 }

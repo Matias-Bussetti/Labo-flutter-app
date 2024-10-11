@@ -10,7 +10,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("Menu Principal"),
+        title: Text(title),
       ),
       body: const Center(
         child: Column(
