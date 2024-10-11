@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Patient.dart';
-import 'package:flutter_application_1/classes/PatientResponse.dart';
+import 'package:flutter_application_1/classes/PatientsResponse.dart';
 import 'package:flutter_application_1/pages/PatientItem.dart';
 import 'package:flutter_application_1/widgets/PatientCard.dart';
 import 'package:http/http.dart' as http;
@@ -28,7 +28,7 @@ class _PatientlistState extends State<Patientlist> {
 
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
-      return PatientResponse.fromJson(data).patients;
+      return PatientsResponse.fromJson(data).patients;
     } else {
       throw Exception('Error al cargar los datos');
     }
