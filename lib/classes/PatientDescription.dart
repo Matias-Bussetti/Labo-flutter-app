@@ -1,61 +1,126 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Patient.dart';
-import 'package:flutter_application_1/classes/PatientResponse.dart';
-import 'package:http/http.dart' as http;
 
-class PatientDescription extends StatefulWidget {
-  final String id;
-  const PatientDescription({super.key, required this.id});
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 
-  @override
-  State<PatientDescription> createState() => _PatientDescriptionState();
-}
-
-class _PatientDescriptionState extends State<PatientDescription> {
-  late Future<Patient> data;
-
-  @override
-  void initState() {
-    super.initState();
-    data = fetchData(); // Llamada a la API
-  }
-
-  Future<Patient> fetchData() async {
-    final response = await http.get(Uri.parse(
-        "https://tup-labo-4-grupo-15.onrender.com/api/v1/patients/${widget.id}"));
-
-    if (response.statusCode == 200) {
-      Map<String, dynamic> data = jsonDecode(response.body);
-      return PatientResponse.fromJson(data).patient;
-    } else {
-      throw Exception('Error al cargar los datos');
-    }
-  }
+class Patientdescription extends StatelessWidget {
+  final Patient patient;
+  const Patientdescription({super.key, required this.patient});
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Patient>(
-      future: data,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
-        } else if (snapshot.hasError) {
-          return Center(child: Text('Error: ${snapshot.error}'));
-        } else if (snapshot.hasData) {
-          Patient patient = snapshot.data as Patient;
-          return Column(
+    var screenWidth = MediaQuery.of(context).size.width;
+
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey, width: 0.1),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      // padding: EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          Container(
+            height: screenWidth,
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey, width: 1),
+                // borderRadius: BorderRadius.circular(90),
+                image: DecorationImage(
+                    alignment: Alignment.center,
+                    image: NetworkImage(patient.picture.large),
+                    fit: BoxFit.fitHeight)),
+          ),
+          RowData(
+            icon: patient.gender == "male" ? Icons.male : Icons.female,
             children: [
-              Text(patient.id),
-              Text(patient.name.first),
-              Text(patient.email),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "${patient.name.title} ${patient.name.first} ${patient.name.last} ",
+                ),
+              ),
+              Align(
+                  alignment: Alignment.centerLeft, child: Text(patient.email)),
             ],
-          );
-        } else {
-          return Center(child: Text('No data found'));
-        }
-      },
+          ),
+          RowData(
+            icon: Icons.map,
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "${patient.location.country}, ${patient.location.state}, ${patient.location.city}",
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                    "${patient.location.street.name} ${patient.location.street.name} (${patient.location.postcode})"),
+              ),
+            ],
+          ),
+          RowData(
+            icon: Icons.date_range_outlined,
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Edad: ${patient.dob.age}",
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Fecha Nacimiento: ${DateTime.parse(patient.dob.date)}",
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  launchUrl(Uri parse) {}
+}
+
+class RowData extends StatelessWidget {
+  const RowData({
+    super.key,
+    required this.children,
+    required this.icon,
+  });
+
+  final List<Widget> children;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
+      child: Row(
+        children: [
+          Expanded(
+              flex: 0,
+              child: Row(
+                children: [
+                  Icon(
+                    icon,
+                    color: Colors.blue[200],
+                    size: 35.0,
+                  ),
+                ],
+              )),
+          Expanded(
+              flex: 2,
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                child: Column(
+                  children: children,
+                ),
+              )),
+        ],
+      ),
     );
   }
 }

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Patient.dart';
-import 'package:flutter_application_1/classes/PatientDescription.dart';
+import 'package:flutter_application_1/classes/PatientDescriptionFetcher.dart';
 import 'package:flutter_application_1/classes/PatientResponse.dart';
 import 'package:flutter_application_1/classes/SinglePatientPageArguments.dart';
 
@@ -30,7 +30,7 @@ class _SinglePatientPageState extends State<SinglePatientPage> {
         title: Text("Paciente"),
       ),
       body: Center(
-        child: PatientDescription(id: args.id),
+        child: PatientDescriptionFetcher(id: args.id),
       ),
     );
   }
