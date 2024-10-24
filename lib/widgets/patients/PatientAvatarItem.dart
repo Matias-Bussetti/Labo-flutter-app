@@ -3,9 +3,9 @@ import 'package:flutter_application_1/classes/Patient.dart';
 import 'package:flutter_application_1/classes/SinglePatientPageArguments.dart';
 import 'package:flutter_application_1/pages/SinglePatientPage.dart';
 
-class PatientItem extends StatelessWidget {
+class PatientAvatarItem extends StatelessWidget {
   final Patient patient;
-  const PatientItem({Key? key, required this.patient}) : super(key: key);
+  const PatientAvatarItem({Key? key, required this.patient}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -23,7 +23,12 @@ class MyHomePage extends StatelessWidget {
                 title: "Pacientes",
                 subtitle: "Ir a pacientes",
                 route: "/patients",
-                buttonText: "Ir")
+                buttonText: "Lista"),
+            CardWidget(
+                title: "Pacientes",
+                subtitle: "Ir a pacientes mapa",
+                route: "/patients/map",
+                buttonText: "Mapa"),
           ],
         ),
       ),

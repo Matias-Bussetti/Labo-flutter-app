@@ -3,7 +3,8 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Patient.dart';
 import 'package:flutter_application_1/classes/PatientsResponse.dart';
-import 'package:flutter_application_1/pages/PatientItem.dart';
+import 'package:flutter_application_1/widgets/patients/PatientAvatarItem.dart';
+import 'package:flutter_application_1/widgets/patients/PatientItem.dart';
 import 'package:flutter_application_1/widgets/PatientCard.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -11,14 +12,14 @@ import 'dart:convert';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
-class Patientlist extends StatefulWidget {
-  const Patientlist({super.key});
+class PatientMap extends StatefulWidget {
+  const PatientMap({super.key});
 
   @override
-  State<Patientlist> createState() => _PatientlistState();
+  State<PatientMap> createState() => _PatientMapState();
 }
 
-class _PatientlistState extends State<Patientlist> {
+class _PatientMapState extends State<PatientMap> {
   late Future<List<dynamic>> data;
 
   @override
@@ -60,11 +61,11 @@ class _PatientlistState extends State<Patientlist> {
               width: screenWidth * 0.2,
 
               height: screenWidth * 0.2,
-              child: PatientItem(patient: patient), // Icono personalizado
+              child: PatientAvatarItem(patient: patient), // Icono personalizado
             );
           }).toList();
           return FlutterMap(
-            options: MapOptions(
+            options: const MapOptions(
               initialCenter:
                   LatLng(51.509364, -0.128928), // Center the map over London
               initialZoom: 1,
@@ -94,7 +95,7 @@ class _PatientlistState extends State<Patientlist> {
             ],
           );
         } else {
-          return Center(child: Text('No data found'));
+          return Center(child: const Text('No data found'));
         }
       },
     );

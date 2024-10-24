@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Patient.dart';
-import 'package:flutter_application_1/classes/PatientDescriptionFetcher.dart';
+import 'package:flutter_application_1/widgets/patients/PatientDescriptionFetcher.dart';
 import 'package:flutter_application_1/classes/PatientResponse.dart';
 import 'package:flutter_application_1/classes/SinglePatientPageArguments.dart';
 
