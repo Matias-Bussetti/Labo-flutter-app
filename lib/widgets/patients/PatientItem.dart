@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Patient.dart';
 import 'package:flutter_application_1/classes/SinglePatientPageArguments.dart';
 import 'package:flutter_application_1/pages/SinglePatientPage.dart';
+import 'package:flutter_application_1/widgets/IsFavoriteIcon.dart';
 
 class PatientItem extends StatelessWidget {
   final Patient patient;
@@ -63,17 +64,7 @@ class PatientItem extends StatelessWidget {
                 Expanded(
                     flex: 0,
                     child: Row(
-                      children: [
-                        Icon(
-                          Icons.info_outline,
-                          color: Colors.blue[200],
-                          size: 20.0,
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: const Text("Ver más"),
-                        )
-                      ],
+                      children: [IsFavoriteIcon(id: 'patient-${patient.id}')],
                     )),
               ],
             ),

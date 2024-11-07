@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/patients/PatientList.dart';
 import 'package:flutter_application_1/widgets/patients/PatientMap.dart';
 
 class PatientMapPage extends StatelessWidget {

@@ -20,6 +20,11 @@ class MyHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             CardWidget(
+                title: "Profile",
+                subtitle: "Ir a profile",
+                route: "/profile",
+                buttonText: "Profile"),
+            CardWidget(
                 title: "Pacientes",
                 subtitle: "Ir a pacientes",
                 route: "/patients",
