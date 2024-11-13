@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Patient.dart';
-import 'package:flutter_application_1/classes/PatientResponse.dart';
+import 'package:flutter_application_1/classes/PatientsResponse.dart';
+import 'package:flutter_application_1/widgets/patients/PatientItem.dart';
 import 'package:flutter_application_1/widgets/PatientCard.dart';
+import 'package:flutter_application_1/widgets/patients/PatientList.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class Patientlist extends StatefulWidget {
-  const Patientlist({super.key});
+class PatientListFetcher extends StatefulWidget {
+  const PatientListFetcher({super.key});
 
   @override
-  State<Patientlist> createState() => _PatientlistState();
+  State<PatientListFetcher> createState() => _PatientListFetcherState();
 }
 
-class _PatientlistState extends State<Patientlist> {
+class _PatientListFetcherState extends State<PatientListFetcher> {
   late Future<List<dynamic>> data;
 
   @override
@@ -27,8 +29,7 @@ class _PatientlistState extends State<Patientlist> {
 
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
-      print(data);
-      return PatientResponse.fromJson(data).patients;
+      return PatientsResponse.fromJson(data).patients;
     } else {
       throw Exception('Error al cargar los datos');
     }
@@ -45,16 +46,7 @@ class _PatientlistState extends State<Patientlist> {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (snapshot.hasData) {
           List<Patient> patients = snapshot.data as List<Patient>;
-          return ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              itemCount: patients.length,
-              itemBuilder: (BuildContext context, int index) {
-                Patient patient = patients[index];
-                return Column(children: [
-                  Text(patient.name.first),
-                ]);
-              });
+          return PatientList(patients: patients);
         } else {
           return Center(child: Text('No data found'));
         }

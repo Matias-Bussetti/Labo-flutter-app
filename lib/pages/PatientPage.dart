@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/PatientList.dart';
+import 'package:flutter_application_1/widgets/patients/PatientListFetcher.dart';
 
 class PatientPage extends StatelessWidget {
   @override
@@ -9,11 +9,7 @@ class PatientPage extends StatelessWidget {
         backgroundColor: Colors.amber[500],
         title: Text("Pantalla de Pacientes"),
       ),
-      body: Container(
-        child: Column(
-          children: [Text("Pacientes"), Patientlist()],
-        ),
-      ),
+      body: Container(child: PatientListFetcher()),
     );
   }
 }
