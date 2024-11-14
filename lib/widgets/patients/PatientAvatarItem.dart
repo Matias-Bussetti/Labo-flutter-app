@@ -14,7 +14,7 @@ class PatientAvatarItem extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(
             context,
-            SinglePatientPage.routeName,
+            '/paciente/id',
             arguments: SinglePatientPageArguments(
               patient.id,
             ),

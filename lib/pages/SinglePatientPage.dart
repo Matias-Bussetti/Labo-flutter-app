@@ -11,8 +11,6 @@ class SinglePatientPage extends StatefulWidget {
     super.key,
   });
 
-  static const routeName = '/paciente/id';
-
   @override
   State<SinglePatientPage> createState() => _SinglePatientPageState();
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/HomePage.dart';
+import 'package:flutter_application_1/MainRouter.dart';
 import 'package:flutter_application_1/helpers/preferences.dart';
 import 'package:flutter_application_1/pages/PatientMapPage.dart';
 import 'package:flutter_application_1/pages/PatientPage.dart';
@@ -48,13 +49,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Grupo 15',
       theme: theme,
-      home: const MyHomePage(title: 'Grupo 15'),
-      routes: {
-        '/profile': (context) => ProfilePage(),
-        '/patients': (context) => PatientPage(),
-        '/patients/map': (context) => PatientMapPage(),
-        SinglePatientPage.routeName: (context) => const SinglePatientPage(),
-      },
+      home: const HomePage(title: 'Grupo 15'),
+      routes: MainRouter.generateRoutes(context),
     );
   }
 }
