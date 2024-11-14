@@ -52,7 +52,6 @@ class _BodyProfileState extends State<BodyProfile> {
   @override
   Widget build(BuildContext context) {
     final temaProvider = Provider.of<ThemeProvider>(context, listen: false);
-    print(Preferences.darkmode);
     return Column(
       children: [
         SwitchListTile.adaptive(

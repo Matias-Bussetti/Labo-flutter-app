@@ -2,28 +2,27 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Patient.dart';
+import 'package:flutter_application_1/classes/PatientInfoPageArguments.dart';
 import 'package:flutter_application_1/widgets/custom/FutureFetcher.dart';
 import 'package:flutter_application_1/widgets/patients/PatientDescription.dart';
-import 'package:flutter_application_1/widgets/patients/PatientDescriptionFetcher.dart';
 import 'package:flutter_application_1/classes/PatientResponse.dart';
-import 'package:flutter_application_1/classes/SinglePatientPageArguments.dart';
 
-class SinglePatientPage extends StatefulWidget {
-  const SinglePatientPage({
+class PatientInfoPage extends StatefulWidget {
+  const PatientInfoPage({
     super.key,
   });
 
   @override
-  State<SinglePatientPage> createState() => _SinglePatientPageState();
+  State<PatientInfoPage> createState() => _PatientInfoPageState();
 }
 
-class _SinglePatientPageState extends State<SinglePatientPage> {
+class _PatientInfoPageState extends State<PatientInfoPage> {
   @override
   Widget build(BuildContext context) {
     // Extract the arguments from the current ModalRoute
     // settings and cast them as ScreenArguments.
-    final args = ModalRoute.of(context)!.settings.arguments
-        as SinglePatientPageArguments;
+    final args =
+        ModalRoute.of(context)!.settings.arguments as PatientInfoPageArguments;
 
     return Scaffold(
       appBar: AppBar(
@@ -33,8 +32,9 @@ class _SinglePatientPageState extends State<SinglePatientPage> {
         child: FutureFetcher(
           url:
               "https://tup-labo-4-grupo-15.onrender.com/api/v1/patients/${args.id}",
-          fromJson: PatientResponse.fromJson,
-          snapShotWidget: Patientdescription,
+          widget: (data) {
+            return Patientdescription(data: data);
+          },
         ),
       ),
     );

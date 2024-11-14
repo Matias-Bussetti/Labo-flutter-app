@@ -1,7 +1,11 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/MainRouter.dart';
+import 'package:flutter_application_1/helpers/preferences.dart';
+import 'package:flutter_application_1/providers/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class DrawerMenu extends StatelessWidget {
   final List<Map<String, String>> _menuItems = <Map<String, String>>[
@@ -86,19 +90,54 @@ class DrawerMenu extends StatelessWidget {
   }
 }
 
-class _DrawerHeaderAlternative extends StatelessWidget {
+class _DrawerHeaderAlternative extends StatefulWidget {
   final double screenWidth;
   const _DrawerHeaderAlternative({
     Key? key,
     required this.screenWidth,
   }) : super(key: key);
 
+  @override
+  State<_DrawerHeaderAlternative> createState() =>
+      _DrawerHeaderAlternativeState();
+}
+
+class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
+  bool darkMode = false;
+  List<Offset> positions = [];
+  late Timer timer;
+
+  @override
+  void initState() {
+    super.initState();
+    darkMode = Preferences.darkmode;
+    positions = List.generate(30, (_) => getStartPosition());
+
+    timer = Timer.periodic(Duration(milliseconds: 1500), (_) {
+      changePositions();
+    });
+  }
+
+  Offset getRandomPosition() {
+    return Offset(getRandomLeftPosition(), getRandomTopPosition(100));
+  }
+
+  Offset getStartPosition() {
+    return Offset(widget.screenWidth * 0.5, -100);
+  }
+
+  void changePositions() {
+    setState(() {
+      positions = List.generate(30, (_) => getRandomPosition());
+    });
+  }
+
   getRandomTopPosition(int max) {
     return Random().nextDouble() * max;
   }
 
   getRandomLeftPosition() {
-    return Random().nextDouble() * (screenWidth * 0.8);
+    return Random().nextDouble() * (widget.screenWidth * 0.8);
   }
 
   getRandomSide(int max) {
@@ -112,25 +151,41 @@ class _DrawerHeaderAlternative extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DrawerHeader(
-      padding: EdgeInsets.zero,
-      child: Stack(children: [
-        for (int i = 0; i < 30; i++)
-          Positioned(
-            top: getRandomTopPosition(100),
-            left: getRandomLeftPosition(),
-            child: Container(
-              width: getRandomSide(50),
-              height: getRandomSide(50),
-              decoration: BoxDecoration(
+    final temaProvider = Provider.of<ThemeProvider>(context, listen: false);
 
-                  // color: Colors.blueAccent.withOpacity(0.5),
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          darkMode = !darkMode;
+          Preferences.darkmode = darkMode;
+          darkMode ? temaProvider.setDark() : temaProvider.setLight();
+          // Cambiar posiciones al hacer tap
+          changePositions();
+        });
+      },
+      child: DrawerHeader(
+        padding: EdgeInsets.zero,
+        child: Stack(children: [
+          ...List.generate(30, (index) {
+            return AnimatedPositioned(
+              duration:
+                  Duration(milliseconds: 1500), // Duración de la animación
+              curve: Curves.easeInOut, // Curva de animación
+              top: positions[index].dy,
+              left: positions[index].dx,
+              child: Container(
+                width: getRandomSide(50),
+                height: getRandomSide(50),
+                decoration: BoxDecoration(
                   color: getRandomColor(),
-                  borderRadius: BorderRadius.circular(10)),
-              transform: Matrix4.rotationZ(Random().nextDouble() * 1),
-            ),
-          ),
-      ]),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                transform: Matrix4.rotationZ(Random().nextDouble() * 1),
+              ),
+            );
+          }),
+        ]),
+      ),
     );
   }
 }

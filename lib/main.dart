@@ -27,21 +27,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late ThemeData theme = ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-    useMaterial3: true,
-  );
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    setState(() {
-      theme = Provider.of<ThemeProvider>(context, listen: false).temaActual;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeProvider>(context)
+        .temaActual; // Escucha el cambio de tema
+
     return MaterialApp(
       title: 'Grupo 15',
       theme: theme,

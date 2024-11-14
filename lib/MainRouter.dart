@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/PatientMapPage.dart';
-import 'package:flutter_application_1/pages/PatientPage.dart';
+import 'package:flutter_application_1/pages/patients/PatientsMapPage.dart';
+import 'package:flutter_application_1/pages/patients/PatientsListPage.dart';
 import 'package:flutter_application_1/pages/ProfilePage.dart';
-import 'package:flutter_application_1/pages/SinglePatientPage.dart';
+import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
 
 class MainRouter {
   static List<Route> routes = <Route>[
@@ -17,7 +17,7 @@ class MainRouter {
     Route(
         id: "patientsList",
         path: '/patients',
-        widget: PatientPage(),
+        widget: PatientsPage(),
         icon: Icon(Icons.person_search_rounded),
         title: "Lista de Pacientes",
         show: true),
@@ -25,14 +25,14 @@ class MainRouter {
     Route(
         id: "patientsMap",
         path: '/patients/map',
-        widget: PatientMapPage(),
+        widget: PatientsMapPage(),
         icon: Icon(Icons.map),
         title: "Mapa de Pacientes",
         show: true),
     Route(
         id: "patientInfo",
         path: '/paciente/id',
-        widget: SinglePatientPage(),
+        widget: PatientInfoPage(),
         icon: Icon(Icons.accessibility_new_rounded),
         title: "Paciente",
         show: false),

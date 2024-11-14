@@ -5,13 +5,13 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
 class Patientdescription extends StatelessWidget {
-  final List<dynamic> data;
+  final Map<String, dynamic> data;
   const Patientdescription({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-    Patient patient = data as Patient;
+    Patient patient = Patient.fromJson(data["data"]);
 
     return Container(
       decoration: BoxDecoration(
