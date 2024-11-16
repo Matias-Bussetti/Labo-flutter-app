@@ -37,10 +37,10 @@ class DefaultTheme {
 
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
     primaryColor: Colors.greenAccent,
-    appBarTheme:
-        AppBarTheme(backgroundColor: Colors.red, foregroundColor: Colors.white),
+    appBarTheme: AppBarTheme(
+        backgroundColor: Colors.purple[900], foregroundColor: Colors.white),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: primary,
+      backgroundColor: Colors.purple[900],
       foregroundColor: Colors.white,
     ),
   );

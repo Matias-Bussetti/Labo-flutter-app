@@ -3,6 +3,8 @@ import 'package:flutter_application_1/pages/patients/PatientsMapPage.dart';
 import 'package:flutter_application_1/pages/patients/PatientsListPage.dart';
 import 'package:flutter_application_1/pages/ProfilePage.dart';
 import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
+import 'package:flutter_application_1/pages/pokemons/PokemonsPage.dart';
+import 'package:flutter_application_1/widgets/pokemons/PokemonsList.dart';
 
 class MainRouter {
   static List<Route> routes = <Route>[
@@ -36,6 +38,13 @@ class MainRouter {
         icon: Icon(Icons.accessibility_new_rounded),
         title: "Paciente",
         show: false),
+    Route(
+        id: "pokemonsList",
+        path: '/pokemons',
+        widget: PokemonsPage(),
+        icon: Icon(Icons.wheelchair_pickup_rounded),
+        title: "Pokemon",
+        show: true),
     //Rutas Otro
   ];
 

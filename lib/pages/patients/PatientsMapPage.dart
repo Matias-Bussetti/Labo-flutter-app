@@ -7,7 +7,6 @@ class PatientsMapPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber[500],
         title: Text("Mapa de Pacientes"),
       ),
       body: Center(

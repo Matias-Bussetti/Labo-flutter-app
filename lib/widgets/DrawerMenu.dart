@@ -105,17 +105,12 @@ class _DrawerHeaderAlternative extends StatefulWidget {
 class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
   bool darkMode = false;
   List<Offset> positions = [];
-  late Timer timer;
 
   @override
   void initState() {
     super.initState();
     darkMode = Preferences.darkmode;
     positions = List.generate(30, (_) => getStartPosition());
-
-    timer = Timer.periodic(Duration(milliseconds: 1500), (_) {
-      changePositions();
-    });
   }
 
   Offset getRandomPosition() {
@@ -124,12 +119,6 @@ class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
 
   Offset getStartPosition() {
     return Offset(widget.screenWidth * 0.5, -100);
-  }
-
-  void changePositions() {
-    setState(() {
-      positions = List.generate(30, (_) => getRandomPosition());
-    });
   }
 
   getRandomTopPosition(int max) {
@@ -160,7 +149,7 @@ class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
           Preferences.darkmode = darkMode;
           darkMode ? temaProvider.setDark() : temaProvider.setLight();
           // Cambiar posiciones al hacer tap
-          changePositions();
+          positions = List.generate(30, (_) => getRandomPosition());
         });
       },
       child: DrawerHeader(

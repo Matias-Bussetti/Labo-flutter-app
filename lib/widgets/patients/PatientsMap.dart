@@ -12,8 +12,9 @@ class PatientsMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
+
     List<Patient> patients = Patient.listFromJson(data);
-    ;
+
     List<Marker> markers = patients.map((patient) {
       return Marker(
         point: LatLng(
