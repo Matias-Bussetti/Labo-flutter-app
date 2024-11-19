@@ -14,7 +14,7 @@ class _IsFavoriteIconState extends State<IsFavoriteIcon> {
 
   @override
   Widget build(BuildContext context) {
-    Favorite favorito = Preferences.getFav(widget.id);
+    Favorite? favorito = Preferences.getFav(widget.id);
     print(favorito);
     return InkWell(
         onTap: () {
