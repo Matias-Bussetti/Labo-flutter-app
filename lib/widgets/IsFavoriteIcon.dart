@@ -12,13 +12,22 @@ class IsFavoriteIcon extends StatefulWidget {
 class _IsFavoriteIconState extends State<IsFavoriteIcon> {
   late bool isFav = false;
 
+  List<String> favs = Preferences.favs;
+  initState() {
+    super.initState();
+    print(favs.contains(widget.id));
+    setState(() {
+      isFav = favs.contains(widget.id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    Favorite favorito = Preferences.getFav(widget.id);
-    print(favorito);
+    // print(favorito);
     return InkWell(
         onTap: () {
-          print(widget.id);
+          print(Preferences.favs);
+          Preferences.setFav = widget.id;
           setState(() {
             isFav = !isFav;
           });
