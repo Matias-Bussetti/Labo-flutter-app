@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Patient.dart';
-import 'package:flutter_application_1/classes/SinglePatientPageArguments.dart';
-import 'package:flutter_application_1/pages/SinglePatientPage.dart';
+import 'package:flutter_application_1/classes/PatientInfoPageArguments.dart';
+import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
 import 'package:flutter_application_1/widgets/IsFavoriteIcon.dart';
 
 class PatientItem extends StatelessWidget {
@@ -16,8 +16,8 @@ class PatientItem extends StatelessWidget {
           onTap: () {
             Navigator.pushNamed(
               context,
-              SinglePatientPage.routeName,
-              arguments: SinglePatientPageArguments(
+              '/paciente/id',
+              arguments: PatientInfoPageArguments(
                 patient.id,
               ),
             );

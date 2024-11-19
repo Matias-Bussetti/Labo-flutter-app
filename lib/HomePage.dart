@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/CardWidget.dart';
+import 'package:flutter_application_1/MainRouter.dart';
+import 'package:flutter_application_1/widgets/NavigatorCardWidget.dart';
+import 'package:flutter_application_1/widgets/DrawerMenu.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key, required this.title});
   final String title;
 
   @override
@@ -15,25 +17,31 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(title),
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            CardWidget(
-                title: "Profile",
-                subtitle: "Ir a profile",
-                route: "/profile",
-                buttonText: "Profile"),
-            CardWidget(
-                title: "Pacientes",
-                subtitle: "Ir a pacientes",
-                route: "/patients",
-                buttonText: "Lista"),
-            CardWidget(
-                title: "Pacientes",
-                subtitle: "Ir a pacientes mapa",
-                route: "/patients/map",
-                buttonText: "Mapa"),
+      drawer: DrawerMenu(),
+      body: Container(
+        alignment: Alignment.topLeft,
+        child: ListView(
+          children: [
+            Container(
+              padding: const EdgeInsets.fromLTRB(26, 24, 24, 24),
+              child: const Text(
+                "Home",
+                textAlign: TextAlign.left,
+                style: const TextStyle(
+                  fontSize: 40, // Tamaño aproximado de un h3
+                  fontStyle: FontStyle.italic, // Aplicar cursiva
+                  fontWeight:
+                      FontWeight.w600, // Un poco más grueso para darle énfasis
+                ),
+              ),
+            ),
+            ...MainRouter.routes
+                .map((route) => route.show
+                    ? NavigatorCardWidget(
+                        title: route.title, route: route.path, icon: route.icon)
+                    : null)
+                .whereType<Widget>()
+                .toList()
           ],
         ),
       ),
