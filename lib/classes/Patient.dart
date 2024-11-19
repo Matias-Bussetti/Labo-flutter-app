@@ -33,6 +33,11 @@ class Patient {
     );
   }
 
+  static List<Patient> listFromJson(Map<String, dynamic> json) {
+    return List<Patient>.from(
+        json['data'].map((patient) => Patient.fromJson(patient)));
+  }
+
   // Método para convertir un Patient a JSON
   Map<String, dynamic> toJson() {
     return {

@@ -17,4 +17,8 @@ class PatientsResponse {
       'data': patients.map((patient) => patient.toJson()).toList(),
     };
   }
+
+  List<Patient> getData() {
+    return this.patients;
+  }
 }

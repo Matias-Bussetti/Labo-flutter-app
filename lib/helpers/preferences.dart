@@ -2,27 +2,6 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Favorite {
-  final String id;
-  final bool isFavorite;
-
-  Favorite(this.isFavorite, {required this.id});
-
-  // Convertir un objeto Favorite a Map para JSON
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'isFavorite': isFavorite,
-      };
-
-  // Crear un objeto Favorite desde un Map
-  factory Favorite.fromJson(Map<String, dynamic> json) {
-    return Favorite(
-      json['isFavorite'] as bool,
-      id: json['id'] as String,
-    );
-  }
-}
-
 class Preferences {
   static bool _darkmode = false;
   static String _apellido = '';
@@ -35,30 +14,6 @@ class Preferences {
 
   static Future<void> initShared() async {
     _prefs = await SharedPreferences.getInstance();
-  }
-
-// Obtener un favorito por ID
-  static Favorite? getFav(String id) {
-    // Recuperar la lista de favoritos almacenada como JSON
-    List<String>? favsJson = _prefs.getStringList('favs');
-
-    if (favsJson != null) {
-      // Convertir cada JSON en un objeto Favorite y buscar por ID
-      List<Favorite> prefFavs = favsJson
-          .map((favJson) => Favorite.fromJson(jsonDecode(favJson)))
-          .toList();
-      return prefFavs.firstWhere((fav) => fav.id == id,
-          orElse: () => throw Exception("Favorito no encontrado"));
-    } else {
-      return null;
-    }
-  }
-
-  // Guardar la lista de favoritos
-  static Future<void> saveFavorites(List<Favorite> favorites) async {
-    List<String> favsJson =
-        favorites.map((fav) => jsonEncode(fav.toJson())).toList();
-    await _prefs.setStringList('favs', favsJson);
   }
 
   static bool get darkmode {
@@ -90,6 +45,15 @@ class Preferences {
     _prefs.setString('telefono', value);
   }
 
+  static set setFav(String value) {
+    if (_favs.contains(value)) {
+      _favs.remove(value);
+    } else {
+      _favs.add(value);
+    }
+    _prefs.setStringList('favs', _favs);
+  }
+
   static String get apellido {
     return _prefs.getString('apellido') ?? _apellido;
   }
@@ -104,5 +68,9 @@ class Preferences {
 
   static String get telefono {
     return _prefs.getString('telefono') ?? _telefono;
+  }
+
+  static List<String> get favs {
+    return _prefs.getStringList('favs') ?? _favs;
   }
 }

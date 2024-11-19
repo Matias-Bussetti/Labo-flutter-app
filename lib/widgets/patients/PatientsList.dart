@@ -6,19 +6,19 @@ import 'package:flutter_application_1/widgets/PatientCard.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class PatientList extends StatefulWidget {
-  const PatientList({
+class PatientsList extends StatefulWidget {
+  const PatientsList({
     super.key,
-    required this.patients,
+    required this.data,
   });
 
-  final List<Patient> patients;
+  final Map<String, dynamic> data;
 
   @override
-  State<PatientList> createState() => _PatientListState();
+  State<PatientsList> createState() => _PatientsListState();
 }
 
-class _PatientListState extends State<PatientList> {
+class _PatientsListState extends State<PatientsList> {
   late List<Patient> _patients;
 
   @override
@@ -26,16 +26,16 @@ class _PatientListState extends State<PatientList> {
     // TODO: implement initState
     super.initState();
     setState(() {
-      _patients = widget.patients;
+      _patients = Patient.listFromJson(widget.data);
     });
   }
 
   void _handleSearch(String value) {
     setState(() {
       if (value.isEmpty) {
-        _patients = widget.patients;
+        _patients = Patient.listFromJson(widget.data);
       } else {
-        _patients = widget.patients
+        _patients = Patient.listFromJson(widget.data)
             .where((patient) =>
                 (patient.name.first.toLowerCase())
                     .contains(value.toLowerCase()) ||

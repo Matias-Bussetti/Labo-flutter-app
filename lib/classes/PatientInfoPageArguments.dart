@@ -1,6 +1,6 @@
 // https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments
-class SinglePatientPageArguments {
+class PatientInfoPageArguments {
   final String id;
 
-  SinglePatientPageArguments(this.id);
+  PatientInfoPageArguments(this.id);
 }
