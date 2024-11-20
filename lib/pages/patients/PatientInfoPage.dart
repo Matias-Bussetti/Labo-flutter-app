@@ -25,7 +25,7 @@ class _PatientInfoPageState extends State<PatientInfoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Paciente"),
+        title: const Text("Paciente"),
       ),
       body: Center(
         child: FutureFetcher(

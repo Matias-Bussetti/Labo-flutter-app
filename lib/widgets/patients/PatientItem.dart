@@ -6,7 +6,7 @@ import 'package:flutter_application_1/widgets/IsFavoriteIcon.dart';
 
 class PatientItem extends StatelessWidget {
   final Patient patient;
-  const PatientItem({Key? key, required this.patient}) : super(key: key);
+  const PatientItem({super.key, required this.patient});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class PatientItem extends StatelessWidget {
               border: Border.all(color: Colors.grey, width: 0.1),
               borderRadius: BorderRadius.circular(10),
             ),
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
                 Expanded(

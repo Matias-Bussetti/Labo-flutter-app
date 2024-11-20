@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class SpidermanCatchGame extends StatefulWidget {
-  const SpidermanCatchGame({Key? key}) : super(key: key);
+  const SpidermanCatchGame({super.key});
 
   @override
   State<SpidermanCatchGame> createState() => _SpidermanCatchGameState();

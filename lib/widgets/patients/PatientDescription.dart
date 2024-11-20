@@ -98,7 +98,7 @@ class RowData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
+      padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
       child: Row(
         children: [
           Expanded(

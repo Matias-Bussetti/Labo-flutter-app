@@ -93,9 +93,9 @@ class DrawerMenu extends StatelessWidget {
 class _DrawerHeaderAlternative extends StatefulWidget {
   final double screenWidth;
   const _DrawerHeaderAlternative({
-    Key? key,
+    super.key,
     required this.screenWidth,
-  }) : super(key: key);
+  });
 
   @override
   State<_DrawerHeaderAlternative> createState() =>
@@ -113,7 +113,7 @@ class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
     darkMode = Preferences.darkmode;
     positions = List.generate(30, (_) => getStartPosition());
 
-    timer = Timer.periodic(Duration(milliseconds: 1500), (_) {
+    timer = Timer.periodic(const Duration(milliseconds: 1500), (_) {
       changePositions();
     });
   }
@@ -169,7 +169,7 @@ class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
           ...List.generate(30, (index) {
             return AnimatedPositioned(
               duration:
-                  Duration(milliseconds: 1500), // Duración de la animación
+                  const Duration(milliseconds: 1500), // Duración de la animación
               curve: Curves.easeInOut, // Curva de animación
               top: positions[index].dy,
               left: positions[index].dx,

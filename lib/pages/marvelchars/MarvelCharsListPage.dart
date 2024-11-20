@@ -3,12 +3,14 @@ import 'package:flutter_application_1/widgets/custom/FutureFetcher.dart';
 import 'package:flutter_application_1/widgets/marvelchars/MarvelCharactersList.dart';
 
 class MarvelCharsListPage extends StatelessWidget {
+  const MarvelCharsListPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber[500],
-        title: Text("Lista de personajes de Marvel"),
+        title: const Text("Lista de personajes de Marvel"),
       ),
       body: Center(
         child: FutureFetcher(

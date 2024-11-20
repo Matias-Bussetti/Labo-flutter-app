@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Patient.dart';
-import 'package:flutter_application_1/classes/PatientsResponse.dart';
 import 'package:flutter_application_1/widgets/patients/PatientItem.dart';
-import 'package:flutter_application_1/widgets/PatientCard.dart';
-import 'package:http/http.dart' as http;
 
 class PatientsList extends StatefulWidget {
   const PatientsList({

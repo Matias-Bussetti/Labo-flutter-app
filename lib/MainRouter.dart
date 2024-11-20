@@ -11,8 +11,8 @@ class MainRouter {
     Route(
         id: "profile",
         path: '/profile',
-        widget: ProfilePage(),
-        icon: Icon(Icons.settings),
+        widget: const ProfilePage(),
+        icon: const Icon(Icons.settings),
         title: "Perfil de Usuario",
         show: true),
     //Rutas Matias Bussetti
@@ -20,7 +20,7 @@ class MainRouter {
         id: "patientsList",
         path: '/patients',
         widget: PatientsPage(),
-        icon: Icon(Icons.person_search_rounded),
+        icon: const Icon(Icons.person_search_rounded),
         title: "Lista de Pacientes",
         show: true),
 
@@ -28,14 +28,14 @@ class MainRouter {
         id: "patientsMap",
         path: '/patients/map',
         widget: PatientsMapPage(),
-        icon: Icon(Icons.map),
+        icon: const Icon(Icons.map),
         title: "Mapa de Pacientes",
         show: true),
     Route(
         id: "patientInfo",
         path: '/paciente/id',
-        widget: PatientInfoPage(),
-        icon: Icon(Icons.accessibility_new_rounded),
+        widget: const PatientInfoPage(),
+        icon: const Icon(Icons.accessibility_new_rounded),
         title: "Paciente",
         show: false),
     //Rutas Otro
@@ -43,14 +43,14 @@ class MainRouter {
         id: "marvelCharsList",
         path: '/marvelchars/id',
         widget: MarvelCharsListPage(),
-        icon: Icon(Icons.accessibility_new_rounded),
+        icon: const Icon(Icons.accessibility_new_rounded),
         title: "Personajes de Marvel",
         show: true),
     Route(
     id: "marvelCharsSpidermanGame",
     path: '/marvelchars/id',
-    widget: SpidermanCatchGame(),
-    icon: Icon(Icons.accessibility_new_rounded),
+    widget: const SpidermanCatchGame(),
+    icon: const Icon(Icons.accessibility_new_rounded),
     title: "Juego de Marvel Spider-Man - Atrapá a Venom",
     show: true),
 

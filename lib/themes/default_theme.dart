@@ -15,21 +15,21 @@ class DefaultTheme {
       textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
               backgroundColor: secondary, foregroundColor: Colors.white)),
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: primary,
         foregroundColor: Colors.white,
       ),
-      listTileTheme: ListTileThemeData(iconColor: primary),
+      listTileTheme: const ListTileThemeData(iconColor: primary),
       /* switchTheme: SwitchThemeData(), */
       inputDecorationTheme: InputDecorationTheme(
-          floatingLabelStyle: TextStyle(color: primary),
+          floatingLabelStyle: const TextStyle(color: primary),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: primary),
+            borderSide: const BorderSide(color: primary),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(color: primary),
+            borderSide: const BorderSide(color: primary),
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
@@ -38,8 +38,8 @@ class DefaultTheme {
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
     primaryColor: Colors.greenAccent,
     appBarTheme:
-        AppBarTheme(backgroundColor: Colors.red, foregroundColor: Colors.white),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
+        const AppBarTheme(backgroundColor: Colors.red, foregroundColor: Colors.white),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: primary,
       foregroundColor: Colors.white,
     ),

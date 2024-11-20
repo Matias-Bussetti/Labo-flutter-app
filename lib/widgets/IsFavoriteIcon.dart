@@ -13,6 +13,7 @@ class _IsFavoriteIconState extends State<IsFavoriteIcon> {
   late bool isFav = false;
 
   List<String> favs = Preferences.favs;
+  @override
   initState() {
     super.initState();
     print(favs.contains(widget.id));
@@ -32,6 +33,6 @@ class _IsFavoriteIconState extends State<IsFavoriteIcon> {
             isFav = !isFav;
           });
         },
-        child: (isFav ? Icon(Icons.star) : Icon(Icons.star_border)));
+        child: (isFav ? const Icon(Icons.star) : const Icon(Icons.star_border)));
   }
 }

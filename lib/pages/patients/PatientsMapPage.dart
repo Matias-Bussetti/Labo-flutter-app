@@ -3,12 +3,14 @@ import 'package:flutter_application_1/widgets/custom/FutureFetcher.dart';
 import 'package:flutter_application_1/widgets/patients/PatientsMap.dart';
 
 class PatientsMapPage extends StatelessWidget {
+  const PatientsMapPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber[500],
-        title: Text("Mapa de Pacientes"),
+        title: const Text("Mapa de Pacientes"),
       ),
       body: Center(
         child: FutureFetcher(

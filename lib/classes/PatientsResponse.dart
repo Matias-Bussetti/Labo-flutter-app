@@ -19,6 +19,6 @@ class PatientsResponse {
   }
 
   List<Patient> getData() {
-    return this.patients;
+    return patients;
   }
 }
