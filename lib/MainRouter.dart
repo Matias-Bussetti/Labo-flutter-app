@@ -51,7 +51,7 @@ class MainRouter {
     path: '/marvelchars/id',
     widget: SpidermanCatchGame(),
     icon: Icon(Icons.accessibility_new_rounded),
-    title: "Juego de Spider-Man - Atrapá a Venom",
+    title: "Juego de Marvel Spider-Man - Atrapá a Venom",
     show: true),
 
   ];
