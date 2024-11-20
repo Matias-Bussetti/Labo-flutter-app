@@ -4,7 +4,6 @@ import 'package:flutter_application_1/classes/PatientsResponse.dart';
 import 'package:flutter_application_1/widgets/patients/PatientItem.dart';
 import 'package:flutter_application_1/widgets/PatientCard.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class PatientsList extends StatefulWidget {
   const PatientsList({
