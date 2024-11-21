@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/harry_potter/HarryPotterItem.dart';
 import 'package:flutter_application_1/widgets/custom/FutureFetcher.dart';
+import 'package:flutter_application_1/widgets/harry_potter/HarryPotterList.dart';
 import 'package:flutter_application_1/classes/HarryPotterCharacters.dart';
 
 class HarryPotterListPage extends StatelessWidget {
@@ -16,15 +16,11 @@ class HarryPotterListPage extends StatelessWidget {
           url: "https://hp-api.herokuapp.com/api/characters", // URL de la API
           widget: (data) {
             if (data is List) {
-              final characters = data.map((item) => HarryPotterCharacters.fromJson(item)).toList();
+              final characters = data
+                  .map((item) => HarryPotterCharacters.fromJson(item))
+                  .toList();
 
-              return ListView.builder(
-                itemCount: characters.length,
-                itemBuilder: (context, index) {
-                  final character = characters[index];
-                  return HarryPotterItem(character: character); // Pasamos el personaje al widget.
-                },
-              );
+              return HarryPotterList(characters: characters); // Usamos el nuevo widget con búsqueda.
             } else {
               return Center(child: Text("Error: Los datos no son una lista válida"));
             }
