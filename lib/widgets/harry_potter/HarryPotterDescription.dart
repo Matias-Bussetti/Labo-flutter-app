@@ -42,7 +42,7 @@ class HarryPotterDescription extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text('Casa: ${data.house}'),
+                child: Text('Casa: ${data.house.displayName}'),
               ),
             ],
           ),
@@ -60,7 +60,25 @@ class HarryPotterDescription extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text('Patronus: ${data.patronus}'),
+                child: Text('Patronus: ${data.patronus.displayName}'),
+              ),
+            ],
+          ),
+          RowData(
+            icon: Icons.account_box,
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text('Actor: ${data.actor}'), // Agregamos el actor
+              ),
+            ],
+          ),
+          RowData(
+            icon: Icons.calendar_today,
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text('Fecha de nacimiento: ${data.dateOfBirth ?? "Desconocida"}'), // Agregamos la fecha de nacimiento
               ),
             ],
           ),
@@ -69,6 +87,7 @@ class HarryPotterDescription extends StatelessWidget {
     );
   }
 }
+
 
 class RowData extends StatelessWidget {
   const RowData({
