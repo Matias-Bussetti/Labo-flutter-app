@@ -4,6 +4,9 @@ import 'package:flutter_application_1/pages/patients/PatientsListPage.dart';
 import 'package:flutter_application_1/pages/ProfilePage.dart';
 import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
 
+import 'package:flutter_application_1/pages/harry_potter/HarryPotterListPage.dart';
+import 'package:flutter_application_1/pages/harry_potter/HarryPotterInfoPage.dart';
+
 class MainRouter {
   static List<Route> routes = <Route>[
     Route(
@@ -37,6 +40,21 @@ class MainRouter {
         title: "Paciente",
         show: false),
     //Rutas Otro
+    Route(
+        id: "harryPotterList",
+        path: '/harryPotterList',
+        widget: HarryPotterListPage(),
+        icon: Icon(Icons.account_box),
+        title: "Lista de Personajes de Harry Potter",
+        show: true),
+    Route(
+        id: "harryPotterInfo",
+        path: '/harryPotterInfo',
+        widget: HarryPotterInfoPage(),
+        icon: Icon(Icons.info),
+        title: "Detalles del Personaje",
+        show: false),
+
   ];
 
   static Map<String, WidgetBuilder> generateRoutes(BuildContext context) {

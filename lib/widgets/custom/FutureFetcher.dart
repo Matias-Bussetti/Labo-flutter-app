@@ -4,7 +4,7 @@ import 'dart:convert';
 
 class FutureFetcher extends StatefulWidget {
   final String url;
-  final Widget Function(Map<String, dynamic>) widget;
+  final Widget Function(dynamic) widget; // Cambiar Map<String, dynamic> a dynamic para aceptar List o Map.
 
   const FutureFetcher({
     Key? key,
@@ -17,7 +17,7 @@ class FutureFetcher extends StatefulWidget {
 }
 
 class _FutureFetcherState extends State<FutureFetcher> {
-  late Future<Map<String, dynamic>> data;
+  late Future<dynamic> data; // Cambiar Map<String, dynamic> a dynamic.
 
   @override
   void initState() {
@@ -25,12 +25,11 @@ class _FutureFetcherState extends State<FutureFetcher> {
     data = fetchData();
   }
 
-  Future<Map<String, dynamic>> fetchData() async {
+  Future<dynamic> fetchData() async {
     final response = await http.get(Uri.parse(widget.url));
 
     if (response.statusCode == 200) {
-      Map<String, dynamic> jsonData = jsonDecode(response.body);
-      return jsonData;
+      return jsonDecode(response.body); // Devuelve directamente el JSON parseado (puede ser List o Map).
     } else {
       throw Exception('Error fetching data');
     }
@@ -46,7 +45,7 @@ class _FutureFetcherState extends State<FutureFetcher> {
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (snapshot.hasData) {
-          return widget.widget(snapshot.data);
+          return widget.widget(snapshot.data); // Pasamos los datos tal cual al widget.
         } else {
           return Center(child: Text('No data found'));
         }
