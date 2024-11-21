@@ -5,6 +5,7 @@ import 'package:flutter_application_1/pages/patients/PatientsListPage.dart';
 import 'package:flutter_application_1/pages/ProfilePage.dart';
 import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
 import 'package:flutter_application_1/widgets/marvelchars/SpidermanGame.dart';
+import 'package:flutter_application_1/pages/pokemon/PokemonListPage.dart';
 
 class MainRouter {
   static List<Route> routes = <Route>[
@@ -19,7 +20,7 @@ class MainRouter {
     Route(
         id: "patientsList",
         path: '/patients',
-        widget: PatientsPage(),
+        widget: const PatientsPage(),
         icon: const Icon(Icons.person_search_rounded),
         title: "Lista de Pacientes",
         show: true),
@@ -27,7 +28,7 @@ class MainRouter {
     Route(
         id: "patientsMap",
         path: '/patients/map',
-        widget: PatientsMapPage(),
+        widget: const PatientsMapPage(),
         icon: const Icon(Icons.map),
         title: "Mapa de Pacientes",
         show: true),
@@ -42,18 +43,25 @@ class MainRouter {
     Route(
         id: "marvelCharsList",
         path: '/marvelchars/id',
-        widget: MarvelCharsListPage(),
+        widget: const MarvelCharsListPage(),
         icon: const Icon(Icons.accessibility_new_rounded),
         title: "Personajes de Marvel",
         show: true),
     Route(
-    id: "marvelCharsSpidermanGame",
-    path: '/marvelchars/id',
-    widget: const SpidermanCatchGame(),
-    icon: const Icon(Icons.accessibility_new_rounded),
-    title: "Juego de Marvel Spider-Man - Atrapá a Venom",
-    show: true),
+        id: "marvelCharsSpidermanGame",
+        path: '/marvelchars/id',
+        widget: const SpidermanCatchGame(),
+        icon: const Icon(Icons.accessibility_new_rounded),
+        title: "Juego de Marvel Spider-Man - Atrapá a Venom",
+        show: true),
 
+    Route(
+        id: "pokemonList",
+        path: '/pokemon/list',
+        widget: const PokemonListPage(),
+        icon: const Icon(Icons.catching_pokemon),
+        title: "Lista de Pokémon",
+        show: true),
   ];
 
   static Map<String, WidgetBuilder> generateRoutes(BuildContext context) {

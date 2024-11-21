@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Patient.dart';
 import 'package:flutter_application_1/classes/PatientInfoPageArguments.dart';
-import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
 
 class PatientAvatarItem extends StatelessWidget {
   final Patient patient;

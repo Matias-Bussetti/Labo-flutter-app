@@ -1,10 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/Patient.dart';
 import 'package:flutter_application_1/classes/PatientInfoPageArguments.dart';
 import 'package:flutter_application_1/widgets/custom/FutureFetcher.dart';
 import 'package:flutter_application_1/widgets/patients/PatientDescription.dart';
-import 'package:flutter_application_1/classes/PatientResponse.dart';
 
 class PatientInfoPage extends StatefulWidget {
   const PatientInfoPage({
