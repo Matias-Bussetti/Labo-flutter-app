@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/MarvelCharacters.dart';
 import 'package:flutter_application_1/pages/marvelchars/MarvelCharsInfoPage.dart';
 import 'package:flutter_application_1/pages/marvelchars/MarvelCharsListPage.dart';
 import 'package:flutter_application_1/pages/patients/PatientsMapPage.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/MarvelCharacters.dart';
-import 'package:flutter_application_1/pages/marvelchars/MarvelCharsInfoPage.dart';
 
 class MarvelCharacterItem extends StatelessWidget {
   final MarvelChars character;
