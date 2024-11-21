@@ -1,31 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/MarvelCharacters.dart';
+import 'package:flutter_application_1/pages/marvelchars/MarvelCharsInfoPage.dart';
 
 class MarvelCharacterItem extends StatelessWidget {
   final MarvelChars character;
 
-  const MarvelCharacterItem({
-    super.key,
-    required this.character,
-  });
+  const MarvelCharacterItem({Key? key, required this.character}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: ListTile(
-        leading: Image.network(character.thumbnail, width: 50, height: 50),
-        title: Text(character.name),
-        subtitle: Text(
-          character.description.isNotEmpty
-              ? character.description
-              : "Sin descripción",
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '/marvelchars/id',
+          arguments: character,
+        );
+      },
+      child: Card(
+        margin: const EdgeInsets.all(8.0),
+        child: ListTile(
+          leading: CircleAvatar(
+            backgroundImage: NetworkImage(character.thumbnail),
+          ),
+          title: Text(character.name),
         ),
-        onTap: () {
-          // Acción al seleccionar un personaje
-        },
       ),
     );
   }
