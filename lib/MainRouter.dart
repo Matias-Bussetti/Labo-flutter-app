@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/marvelchars/MarvelCharsInfoPage.dart';
+import 'package:flutter_application_1/pages/marvelchars/MarvelCharsListPage.dart';
 import 'package:flutter_application_1/pages/patients/PatientsMapPage.dart';
 import 'package:flutter_application_1/pages/patients/PatientsListPage.dart';
 import 'package:flutter_application_1/pages/ProfilePage.dart';
 import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
+import 'package:flutter_application_1/widgets/marvelchars/SpidermanGame.dart';
 
 class MainRouter {
   static List<Route> routes = <Route>[
@@ -37,6 +40,28 @@ class MainRouter {
         title: "Paciente",
         show: false),
     //Rutas Otro
+    Route(
+        id: "marvelCharsList",
+        path: '/marvelchars',
+        widget: MarvelCharsListPage(),
+        icon: Icon(Icons.accessibility_new_rounded),
+        title: "Personajes de Marvel",
+        show: true),
+    Route(
+        id: "marvelCharsInfo",
+        path: '/marvelchars/id',
+        widget: MarvelCharsInfoPage(),
+        icon: Icon(Icons.accessibility_new_rounded),
+        title: "Detalle de Personaje",
+        show: false),
+    Route(
+        id: "marvelCharsSpidermanGame",
+        path: '/marvelchars/game',
+        widget: SpidermanCatchGame(),
+        icon: Icon(Icons.accessibility_new_rounded),
+        title: "Juego de Marvel Spider-Man - Atrapá a Venom",
+        show: true),
+
   ];
 
   static Map<String, WidgetBuilder> generateRoutes(BuildContext context) {
