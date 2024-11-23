@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/MarvelCharacters.dart';
-import 'package:flutter_application_1/classes/MarvelCharactersInfoPageArguments.dart';
 import 'package:flutter_application_1/widgets/custom/FutureFetcher.dart';
 import 'package:flutter_application_1/widgets/marvelchars/MarvelCharacterDescription.dart'; // La descripción personalizada para los personajes Marvel
 
