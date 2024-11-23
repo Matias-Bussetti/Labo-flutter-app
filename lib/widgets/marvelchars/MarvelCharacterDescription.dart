@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/MarvelCharacters.dart';
+import 'package:flutter_application_1/widgets/IsFavoriteIcon.dart';
 
 class MarvelCharacterDescription extends StatelessWidget {
   final Map<String, dynamic> data;
@@ -18,16 +19,30 @@ class MarvelCharacterDescription extends StatelessWidget {
       child: Column(
         children: [
           // Imagen del personaje
-          Container(
-            height: screenWidth,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 1),
-              image: DecorationImage(
-                alignment: Alignment.center,
-                image: NetworkImage(character.thumbnail),
-                fit: BoxFit.fitHeight,
+          Stack(
+            children: [
+              Container(
+                height: screenWidth,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey, width: 1),
+                  image: DecorationImage(
+                    alignment: Alignment.center,
+                    image: NetworkImage(character.thumbnail),
+                    fit: BoxFit.fitHeight,
+                  ),
+                ),
               ),
-            ),
+              // Icono de favorito en la esquina superior derecha
+              Positioned(
+                top: 8.0,
+                right: 8.0,
+                child: IsFavoriteIcon(
+                  id: character.name,
+                  color: Colors.yellow,
+                  size: 50.0,
+                ),
+              ),
+            ],
           ),
           // Nombre del personaje
           RowData(

@@ -3,9 +3,10 @@ import 'package:flutter_application_1/helpers/preferences.dart';
 
 class IsFavoriteIcon extends StatefulWidget {
   final String id;
-  final Color color; // Nuevo parámetro para el color del ícono
+  final Color color; 
+  final double size;// Nuevo parámetro para el color del ícono
 
-  const IsFavoriteIcon({super.key, required this.id, this.color = Colors.white}); // Color por defecto
+  const IsFavoriteIcon({super.key, required this.id, this.color = Colors.white, this.size = 24}); // Color por defecto
 
   @override
   State<IsFavoriteIcon> createState() => _IsFavoriteIconState();
@@ -35,7 +36,8 @@ class _IsFavoriteIconState extends State<IsFavoriteIcon> {
       },
       child: Icon(
         isFav ? Icons.star : Icons.star_border,
-        color: widget.color, // Aplicar el color al ícono
+        color: widget.color,
+        size: widget.size, // Aplicar el color al ícono
       ),
     );
   }
