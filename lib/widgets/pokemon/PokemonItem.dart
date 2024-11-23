@@ -13,8 +13,15 @@ class PokemonItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        image: const DecorationImage(
+          image: AssetImage('lib/assets/images/pokeball_wallpaper.png'),
+          fit: BoxFit.cover,
+        ),
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: const Color.fromARGB(255, 194, 194, 194),
+          width: 1,
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
@@ -30,7 +37,7 @@ class PokemonItem extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Image.network(
               pokemon.image,
-              width: 100, // Ajusta el tamaño para que encaje bien en el grid
+              width: 100,
               height: 100,
               fit: BoxFit.cover,
             ),
@@ -55,7 +62,7 @@ class PokemonItem extends StatelessWidget {
             children: pokemon.types.map((type) {
               return Chip(
                 label: Text(type),
-                backgroundColor: Colors.blue.shade100,
+                backgroundColor: const Color.fromARGB(255, 202, 226, 247),
               );
             }).toList(),
           ),

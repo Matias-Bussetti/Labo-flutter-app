@@ -61,6 +61,7 @@ flutter:
   assets:
       - lib/assets/images/spiderman.png
       - lib/assets/images/venom.png
+      - lib/assets/images/pokeball_wallpaper.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
