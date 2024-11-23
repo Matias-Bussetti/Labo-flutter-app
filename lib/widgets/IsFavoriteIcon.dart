@@ -3,7 +3,9 @@ import 'package:flutter_application_1/helpers/preferences.dart';
 
 class IsFavoriteIcon extends StatefulWidget {
   final String id;
-  const IsFavoriteIcon({super.key, required this.id});
+  final Color color; // Nuevo parámetro para el color del ícono
+
+  const IsFavoriteIcon({super.key, required this.id, this.color = Colors.white}); // Color por defecto
 
   @override
   State<IsFavoriteIcon> createState() => _IsFavoriteIconState();
@@ -13,9 +15,10 @@ class _IsFavoriteIconState extends State<IsFavoriteIcon> {
   late bool isFav = false;
 
   List<String> favs = Preferences.favs;
-  initState() {
+
+  @override
+  void initState() {
     super.initState();
-    print(favs.contains(widget.id));
     setState(() {
       isFav = favs.contains(widget.id);
     });
@@ -23,15 +26,17 @@ class _IsFavoriteIconState extends State<IsFavoriteIcon> {
 
   @override
   Widget build(BuildContext context) {
-    // print(favorito);
     return InkWell(
-        onTap: () {
-          print(Preferences.favs);
-          Preferences.setFav = widget.id;
-          setState(() {
-            isFav = !isFav;
-          });
-        },
-        child: (isFav ? Icon(Icons.star) : Icon(Icons.star_border)));
+      onTap: () {
+        Preferences.setFav = widget.id;
+        setState(() {
+          isFav = !isFav;
+        });
+      },
+      child: Icon(
+        isFav ? Icons.star : Icons.star_border,
+        color: widget.color, // Aplicar el color al ícono
+      ),
+    );
   }
 }
