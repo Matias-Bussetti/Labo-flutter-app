@@ -8,7 +8,7 @@ class MarvelCharsListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber[500],
-        title: Text("Lista de personajes de Marvel"),
+        title: Text("Marvel - Lista de Personajes"),
       ),
       body: Center(
         child: FutureFetcher(
