@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/HarryPotterCharacters.dart';
 
 class HarryPotterDescription extends StatelessWidget {
-  final HarryPotterCharacters data;
+  final Datum data;  // Cambié el tipo a Datum, ya que estamos pasando un personaje individual
 
   const HarryPotterDescription({super.key, required this.data});
 
@@ -15,16 +15,18 @@ class HarryPotterDescription extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Container(
-            height: 250,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 1),
-              image: DecorationImage(
-                image: NetworkImage(data.image),
-                fit: BoxFit.fitHeight,
+          if (data.image.isNotEmpty) ...[
+            Container(
+              height: 250,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey, width: 1),
+                image: DecorationImage(
+                  image: NetworkImage(data.image),
+                  fit: BoxFit.fitHeight,
+                ),
               ),
             ),
-          ),
+          ],
           RowData(
             icon: Icons.account_circle,
             children: [
@@ -42,7 +44,8 @@ class HarryPotterDescription extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text('Casa: ${data.house.displayName}'),
+                child: Text('Casa: ${houseValues.reverse[data.house]}'), // Usamos reverse para obtener el nombre de la casa
+             
               ),
             ],
           ),
@@ -51,7 +54,7 @@ class HarryPotterDescription extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text('Especie: ${data.species}'),
+                child: Text('Especie: ${data.ancestry}'),
               ),
             ],
           ),
@@ -60,25 +63,7 @@ class HarryPotterDescription extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text('Patronus: ${data.patronus.displayName}'),
-              ),
-            ],
-          ),
-          RowData(
-            icon: Icons.account_box,
-            children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text('Actor: ${data.actor}'), // Agregamos el actor
-              ),
-            ],
-          ),
-          RowData(
-            icon: Icons.calendar_today,
-            children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text('Fecha de nacimiento: ${data.dateOfBirth ?? "Desconocida"}'), // Agregamos la fecha de nacimiento
+                child: Text('Actor: ${data.actor}'),
               ),
             ],
           ),
@@ -87,7 +72,6 @@ class HarryPotterDescription extends StatelessWidget {
     );
   }
 }
-
 
 class RowData extends StatelessWidget {
   const RowData({

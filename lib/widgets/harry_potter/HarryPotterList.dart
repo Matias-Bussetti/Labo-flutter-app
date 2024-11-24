@@ -3,31 +3,31 @@ import 'package:flutter_application_1/classes/HarryPotterCharacters.dart';
 import 'package:flutter_application_1/widgets/harry_potter/HarryPotterItem.dart';
 
 class HarryPotterList extends StatefulWidget {
-  final List<HarryPotterCharacters> characters;
+  final List<Datum> characters;
 
   const HarryPotterList({Key? key, required this.characters}) : super(key: key);
 
   @override
-  State<HarryPotterList> createState() => _HarryPotterListState();
+  _HarryPotterListState createState() => _HarryPotterListState();
 }
 
 class _HarryPotterListState extends State<HarryPotterList> {
-  late List<HarryPotterCharacters> _filteredCharacters;
+  late List<Datum> filteredCharacters;
 
   @override
   void initState() {
     super.initState();
-    _filteredCharacters = widget.characters; // Inicialmente mostramos todos los personajes.
+    filteredCharacters = widget.characters;
   }
 
-  void _handleSearch(String value) {
+  void _filterCharacters(String query) {
     setState(() {
-      if (value.isEmpty) {
-        _filteredCharacters = widget.characters; // Restauramos la lista original si no hay texto.
+      if (query.isEmpty) {
+        filteredCharacters = widget.characters;
       } else {
-        _filteredCharacters = widget.characters
-            .where((character) => character.name.toLowerCase().contains(value.toLowerCase()))
-            .toList(); // Filtramos los personajes por nombre.
+        filteredCharacters = widget.characters
+            .where((character) => character.name.toLowerCase().contains(query.toLowerCase()))
+            .toList();
       }
     });
   }
@@ -36,38 +36,27 @@ class _HarryPotterListState extends State<HarryPotterList> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Barra de búsqueda
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-          child: SizedBox(
-            height: 45,
-            width: 360,
-            child: TextField(
-              onChanged: _handleSearch,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: const Color(0xfff1f1f1),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide.none,
-                ),
-                hintText: "Buscar por Nombre",
-                prefixIcon: const Icon(Icons.search),
-                prefixIconColor: Colors.black,
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            onChanged: _filterCharacters,
+            decoration: InputDecoration(
+              hintText: "Buscar personaje",
+              filled: true,
+              fillColor: Colors.grey[200],
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none,
               ),
+              prefixIcon: Icon(Icons.search),
             ),
           ),
         ),
-
-        // Lista de personajes
         Expanded(
           child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            itemCount: _filteredCharacters.length,
-            itemBuilder: (BuildContext context, int index) {
-              final character = _filteredCharacters[index];
-              return HarryPotterItem(character: character);
+            itemCount: filteredCharacters.length,
+            itemBuilder: (context, index) {
+              return HarryPotterItem(character: filteredCharacters[index]);
             },
           ),
         ),

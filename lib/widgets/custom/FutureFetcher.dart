@@ -25,15 +25,17 @@ class _FutureFetcherState extends State<FutureFetcher> {
     data = fetchData();
   }
 
-  Future<dynamic> fetchData() async {
-    final response = await http.get(Uri.parse(widget.url));
+    Future<dynamic> fetchData() async {
+      final response = await http.get(Uri.parse(widget.url));
 
-    if (response.statusCode == 200) {
-      return jsonDecode(response.body); // Devuelve directamente el JSON parseado (puede ser List o Map).
-    } else {
-      throw Exception('Error fetching data');
+        if (response.statusCode == 200) {
+          print(response.body); // <-- Agrega esta línea para revisar el JSON que devuelve la API
+           return jsonDecode(response.body);
+        } else {
+           throw Exception('Error fetching data');
+        }
     }
-  }
+
 
   @override
   Widget build(BuildContext context) {

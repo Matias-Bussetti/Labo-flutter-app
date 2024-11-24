@@ -3,7 +3,7 @@ import 'package:flutter_application_1/classes/HarryPotterCharacters.dart';
 import 'package:flutter_application_1/classes/HarryPotterInfoPageArguments.dart';
 
 class HarryPotterItem extends StatelessWidget {
-  final HarryPotterCharacters character;
+  final Datum character;
 
   const HarryPotterItem({Key? key, required this.character}) : super(key: key);
 
