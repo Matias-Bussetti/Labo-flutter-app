@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-PokemonList pokemonListFromJson(String str) => PokemonList.fromJson(json.decode(str));
+PokemonList pokemonListFromJson(String str) =>
+    PokemonList.fromJson(json.decode(str));
 
 String pokemonListToJson(PokemonList data) => json.encode(data.toJson());
 
@@ -42,9 +43,9 @@ class Pokemon {
   });
 
   factory Pokemon.fromJson(Map<String, dynamic> json) => Pokemon(
-        id: json["id"],
+        id: json["id"], // Establece un ID predeterminado si es nulo
         name: json["name"],
-        types: List<String>.from(json["types"].map((x) => x)),
+        types: List<String>.from(json["types"]?.map((x) => x) ?? []),
         image: json["image"],
       );
 
@@ -57,6 +58,7 @@ class Pokemon {
 
   // Método estático para convertir una lista de JSON a objetos Pokémon
   static List<Pokemon> listFromJson(Map<String, dynamic> json) {
-    return List<Pokemon>.from(json['data'].map((pokemon) => Pokemon.fromJson(pokemon)));
+    return List<Pokemon>.from(
+        json['data'].map((pokemon) => Pokemon.fromJson(pokemon)));
   }
 }

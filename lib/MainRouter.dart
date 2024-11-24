@@ -6,6 +6,7 @@ import 'package:flutter_application_1/pages/ProfilePage.dart';
 import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
 import 'package:flutter_application_1/widgets/marvelchars/SpidermanGame.dart';
 import 'package:flutter_application_1/pages/pokemon/PokemonListPage.dart';
+import 'package:flutter_application_1/pages/pokemon/PokemonInfoPage.dart';
 
 class MainRouter {
   static List<Route> routes = <Route>[
@@ -62,6 +63,14 @@ class MainRouter {
         icon: const Icon(Icons.catching_pokemon),
         title: "Lista de Pokémon",
         show: true),
+
+    Route(
+        id: "pokemonInfo",
+        path: '/pokemon-info',
+        widget: const PokemonInfoPage(),
+        icon: const Icon(Icons.info),
+        title: "Detalle de Pokémon",
+        show: false),
   ];
 
   static Map<String, WidgetBuilder> generateRoutes(BuildContext context) {

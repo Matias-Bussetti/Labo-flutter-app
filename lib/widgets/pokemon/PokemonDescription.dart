@@ -10,7 +10,7 @@ class PokemonDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(pokemon.name),
+        title: Text("Descripcion del Pokémon"),
         backgroundColor: Colors.lightBlue[500],
       ),
       body: SingleChildScrollView(
@@ -50,10 +50,10 @@ class PokemonDescription extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               // Descripción o información adicional
-              Text(
+              const Text(
                 "Este Pokémon pertenece a los tipos mencionados y es muy especial en tus aventuras. Aquí podrías agregar información extra si tienes datos adicionales en tu API.",
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 16,
                   color: Colors.black54,
                 ),

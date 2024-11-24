@@ -1,5 +1,5 @@
 class PokemonInfoPageArguments {
-  final String id;
+  final int id;
 
   PokemonInfoPageArguments(this.id);
 }
