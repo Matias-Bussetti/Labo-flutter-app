@@ -1,19 +1,44 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Cliente.dart';
 import 'package:flutter_application_1/classes/ClienteInfoPageArguments.dart';
-import 'package:flutter_application_1/widgets/IsFavoriteIcon.dart';
 
 class ClienteItem extends StatelessWidget {
   final Cliente cliente;
-  const ClienteItem({Key? key, required this.cliente}) : super(key: key);
+  ClienteItem({super.key, required this.cliente});
+
+  // Listas de imágenes según el género
+  final List<String> avatarMaleImages = [
+    'lib/assets/cliente/MaleAvatar1.png',
+    'lib/assets/cliente/MaleAvatar2.png',
+    'lib/assets/cliente/MaleAvatar4.png',
+    'lib/assets/cliente/MaleAvatar6.png',
+    'lib/assets/cliente/MaleAvatar9.png',
+    'lib/assets/cliente/MaleAvatar10.png',
+    'lib/assets/cliente/MaleAvatar11.png',
+    'lib/assets/cliente/MaleAvatar13.png',
+  ];
+
+  final List<String> avatarFemaleImages = [
+    'lib/assets/cliente/FemaleAvatar3.png',
+    'lib/assets/cliente/FemaleAvatar5.png',
+    'lib/assets/cliente/FemaleAvatar7.png',
+    'lib/assets/cliente/FemaleAvatar8.png',
+    'lib/assets/cliente/FemaleAvatar12.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
+    // Seleccionar una imagen aleatoria según el género
+    final String randomAvatar = cliente.genero.toLowerCase() == 'female'
+        ? avatarFemaleImages[Random().nextInt(avatarFemaleImages.length)]
+        : avatarMaleImages[Random().nextInt(avatarMaleImages.length)];
+
     return Container(
       margin: const EdgeInsets.fromLTRB(8, 8, 8, 0),
       child: InkWell(
         onTap: () {
-          // Navegar a la página de detalle del cliente pasando el ID
+          // Navegar a la página de detalle del cliente pasando el cliente y avatar
           Navigator.pushNamed(
             context,
             '/cliente/buscar',
@@ -39,9 +64,9 @@ class ClienteItem extends StatelessWidget {
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey, width: 1),
                     borderRadius: BorderRadius.circular(90),
-                    image: const DecorationImage(
+                    image: DecorationImage(
                       image: AssetImage(
-                          'assets/cliente/avatar1.png'), // Imagen estática
+                          randomAvatar), // Imagen aleatoria basada en género
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -68,13 +93,17 @@ class ClienteItem extends StatelessWidget {
                   ),
                 ),
               ),
-              // Icono de favorito
+              // Icono de favorito o VIP
               Expanded(
                 flex: 0,
                 child: Row(
                   children: [
-                    IsFavoriteIcon(
-                        id: 'cliente-${cliente.id}') // Favorito por ID
+                    Icon(
+                      Icons.star,
+                      color: cliente.bip
+                          ? Colors.yellow
+                          : Colors.grey, // Color según VIP
+                    ),
                   ],
                 ),
               ),

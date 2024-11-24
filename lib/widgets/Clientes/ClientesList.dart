@@ -4,9 +4,9 @@ import 'package:flutter_application_1/widgets/clientes/ClienteItem.dart';
 
 class ClientesList extends StatefulWidget {
   const ClientesList({
-    Key? key,
+    super.key,
     required this.data,
-  }) : super(key: key);
+  });
 
   final Map<String, dynamic> data;
 

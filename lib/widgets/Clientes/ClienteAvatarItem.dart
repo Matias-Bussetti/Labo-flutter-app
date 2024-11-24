@@ -5,7 +5,7 @@ import 'package:flutter_application_1/classes/ClienteInfoPageArguments.dart';
 class ClienteAvatarItem extends StatelessWidget {
   final Cliente cliente; // Usa Datum en lugar de Cliente
 
-  const ClienteAvatarItem({Key? key, required this.cliente}) : super(key: key);
+  const ClienteAvatarItem({super.key, required this.cliente});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class ClienteAvatarItem extends StatelessWidget {
             context,
             '/cliente/buscar',
             arguments: ClienteInfoPageArguments(
-              cliente.id, // Accede al 'id' de Datum directamente
+              cliente.id,
             ),
           );
         },

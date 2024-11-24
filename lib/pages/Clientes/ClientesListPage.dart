@@ -8,7 +8,7 @@ class ClientesListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber[500],
-        title: Text("Pantalla de Clientes"),
+        title: const Text("Pantalla de Clientes"),
       ),
       body: Center(
         child: FutureFetcher(

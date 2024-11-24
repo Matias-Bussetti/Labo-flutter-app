@@ -63,18 +63,18 @@ class MainRouter {
         icon: Icon(Icons.accessibility_new_rounded),
         title: "Juego de Marvel Spider-Man - Atrapá a Venom",
         show: true),
-    // Rutas Clientes
+    // Rutas Ponin Eric Clientes
     Route(
         id: "clientesList",
         path: '/clientes',
         widget: ClientesListPage(),
         icon: Icon(Icons.people),
-        title: "Lista de Clientes",
+        title: "Ponin Eric 21889 - API de Clientes",
         show: true),
     Route(
         id: "clienteInfo",
-        path: '/cliente/buscar', // Base de la ruta dinámica
-        widget: ClienteInfoPage(), // Widget gestionado dinámicamente
+        path: '/cliente/buscar',
+        widget: ClienteInfoPage(),
         icon: Icon(Icons.person),
         title: "Detalle del Cliente",
         show: false),

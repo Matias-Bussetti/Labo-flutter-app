@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/cliente.dart';
+import 'package:intl/intl.dart'; // Importamos intl para formatear la fecha
 
 class ClienteDescription extends StatelessWidget {
   final Map<String, dynamic> data;
@@ -7,16 +8,22 @@ class ClienteDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
     print("Contenido de data: $data");
 
     if (data["data"] == null) {
-      return Center(
+      return const Center(
         child: Text("Los datos del cliente no están disponibles"),
       );
     }
 
     Cliente cliente = Cliente.fromJson(data["data"]);
+
+    // Formato de la fecha (día, mes, año)
+    DateFormat dateFormat = DateFormat("dd/MM/yyyy");
+    String formattedDate = dateFormat.format(DateTime.parse(cliente.fechaNac));
+
+    // Determinar género basado en el valor de cliente.genero
+    String generoTexto = cliente.genero == "male" ? "Masculino" : "Femenino";
 
     return Container(
       decoration: BoxDecoration(
@@ -25,62 +32,80 @@ class ClienteDescription extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // Imagen del cliente (simulando una foto de perfil)
-          Container(
-            height: screenWidth,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 1),
-            ),
-          ),
-
-          // Datos básicos del cliente
+          // Datos del cliente - Nombre y Email (cambiado a icono de people)
           RowData(
-            icon: cliente.genero == "Masculino" ? Icons.male : Icons.female,
+            icon: Icons.person, // Cambiamos el icono aquí
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "${cliente.nombre} ${cliente.nombre}",
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold),
+              Text(
+                "${cliente.nombre}",
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  cliente.email,
-                  style: const TextStyle(color: Colors.grey),
-                ),
+              Text(
+                cliente.email,
+                style: const TextStyle(color: Colors.grey),
               ),
             ],
           ),
-          // Dirección del cliente
+
+          // Dirección
           RowData(
             icon: Icons.map,
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "${cliente.direccion},",
-                ),
+              Text(
+                cliente.direccion,
               ),
             ],
           ),
-          // Información adicional del cliente
+
+          // Fecha de nacimiento (formateada a dd/MM/yyyy)
           RowData(
             icon: Icons.date_range_outlined,
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Genero: ${cliente.genero}",
-                ),
+              Text(
+                "Fecha de nacimiento: $formattedDate",
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Fecha: ${cliente.fechaNac}",
-                ),
+            ],
+          ),
+
+          // DNI
+          RowData(
+            icon: Icons.assignment_ind,
+            children: [
+              Text(
+                "DNI: ${cliente.dni}",
+              ),
+            ],
+          ),
+
+          // Género (con el texto ajustado)
+          RowData(
+            icon: cliente.genero == "male" ? Icons.male : Icons.female,
+            children: [
+              Text(
+                "Género: $generoTexto",
+              ),
+            ],
+          ),
+
+          // Estado VIP
+          RowData(
+            icon: cliente.bip ? Icons.check_circle : Icons.cancel,
+            children: [
+              Text(
+                "VIP: ${cliente.bip ? 'SI' : 'NO'}",
+              ),
+            ],
+          ),
+
+          // ID del cliente
+          RowData(
+            icon: Icons.code,
+            children: [
+              Text(
+                "ID: ${cliente.id}",
               ),
             ],
           ),
@@ -103,29 +128,26 @@ class RowData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
+      padding: const EdgeInsets.all(15), // Centramos el contenido
+      margin: const EdgeInsets.symmetric(
+        vertical: 5,
+      ), // Agregamos margen entre los elementos
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.blue[200]!, width: 1),
+        borderRadius: BorderRadius.circular(8), // Bordes redondeados
+      ),
       child: Row(
         children: [
-          Expanded(
-            flex: 0,
-            child: Row(
-              children: [
-                Icon(
-                  icon,
-                  color: Colors.blue[200],
-                  size: 35.0,
-                ),
-              ],
-            ),
+          Icon(
+            icon,
+            color: Colors.blue[200],
+            size: 35.0,
           ),
+          const SizedBox(width: 15), // Espacio entre el icono y el texto
           Expanded(
-            flex: 2,
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: children,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: children,
             ),
           ),
         ],
