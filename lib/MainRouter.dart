@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/marvelchars/MarvelCharsInfoPage.dart';
+import 'package:flutter_application_1/pages/marvelchars/MarvelCharsListPage.dart';
 import 'package:flutter_application_1/pages/patients/PatientsMapPage.dart';
 import 'package:flutter_application_1/pages/patients/PatientsListPage.dart';
 import 'package:flutter_application_1/pages/ProfilePage.dart';
 import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
+import 'package:flutter_application_1/widgets/marvelchars/SpidermanGame.dart';
 
 import 'package:flutter_application_1/pages/harry_potter/HarryPotterListPage.dart';
 import 'package:flutter_application_1/pages/harry_potter/HarryPotterInfoPage.dart';
@@ -40,6 +43,27 @@ class MainRouter {
         title: "Paciente",
         show: false),
     //Rutas Otro
+    Route(
+        id: "marvelCharsList",
+        path: '/marvelchars',
+        widget: MarvelCharsListPage(),
+        icon: Icon(Icons.menu), 
+        title: "Marvel - Lista de Personajes",
+        show: true),
+    Route(
+        id: "marvelCharsInfo",
+        path: '/marvelchars/id',
+        widget: MarvelCharsInfoPage(),
+        icon: Icon(Icons.supervised_user_circle),
+        title: "Detalle de Personaje",
+        show: false),
+    Route(
+        id: "marvelCharsSpidermanGame",
+        path: '/marvelchars/game',
+        widget: SpidermanCatchGame(),
+        icon: Icon(Icons.star), 
+        title: "Marvel Spider-Man - Atrapá a Venom",
+        show: true),
     Route(
         id: "harryPotterList",
         path: '/harryPotterList',
