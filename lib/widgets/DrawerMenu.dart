@@ -13,6 +13,11 @@ class DrawerMenu extends StatelessWidget {
     {'route': 'design', 'title': 'Diseños', 'subtitle': 'Estructura y diseño'},
     {'route': 'listview_builder', 'title': 'Listview Builder', 'subtitle': ''},
     {
+      'route': 'clientesList',
+      'title': 'Clientes',
+      'subtitle': 'Lista de clientes registrados'
+    },
+    {
       'route': 'listview_separated',
       'title': 'Listview Separated',
       'subtitle': ''

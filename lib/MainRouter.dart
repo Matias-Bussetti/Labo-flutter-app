@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/Clientes/ClientesListPage.dart';
+import 'package:flutter_application_1/pages/clientes/ClienteInfoPage.dart';
 import 'package:flutter_application_1/pages/marvelchars/MarvelCharsInfoPage.dart';
 import 'package:flutter_application_1/pages/marvelchars/MarvelCharsListPage.dart';
 import 'package:flutter_application_1/pages/patients/PatientsMapPage.dart';
@@ -61,7 +63,21 @@ class MainRouter {
         icon: Icon(Icons.accessibility_new_rounded),
         title: "Juego de Marvel Spider-Man - Atrapá a Venom",
         show: true),
-
+    // Rutas Clientes
+    Route(
+        id: "clientesList",
+        path: '/clientes',
+        widget: ClientesListPage(),
+        icon: Icon(Icons.people),
+        title: "Lista de Clientes",
+        show: true),
+    Route(
+        id: "clienteInfo",
+        path: '/cliente/buscar', // Base de la ruta dinámica
+        widget: ClienteInfoPage(), // Widget gestionado dinámicamente
+        icon: Icon(Icons.person),
+        title: "Detalle del Cliente",
+        show: false),
   ];
 
   static Map<String, WidgetBuilder> generateRoutes(BuildContext context) {
