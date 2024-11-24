@@ -4,7 +4,7 @@ import 'dart:convert';
 
 class FutureFetcher extends StatefulWidget {
   final String url;
-  final Widget Function(dynamic) widget; // Cambiar Map<String, dynamic> a dynamic para aceptar List o Map.
+  final Widget Function(Map<String, dynamic>) widget;
 
   const FutureFetcher({
     Key? key,
@@ -17,7 +17,7 @@ class FutureFetcher extends StatefulWidget {
 }
 
 class _FutureFetcherState extends State<FutureFetcher> {
-  late Future<dynamic> data; // Cambiar Map<String, dynamic> a dynamic.
+  late Future<Map<String, dynamic>> data;
 
   @override
   void initState() {
@@ -25,17 +25,16 @@ class _FutureFetcherState extends State<FutureFetcher> {
     data = fetchData();
   }
 
-    Future<dynamic> fetchData() async {
-      final response = await http.get(Uri.parse(widget.url));
+  Future<Map<String, dynamic>> fetchData() async {
+    final response = await http.get(Uri.parse(widget.url));
 
-        if (response.statusCode == 200) {
-          print(response.body); // <-- Agrega esta línea para revisar el JSON que devuelve la API
-           return jsonDecode(response.body);
-        } else {
-           throw Exception('Error fetching data');
-        }
+    if (response.statusCode == 200) {
+      Map<String, dynamic> jsonData = jsonDecode(response.body);
+      return jsonData;
+    } else {
+      throw Exception('Error fetching data');
     }
-
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +46,7 @@ class _FutureFetcherState extends State<FutureFetcher> {
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (snapshot.hasData) {
-          return widget.widget(snapshot.data); // Pasamos los datos tal cual al widget.
+          return widget.widget(snapshot.data);
         } else {
           return Center(child: Text('No data found'));
         }
