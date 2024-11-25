@@ -62,10 +62,20 @@ flutter:
   assets:
       - lib/assets/images/spiderman.png
       - lib/assets/images/venom.png
-      - lib/assets/images/gryffindor.png
-      - lib/assets/images/slytherin.png
-      - lib/assets/images/hufflepuff.png
-      - lib/assets/images/ravenclaw.png
+      - lib/assets/cliente/MaleAvatar1.png
+      - lib/assets/cliente/MaleAvatar2.png
+      - lib/assets/cliente/FemaleAvatar3.png
+      - lib/assets/cliente/MaleAvatar4.png
+      - lib/assets/cliente/FemaleAvatar5.png
+      - lib/assets/cliente/MaleAvatar6.png
+      - lib/assets/cliente/FemaleAvatar7.png
+      - lib/assets/cliente/FemaleAvatar8.png
+      - lib/assets/cliente/MaleAvatar9.png
+      - lib/assets/cliente/MaleAvatar10.png
+      - lib/assets/cliente/MaleAvatar11.png
+      - lib/assets/cliente/FemaleAvatar12.png
+      - lib/assets/cliente/MaleAvatar13.png
+      - lib/assets/images/pokeball_wallpaper.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

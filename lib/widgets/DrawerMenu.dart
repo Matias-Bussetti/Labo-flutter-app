@@ -17,6 +17,11 @@ class DrawerMenu extends StatelessWidget {
     {'route': 'design', 'title': 'Diseños', 'subtitle': 'Estructura y diseño'},
     {'route': 'listview_builder', 'title': 'Listview Builder', 'subtitle': ''},
     {
+      'route': 'clientesList',
+      'title': 'Clientes',
+      'subtitle': 'Lista de clientes registrados'
+    },
+    {
       'route': 'listview_separated',
       'title': 'Listview Separated',
       'subtitle': ''
@@ -97,9 +102,8 @@ class DrawerMenu extends StatelessWidget {
 class _DrawerHeaderAlternative extends StatefulWidget {
   final double screenWidth;
   const _DrawerHeaderAlternative({
-    Key? key,
     required this.screenWidth,
-  }) : super(key: key);
+  });
 
   @override
   State<_DrawerHeaderAlternative> createState() =>

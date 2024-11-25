@@ -7,10 +7,10 @@ class FutureFetcher extends StatefulWidget {
   final Widget Function(Map<String, dynamic>) widget;
 
   const FutureFetcher({
-    Key? key,
+    super.key,
     required this.url,
     required this.widget,
-  }) : super(key: key);
+  });
 
   @override
   _FutureFetcherState createState() => _FutureFetcherState();
@@ -42,13 +42,13 @@ class _FutureFetcherState extends State<FutureFetcher> {
       future: data,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (snapshot.hasData) {
           return widget.widget(snapshot.data);
         } else {
-          return Center(child: Text('No data found'));
+          return const Center(child: Text('No data found'));
         }
       },
     );
