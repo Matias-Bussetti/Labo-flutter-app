@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/HarryPotterCharacters.dart';
+import 'package:flutter_application_1/helpers/house_colors.dart'; // Importa la función
 
 class HarryPotterInfoPage extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class HarryPotterInfoPage extends StatelessWidget {
     final character = ModalRoute.of(context)!.settings.arguments as Datum;
 
     // Colores según la casa
-    List<Color> houseColors = _getHouseColors(character.house);
+    List<Color> houseColors = getHouseColors(character.house);
 
     return Scaffold(
       appBar: AppBar(
@@ -42,7 +43,7 @@ class HarryPotterInfoPage extends StatelessWidget {
                   : Container(
                       height: 300,
                       width: double.infinity,
-                      color: Colors.grey[300],
+                      color: Colors.grey[300], // Fondo gris para falta de imagen
                       child: Icon(Icons.person, size: 100, color: Colors.grey),
                     ),
             ),
@@ -64,21 +65,6 @@ class HarryPotterInfoPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  List<Color> _getHouseColors(House house) {
-    switch (house) {
-      case House.GRYFFINDOR:
-        return [Colors.red, Colors.amber];
-      case House.SLYTHERIN:
-        return [Colors.green, Colors.grey];
-      case House.HUFFLEPUFF:
-        return [Colors.yellow, Colors.black];
-      case House.RAVENCLAW:
-        return [Colors.blue, Colors.brown];
-      default:
-        return [Colors.white, Colors.white];
-    }
   }
 
   Widget _buildDetailRow(IconData icon, String label, String value) {

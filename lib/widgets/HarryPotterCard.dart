@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/HarryPotterCharacters.dart';
+import 'package:flutter_application_1/helpers/house_colors.dart'; // Importa la función
 
 class HarryPotterCard extends StatelessWidget {
   final Datum character;
@@ -8,8 +9,8 @@ class HarryPotterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Colores según la casa
-    List<Color> houseColors = _getHouseColors(character.house);
+    // Colores según la casa o por defecto
+    List<Color> houseColors = getHouseColors(character.house);
 
     return Card(
       elevation: 4.0,
@@ -32,7 +33,17 @@ class HarryPotterCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 50,
-                  backgroundImage: NetworkImage(character.image),
+                  backgroundColor: Colors.transparent, // Fondo transparente
+                  backgroundImage: character.image.isNotEmpty
+                      ? NetworkImage(character.image)
+                      : null,
+                  child: character.image.isEmpty
+                      ? Icon(
+                          Icons.person,
+                          size: 50,
+                          color: Colors.white, // Ícono visible sobre fondo gris
+                        )
+                      : null,
                 ),
                 const SizedBox(width: 16.0),
                 Expanded(
@@ -49,30 +60,15 @@ class HarryPotterCard extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             // Detalles adicionales
-             _buildDetailRow(Icons.house, 'Casa',
-                houseValues.reverse[character.house]!),
+            _buildDetailRow(Icons.house, 'Casa',
+                houseValues.reverse[character.house] ?? "Sin casa"),
             _buildDetailRow(Icons.person, 'Actor', character.actor),
             _buildDetailRow(Icons.accessibility, 'Especie',
-                ancestryValues.reverse[character.ancestry]!),
+                ancestryValues.reverse[character.ancestry] ?? "Desconocido"),
           ],
         ),
       ),
     );
-  }
-
-  List<Color> _getHouseColors(House house) {
-    switch (house) {
-      case House.GRYFFINDOR:
-        return [Colors.red, Colors.amber];
-      case House.SLYTHERIN:
-        return [Colors.green, Colors.grey];
-      case House.HUFFLEPUFF:
-        return [Colors.yellow, Colors.black];
-      case House.RAVENCLAW:
-        return [Colors.blue, Colors.brown];
-      default:
-        return [Colors.white, Colors.white];
-    }
   }
 
   Widget _buildDetailRow(IconData icon, String label, String value) {
