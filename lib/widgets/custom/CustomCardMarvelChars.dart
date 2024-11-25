@@ -40,27 +40,38 @@ class CustomCardMarvelChars extends StatelessWidget {
               ),
             ),
             // Información en la parte inferior de la Card
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Título (nombre del personaje)
-                  Expanded(
-                    child: Text(
-                      title,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+            Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 180, 180, 180),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Título (nombre del personaje)
+                    Expanded(
+                      child: Text(
+                        title,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  // Icono (opcional)
-                  if (trailingIcon != null) trailingIcon!,
-                ],
+                    // Icono (opcional)
+                    if (trailingIcon != null) trailingIcon!,
+                  ],
+                ),
               ),
-            ),
           ],
         ),
       ),
