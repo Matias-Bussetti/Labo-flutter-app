@@ -46,19 +46,25 @@ class MainRouter {
     //Rutas Otro
     Route(
         id: "marvelCharsList",
-        path: '/marvelchars/id',
+        path: '/marvelchars/',
         widget: const MarvelCharsListPage(),
-        icon: const Icon(Icons.accessibility_new_rounded),
+        icon: const Icon(Icons.star_border),
         title: "Personajes de Marvel",
         show: true),
     Route(
         id: "marvelCharsSpidermanGame",
-        path: '/marvelchars/id',
+        path: '/marvelchars/game',
         widget: const SpidermanCatchGame(),
-        icon: const Icon(Icons.accessibility_new_rounded),
+        icon: const Icon(Icons.star_border),
         title: "Juego de Marvel Spider-Man - Atrapá a Venom",
         show: true),
-
+    Route(
+            id: "marvelCharsInfo",
+            path: '/marvelchars/id',
+            widget: const MarvelCharsInfoPage(),
+            icon: const Icon(Icons.star_border),
+            title: "Personajes de Marvel",
+            show: false),
     Route(
         id: "pokemonList",
         path: '/pokemon/list',

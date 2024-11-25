@@ -40,8 +40,12 @@ class CustomCardMarvelChars extends StatelessWidget {
               ),
             ),
             // Información en la parte inferior de la Card
-            Padding(
+            Container(
               padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 187, 187, 187),
+                borderRadius: const BorderRadius.vertical(bottom: Radius.circular(12.0)),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
