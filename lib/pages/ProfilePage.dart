@@ -20,8 +20,8 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           children: [
             HeaderProfile(size: size),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
+            const Padding(
+              padding: EdgeInsets.all(15.0),
               child: BodyProfile(),
             ),
           ],
@@ -32,9 +32,9 @@ class ProfilePage extends StatelessWidget {
 }
 
 class BodyProfile extends StatefulWidget {
-  BodyProfile({
-    Key? key,
-  }) : super(key: key);
+  const BodyProfile({
+    super.key,
+  });
 
   @override
   State<BodyProfile> createState() => _BodyProfileState();
@@ -72,7 +72,7 @@ class _BodyProfileState extends State<BodyProfile> {
             onChanged: (value) {
               Preferences.telefono = value;
             },
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
             initialValue: Preferences.telefono,
             keyboardType: TextInputType.phone,
             decoration: decorationInput(
@@ -86,7 +86,7 @@ class _BodyProfileState extends State<BodyProfile> {
             onChanged: (value) {
               Preferences.email = value;
             },
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
             initialValue: Preferences.email,
             keyboardType: TextInputType.emailAddress,
             decoration: decorationInput(
@@ -98,7 +98,7 @@ class _BodyProfileState extends State<BodyProfile> {
             onChanged: (value) {
               Preferences.apellido = value;
             },
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
             initialValue: Preferences.apellido,
             keyboardType: TextInputType.text,
             decoration: decorationInput(label: 'Apellido')),
@@ -109,7 +109,7 @@ class _BodyProfileState extends State<BodyProfile> {
             onChanged: (value) {
               Preferences.nombre = value;
             },
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
             initialValue: Preferences.nombre,
             keyboardType: TextInputType.text,
             decoration: decorationInput(label: 'Nombre'))
@@ -138,9 +138,9 @@ class _BodyProfileState extends State<BodyProfile> {
 
 class HeaderProfile extends StatelessWidget {
   const HeaderProfile({
-    Key? key,
+    super.key,
     required this.size,
-  }) : super(key: key);
+  });
 
   final Size size;
 
@@ -161,7 +161,7 @@ class HeaderProfile extends StatelessWidget {
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey, width: 1),
                   borderRadius: BorderRadius.circular(90),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                       image: NetworkImage(
                           "https://ethic.es/wp-content/uploads/2023/03/imagen.jpg"),
                       fit: BoxFit.cover))),

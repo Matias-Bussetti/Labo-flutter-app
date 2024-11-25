@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
               child: const Text(
                 "Home",
                 textAlign: TextAlign.left,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 40, // Tamaño aproximado de un h3
                   fontStyle: FontStyle.italic, // Aplicar cursiva
                   fontWeight:
@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
                         title: route.title, route: route.path, icon: route.icon)
                     : null)
                 .whereType<Widget>()
-                .toList()
+                
           ],
         ),
       ),

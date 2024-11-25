@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -8,7 +7,7 @@ class Preferences {
   static String _nombre = '';
   static String _email = '';
   static String _telefono = '';
-  static List<String> _favs = [];
+  static final List<String> _favs = [];
 
   static late SharedPreferences _prefs;
 

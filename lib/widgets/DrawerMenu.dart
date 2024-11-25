@@ -102,9 +102,8 @@ class DrawerMenu extends StatelessWidget {
 class _DrawerHeaderAlternative extends StatefulWidget {
   final double screenWidth;
   const _DrawerHeaderAlternative({
-    Key? key,
     required this.screenWidth,
-  }) : super(key: key);
+  });
 
   @override
   State<_DrawerHeaderAlternative> createState() =>
