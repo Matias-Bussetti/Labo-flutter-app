@@ -10,7 +10,7 @@ class PokemonDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Descripcion del Pokémon"),
+        title: const Text("Descripcion del Pokémon"),
         backgroundColor: Colors.lightBlue[500],
       ),
       body: SingleChildScrollView(
@@ -22,8 +22,8 @@ class PokemonDescription extends StatelessWidget {
               // Imagen del Pokémon
               Image.network(
                 pokemon.image,
-                width: 150,
-                height: 150,
+                width: 300,
+                height: 300,
                 fit: BoxFit.cover,
               ),
               const SizedBox(height: 16),
@@ -42,9 +42,12 @@ class PokemonDescription extends StatelessWidget {
                 children: pokemon.types
                     .map(
                       (type) => Chip(
-                        label: Text(type),
-                        backgroundColor: Colors.blueAccent.withOpacity(0.7),
-                      ),
+                          label: Text(type),
+                          backgroundColor: Colors.blueAccent.withOpacity(0.7),
+                          labelStyle: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          )),
                     )
                     .toList(),
               ),

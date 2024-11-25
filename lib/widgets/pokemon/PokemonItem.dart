@@ -14,18 +14,12 @@ class PokemonItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (pokemon.id != null) {
-          Navigator.pushNamed(
-            context,
-            '/pokemon-info',
-            arguments: PokemonInfoPageArguments(pokemon.id),
-          );
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("El Pokémon no tiene un ID válido.")),
-          );
-        }
-      },
+        Navigator.pushNamed(
+          context,
+          '/pokemon-info',
+          arguments: PokemonInfoPageArguments(pokemon.id),
+        );
+            },
       child: Container(
         decoration: BoxDecoration(
           image: const DecorationImage(
