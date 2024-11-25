@@ -8,6 +8,9 @@ import 'package:flutter_application_1/pages/patients/PatientsListPage.dart';
 import 'package:flutter_application_1/pages/ProfilePage.dart';
 import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
 import 'package:flutter_application_1/widgets/marvelchars/SpidermanGame.dart';
+import 'package:flutter_application_1/pages/harry_potter/HarryPotterListPage.dart';
+import 'package:flutter_application_1/pages/harry_potter/HarryPotterInfoPage.dart';
+import 'package:flutter_application_1/widgets/harry_potter/AdivinaElColor.dart';
 
 class MainRouter {
   static List<Route> routes = <Route>[
@@ -46,38 +49,44 @@ class MainRouter {
         id: "marvelCharsList",
         path: '/marvelchars',
         widget: MarvelCharsListPage(),
-        icon: Icon(Icons.accessibility_new_rounded),
-        title: "Personajes de Marvel",
+        icon: Icon(Icons.menu),
+        title: "Marvel - Lista de Personajes",
         show: true),
     Route(
         id: "marvelCharsInfo",
         path: '/marvelchars/id',
         widget: MarvelCharsInfoPage(),
-        icon: Icon(Icons.accessibility_new_rounded),
+        icon: Icon(Icons.supervised_user_circle),
         title: "Detalle de Personaje",
         show: false),
     Route(
         id: "marvelCharsSpidermanGame",
         path: '/marvelchars/game',
         widget: SpidermanCatchGame(),
-        icon: Icon(Icons.accessibility_new_rounded),
-        title: "Juego de Marvel Spider-Man - Atrapá a Venom",
-        show: true),
-    // Rutas Ponin Eric Clientes
-    Route(
-        id: "clientesList",
-        path: '/clientes',
-        widget: ClientesListPage(),
-        icon: Icon(Icons.people),
-        title: "Ponin Eric 21889 - API de Clientes",
+        icon: Icon(Icons.star),
+        title: "Marvel Spider-Man - Atrapá a Venom",
         show: true),
     Route(
-        id: "clienteInfo",
-        path: '/cliente/buscar',
-        widget: ClienteInfoPage(),
-        icon: Icon(Icons.person),
-        title: "Detalle del Cliente",
+        id: "harryPotterList",
+        path: '/harryPotterList',
+        widget: HarryPotterListPage(),
+        icon: Icon(Icons.account_box),
+        title: "Lista de Personajes de Harry Potter",
+        show: true),
+    Route(
+        id: "harryPotterInfo",
+        path: '/harryPotterInfo',
+        widget: HarryPotterInfoPage(),
+        icon: Icon(Icons.info),
+        title: "Detalles del Personaje",
         show: false),
+    Route(
+        id: "harryPotterGuessColor",
+        path: '/harryPotter/guessColor',
+        widget: AdivinaElColor(),
+        icon: Icon(Icons.palette),
+        title: "Juego: Adivina el Color",
+        show: true),
   ];
 
   static Map<String, WidgetBuilder> generateRoutes(BuildContext context) {

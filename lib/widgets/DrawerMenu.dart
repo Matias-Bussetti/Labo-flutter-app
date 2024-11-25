@@ -1,3 +1,6 @@
+// ignore: unused_import
+// ignore_for_file: use_super_parameters
+
 import 'dart:async';
 import 'dart:math';
 
@@ -8,6 +11,7 @@ import 'package:flutter_application_1/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class DrawerMenu extends StatelessWidget {
+  // ignore: unused_field
   final List<Map<String, String>> _menuItems = <Map<String, String>>[
     {'route': 'home', 'title': 'Home', 'subtitle': 'Home + counter app'},
     {'route': 'design', 'title': 'Diseños', 'subtitle': 'Estructura y diseño'},
@@ -118,7 +122,7 @@ class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
     darkMode = Preferences.darkmode;
     positions = List.generate(30, (_) => getStartPosition());
 
-    timer = Timer.periodic(Duration(milliseconds: 1500), (_) {
+    timer = Timer.periodic(const Duration(milliseconds: 1500), (_) {
       changePositions();
     });
   }
@@ -174,7 +178,7 @@ class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
           ...List.generate(30, (index) {
             return AnimatedPositioned(
               duration:
-                  Duration(milliseconds: 1500), // Duración de la animación
+                  const Duration(milliseconds: 1500), // Duración de la animación
               curve: Curves.easeInOut, // Curva de animación
               top: positions[index].dy,
               left: positions[index].dx,

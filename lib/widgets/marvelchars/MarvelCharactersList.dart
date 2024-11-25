@@ -54,23 +54,23 @@ class _MarvelCharactersListState extends State<MarvelCharactersList> {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-          child: SizedBox(
-            height: 45,
-            width: 360,
-            child: TextField(
-              onChanged: _handleSearch,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: const Color(0xfff1f1f1),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide.none,
-                ),
-                hintText: "Buscar por nombre...",
-                prefixIcon: const Icon(Icons.search),
-                prefixIconColor: Colors.black,
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          child: TextField(
+            onChanged: _handleSearch,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: const Color(0xfff1f1f1),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide.none,
               ),
+              hintText: "Buscar personaje por nombre...",
+              hintStyle: const TextStyle(
+                color: Colors.black,
+              ),
+              prefixIcon: const Icon(Icons.search),
+              contentPadding: const EdgeInsets.symmetric(vertical: 12),
+              prefixIconColor: Colors.black,
             ),
           ),
         ),

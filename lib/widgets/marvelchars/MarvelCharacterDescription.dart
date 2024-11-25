@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/MarvelCharacters.dart';
+import 'package:flutter_application_1/widgets/IsFavoriteIcon.dart';
 
 class MarvelCharacterDescription extends StatelessWidget {
   final Map<String, dynamic> data;
+
   const MarvelCharacterDescription({super.key, required this.data});
 
   @override
@@ -10,66 +12,118 @@ class MarvelCharacterDescription extends StatelessWidget {
     var screenWidth = MediaQuery.of(context).size.width;
     MarvelChars character = MarvelChars.fromJson(data["data"]);
 
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey, width: 0.1),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        children: [
-          // Imagen del personaje
-          Container(
-            height: screenWidth,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey, width: 1),
-              image: DecorationImage(
-                alignment: Alignment.center,
-                image: NetworkImage(character.thumbnail),
-                fit: BoxFit.fitHeight,
-              ),
-            ),
-          ),
-          // Nombre del personaje
-          RowData(
-            icon: Icons.person,
-            children: [
-              Align(
-                alignment: Alignment.centerLeft,
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          // SliverAppBar: esta barra será fija en la parte superior
+          SliverAppBar(
+            expandedHeight: screenWidth,
+            floating: false,
+            pinned: true, // Mantiene el título y la imagen fija al hacer scroll
+            automaticallyImplyLeading: false, // Elimina el ícono de "atrás"
+            flexibleSpace: FlexibleSpaceBar(
+              centerTitle: true,
+              title: Padding(
+                padding: const EdgeInsets.only(top: 10), // Ajusta la posición del texto
                 child: Text(
                   character.name,
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    shadows: [
+                      Shadow(
+                        offset: Offset(1.0, 1.0),
+                        blurRadius: 1.0,
+                        color: Colors.black,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ],
+              background: Stack(
+                children: [
+                  Container(
+                    height: screenWidth,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        alignment: Alignment.center,
+                        image: NetworkImage(character.thumbnail),
+                        fit: BoxFit.cover,
+                        colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(0.2),
+                          BlendMode.darken,
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Icono de favorito en la esquina superior derecha
+                  Positioned(
+                    top: 14.0,
+                    right: 8.0,
+                    child: IsFavoriteIcon(
+                      id: character.name,
+                      color: Colors.yellow,
+                      size: 40.0,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-          // Descripción del personaje
-          if (character.description.isNotEmpty)
-            RowData(
-              icon: Icons.description,
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    character.description,
-                    style: const TextStyle(fontSize: 16),
+          // Aquí empieza el contenido que se puede desplazar
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                // Descripción del personaje
+                if (character.description.isNotEmpty)
+                  RowData(
+                    icon: Icons.description,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 16.0),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            character.description.isNotEmpty
+                                ? character.description
+                                : 'Sin descripción disponible.',
+                            textAlign: TextAlign.justify,
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
+                // Series en las que aparece el personaje
+                if (character.series.isNotEmpty)
+                  RowData(
+                    icon: Icons.tv,
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 16.0),
+                          child: Wrap(
+                            spacing: 8.0,
+                            runSpacing: 4.0,
+                            children: character.series
+                                .map((serie) => Chip(
+                                      label: Text(
+                                        serie,
+                                        style: const TextStyle(fontSize: 16),
+                                      ),
+                                    ))
+                                .toList(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
               ],
             ),
-          // Series en las que aparece el personaje
-          if (character.series.isNotEmpty)
-            RowData(
-              icon: Icons.tv,
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Series: ${character.series.join(", ")}",
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                ),
-              ],
-            ),
+          ),
         ],
       ),
     );
@@ -91,27 +145,18 @@ class RowData extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            flex: 0,
-            child: Row(
-              children: [
-                Icon(
-                  icon,
-                  color: Colors.red[200],
-                  size: 35.0,
-                ),
-              ],
-            ),
+          Icon(
+            icon,
+            color: Colors.red[200],
+            size: 35.0,
           ),
+          const SizedBox(width: 20),
           Expanded(
-            flex: 2,
-            child: Container(
-              padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: children,
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: children,
             ),
           ),
         ],
