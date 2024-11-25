@@ -6,9 +6,10 @@ import 'package:flutter_application_1/pages/patients/PatientsListPage.dart';
 import 'package:flutter_application_1/pages/ProfilePage.dart';
 import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
 import 'package:flutter_application_1/widgets/marvelchars/SpidermanGame.dart';
-
 import 'package:flutter_application_1/pages/harry_potter/HarryPotterListPage.dart';
 import 'package:flutter_application_1/pages/harry_potter/HarryPotterInfoPage.dart';
+import 'package:flutter_application_1/widgets/harry_potter/AdivinaElColor.dart';
+
 
 class MainRouter {
   static List<Route> routes = <Route>[
@@ -78,6 +79,15 @@ class MainRouter {
         icon: Icon(Icons.info),
         title: "Detalles del Personaje",
         show: false),
+    Route(
+        id: "harryPotterGuessColor",
+        path: '/harryPotter/guessColor',
+        widget: AdivinaElColor(),
+        icon: Icon(Icons.palette),
+        title: "Juego: Adivina el Color",
+        show: true),
+
+
 
   ];
 
