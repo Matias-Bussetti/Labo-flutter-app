@@ -29,7 +29,8 @@ class CustomCardMarvelChars extends StatelessWidget {
           children: [
             // Imagen en la parte superior de la Card
             ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(12.0)),
               child: Image.network(
                 imageUrl.isNotEmpty
                     ? imageUrl
@@ -41,41 +42,36 @@ class CustomCardMarvelChars extends StatelessWidget {
             ),
             // Información en la parte inferior de la Card
             Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 180, 180, 180),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 5,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Título (nombre del personaje)
-                    Expanded(
-                      child: Text(
-                        title,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 109, 5, 5),
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(12.0)),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Título (nombre del personaje)
+                  Expanded(
+                    child: Text(
+                      title,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    // Icono (opcional)
-                    if (trailingIcon != null) trailingIcon!,
-                  ],
-                ),
+                  ),
+                  // Icono (opcional)
+                  if (trailingIcon != null) trailingIcon!,
+                ],
               ),
+            ),
           ],
         ),
       ),
     );
   }
 }
-
