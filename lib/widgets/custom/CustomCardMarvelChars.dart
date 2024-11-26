@@ -42,9 +42,9 @@ class CustomCardMarvelChars extends StatelessWidget {
             // Información en la parte inferior de la Card
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 187, 187, 187),
-                borderRadius: const BorderRadius.vertical(bottom: Radius.circular(12.0)),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 109, 5, 5),
+                borderRadius: BorderRadius.vertical(bottom: Radius.circular(12.0)),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,7 +55,8 @@ class CustomCardMarvelChars extends StatelessWidget {
                       title,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                        fontSize: 16,
+                        fontSize: 18,
+                        color: Color.fromARGB(255, 255, 255, 255),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
