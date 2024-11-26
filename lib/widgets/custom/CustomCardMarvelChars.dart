@@ -30,7 +30,7 @@ class CustomCardMarvelChars extends StatelessWidget {
             ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
               child: Image.network( // Acá hice esto porque la API tira una imagen por default re fea cuando no tiene imagen el PJ
-                (imageUrl == null || imageUrl.isEmpty || imageUrl == 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg')
+                (imageUrl.isEmpty || imageUrl == 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg')
                     ? 'https://wallpapers.com/images/hd/marvel-logo-in-red-background-3p16v5avq80km4ns.jpg'
                     : imageUrl,
                 height: 150, 
