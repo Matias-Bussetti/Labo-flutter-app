@@ -7,12 +7,12 @@ class CustomCardMarvelChars extends StatelessWidget {
   final VoidCallback onTap;
 
   const CustomCardMarvelChars({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.title,
     this.trailingIcon,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:flutter_application_1/widgets/harry_potter/HarryPotterItem.dart'
 class HarryPotterList extends StatefulWidget {
   final List<Datum> characters;
 
-  const HarryPotterList({Key? key, required this.characters}) : super(key: key);
+  const HarryPotterList({super.key, required this.characters});
 
   @override
   _HarryPotterListState createState() => _HarryPotterListState();
@@ -48,7 +48,7 @@ class _HarryPotterListState extends State<HarryPotterList> {
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none,
               ),
-              prefixIcon: Icon(Icons.search),
+              prefixIcon: const Icon(Icons.search),
             ),
           ),
         ),

@@ -3,6 +3,8 @@ import 'package:flutter_application_1/widgets/custom/FutureFetcher.dart';
 import 'package:flutter_application_1/widgets/Clientes/ClientesList.dart';
 
 class ClientesListPage extends StatelessWidget {
+  const ClientesListPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

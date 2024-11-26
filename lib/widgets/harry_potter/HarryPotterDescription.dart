@@ -39,7 +39,7 @@ class HarryPotterDescription extends StatelessWidget {
               height: 250,
               alignment: Alignment.center,
               color: Colors.grey[700], // Fondo gris para ausencia de imagen
-              child: Icon(
+              child: const Icon(
                 Icons.person,
                 size: 100,
                 color: Colors.white,

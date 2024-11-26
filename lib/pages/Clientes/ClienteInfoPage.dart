@@ -1,11 +1,8 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/Cliente.dart';
 import 'package:flutter_application_1/classes/ClienteInfoPageArguments.dart';
 import 'package:flutter_application_1/widgets/Clientes/ClienteDescription.dart';
 import 'package:flutter_application_1/widgets/custom/FutureFetcher.dart';
-import 'package:flutter_application_1/classes/ClienteResponse.dart';
 
 class ClienteInfoPage extends StatefulWidget {
   const ClienteInfoPage({

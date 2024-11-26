@@ -33,10 +33,8 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
           url:
               "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/${args.id}",
           widget: (data) {
-            // Accede a la clave "data" del JSON antes de convertirlo
             final pokemonData = data["data"];
 
-            // Valida que los datos sean correctos
             if (pokemonData == null) {
               return const Text(
                 "Error: No se pudieron cargar los datos del Pokémon.",
@@ -44,10 +42,8 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
               );
             }
 
-            // Convierte el JSON recibido en un objeto Pokemon
             final pokemon = Pokemon.fromJson(pokemonData);
-            return PokemonDescription(
-                pokemon: pokemon); // Pasa el objeto Pokemon
+            return PokemonDescription(pokemon: pokemon);
           },
         ),
       ),

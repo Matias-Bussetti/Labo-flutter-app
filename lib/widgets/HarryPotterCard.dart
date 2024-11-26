@@ -5,7 +5,7 @@ import 'package:flutter_application_1/helpers/house_colors.dart'; // Importa la 
 class HarryPotterCard extends StatelessWidget {
   final Datum character;
 
-  const HarryPotterCard({Key? key, required this.character}) : super(key: key);
+  const HarryPotterCard({super.key, required this.character});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class HarryPotterCard extends StatelessWidget {
                       ? NetworkImage(character.image)
                       : null,
                   child: character.image.isEmpty
-                      ? Icon(
+                      ? const Icon(
                           Icons.person,
                           size: 50,
                           color: Colors.white, // Ícono visible sobre fondo gris

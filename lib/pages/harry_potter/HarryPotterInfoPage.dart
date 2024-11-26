@@ -3,6 +3,8 @@ import 'package:flutter_application_1/classes/HarryPotterCharacters.dart';
 import 'package:flutter_application_1/helpers/house_colors.dart'; // Importa la función
 
 class HarryPotterInfoPage extends StatelessWidget {
+  const HarryPotterInfoPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Recibimos el personaje completo como argumento.
@@ -44,7 +46,7 @@ class HarryPotterInfoPage extends StatelessWidget {
                       height: 300,
                       width: double.infinity,
                       color: Colors.grey[300], // Fondo gris para falta de imagen
-                      child: Icon(Icons.person, size: 100, color: Colors.grey),
+                      child: const Icon(Icons.person, size: 100, color: Colors.grey),
                     ),
             ),
             const SizedBox(height: 16.0),

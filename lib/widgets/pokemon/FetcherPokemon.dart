@@ -9,8 +9,9 @@ class FetcherPokemon {
   FetcherPokemon({required this.limit, required this.offset});
 
   Future<List<Pokemon>> fetchPokemons() async {
-    final url = 'https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/search?limit=$limit&offset=$offset';
-    
+    final url =
+        'https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/search?limit=$limit&offset=$offset';
+
     try {
       final response = await http.get(Uri.parse(url));
 

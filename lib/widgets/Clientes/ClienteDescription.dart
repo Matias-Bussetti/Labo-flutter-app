@@ -37,7 +37,7 @@ class ClienteDescription extends StatelessWidget {
             icon: Icons.person, // Cambiamos el icono aquí
             children: [
               Text(
-                "${cliente.nombre}",
+                cliente.nombre,
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,

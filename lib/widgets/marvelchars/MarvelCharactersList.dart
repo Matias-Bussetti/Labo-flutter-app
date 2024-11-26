@@ -85,7 +85,7 @@ class _MarvelCharactersListState extends State<MarvelCharactersList> {
                       return Center(
                         child: Text(
                           "Error: ${snapshot.error}",
-                          style: TextStyle(color: Colors.red),
+                          style: const TextStyle(color: Colors.red),
                         ),
                       );
                     } else if (!snapshot.hasData || snapshot.data!.isEmpty) {

@@ -2,6 +2,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class AdivinaElColor extends StatefulWidget {
+  const AdivinaElColor({super.key});
+
   @override
   _AdivinaElColorState createState() => _AdivinaElColorState();
 }

@@ -5,7 +5,7 @@ import 'package:flutter_application_1/classes/HarryPotterInfoPageArguments.dart'
 class HarryPotterItem extends StatelessWidget {
   final Datum character;
 
-  const HarryPotterItem({Key? key, required this.character}) : super(key: key);
+  const HarryPotterItem({super.key, required this.character});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class HarryPotterItem extends StatelessWidget {
             border: Border.all(color: Colors.grey, width: 0.1),
             borderRadius: BorderRadius.circular(10),
           ),
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
               Container(
