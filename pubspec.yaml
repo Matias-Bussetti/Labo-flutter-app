@@ -76,6 +76,10 @@ flutter:
       - lib/assets/cliente/FemaleAvatar12.png
       - lib/assets/cliente/MaleAvatar13.png
       - lib/assets/images/pokeball_wallpaper.png
+      - lib/assets/images/gryffindor.png
+      - lib/assets/images/slytherin.png
+      - lib/assets/images/hufflepuff.png
+      - lib/assets/images/ravenclaw.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
