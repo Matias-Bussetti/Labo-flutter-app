@@ -3,8 +3,8 @@ import 'package:flutter_application_1/helpers/preferences.dart';
 
 class IsFavoriteIcon extends StatefulWidget {
   final String id;
-  final Color color; 
-  final double size; 
+  final Color color;
+  final double size;
 
   const IsFavoriteIcon({
     super.key,
@@ -28,20 +28,23 @@ class _IsFavoriteIconState extends State<IsFavoriteIcon> {
     isFav = Preferences.favs.contains(widget.id);
     darkMode = Preferences.darkmode;
   }
+
   Color invertirColor(Color color) {
-  return Color.fromARGB(
-    color.alpha, 
-    255 - color.red, 
-    255 - color.green, 
-    255 - color.blue, 
-  );
-}
+    if (color == Colors.yellow)
+      return color; // Juan lo agrege para que no me invierta el amarillo
+    return Color.fromARGB(
+      color.alpha,
+      255 - color.red,
+      255 - color.green,
+      255 - color.blue,
+    );
+  }
 
   void toggleFavorite() {
     setState(() {
       isFav = !isFav;
     });
-    Preferences.setFav = widget.id; 
+    Preferences.setFav = widget.id;
   }
 
   @override
@@ -55,6 +58,4 @@ class _IsFavoriteIconState extends State<IsFavoriteIcon> {
       ),
     );
   }
-  
 }
-

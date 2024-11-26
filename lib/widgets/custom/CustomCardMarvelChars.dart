@@ -40,7 +40,6 @@ class CustomCardMarvelChars extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            // Información en la parte inferior de la Card
             Container(
               padding:
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
@@ -52,7 +51,6 @@ class CustomCardMarvelChars extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Título (nombre del personaje)
                   Expanded(
                     child: Text(
                       title,
@@ -64,7 +62,6 @@ class CustomCardMarvelChars extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Icono (opcional)
                   if (trailingIcon != null) trailingIcon!,
                 ],
               ),
