@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/Clientes/ClientesListPage.dart';
 import 'package:flutter_application_1/pages/clientes/ClienteInfoPage.dart';
+import 'package:flutter_application_1/pages/harry_potter/HarryPotterInfoPage.dart';
+import 'package:flutter_application_1/pages/harry_potter/HarryPotterListPage.dart';
 import 'package:flutter_application_1/pages/marvelchars/MarvelCharsInfoPage.dart';
 import 'package:flutter_application_1/pages/marvelchars/MarvelCharsListPage.dart';
 import 'package:flutter_application_1/pages/patients/PatientsMapPage.dart';
 import 'package:flutter_application_1/pages/patients/PatientsListPage.dart';
 import 'package:flutter_application_1/pages/ProfilePage.dart';
 import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
+import 'package:flutter_application_1/widgets/harry_potter/AdivinaElColor.dart';
 import 'package:flutter_application_1/widgets/marvelchars/SpidermanGame.dart';
 import 'package:flutter_application_1/pages/pokemon/PokemonListPage.dart';
 import 'package:flutter_application_1/pages/pokemon/PokemonInfoPage.dart';
@@ -59,12 +62,12 @@ class MainRouter {
         title: "Juego de Marvel Spider-Man - Atrapá a Venom",
         show: true),
     Route(
-            id: "marvelCharsInfo",
-            path: '/marvelchars/id',
-            widget: const MarvelCharsInfoPage(),
-            icon: const Icon(Icons.star_border),
-            title: "Personajes de Marvel",
-            show: false),
+        id: "marvelCharsInfo",
+        path: '/marvelchars/id',
+        widget: const MarvelCharsInfoPage(),
+        icon: const Icon(Icons.star_border),
+        title: "Personajes de Marvel",
+        show: false),
     Route(
         id: "pokemonList",
         path: '/pokemon/list',
@@ -72,13 +75,47 @@ class MainRouter {
         icon: const Icon(Icons.catching_pokemon),
         title: "Lista de Pokémon",
         show: true),
-
     Route(
         id: "pokemonInfo",
         path: '/pokemon-info',
         widget: const PokemonInfoPage(),
         icon: const Icon(Icons.info),
         title: "Detalle de Pokémon",
+        show: false),
+    Route(
+        id: "harryPotterList",
+        path: '/harryPotterList',
+        widget: HarryPotterListPage(),
+        icon: Icon(Icons.account_box),
+        title: "Lista de Personajes de Harry Potter",
+        show: true),
+    Route(
+        id: "harryPotterGuessColor",
+        path: '/harryPotter/guessColor',
+        widget: AdivinaElColor(),
+        icon: Icon(Icons.palette),
+        title: "Juego: Adivina el Color",
+        show: true),
+    Route(
+        id: "harryPotterInfo",
+        path: '/harryPotterInfo',
+        widget: HarryPotterInfoPage(),
+        icon: Icon(Icons.info),
+        title: "Detalles del Personaje",
+        show: false),
+    Route(
+        id: "clientesList",
+        path: '/clientes',
+        widget: ClientesListPage(),
+        icon: Icon(Icons.people),
+        title: "Ponin Eric 21889 - API de Clientes",
+        show: true),
+    Route(
+        id: "clienteInfo",
+        path: '/cliente/buscar',
+        widget: ClienteInfoPage(),
+        icon: Icon(Icons.person),
+        title: "Detalle del Cliente",
         show: false),
   ];
 
