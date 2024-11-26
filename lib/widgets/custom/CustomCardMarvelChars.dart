@@ -29,7 +29,8 @@ class CustomCardMarvelChars extends StatelessWidget {
           children: [
             // Imagen en la parte superior de la Card
             ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(12.0)),
               child: Image.network(
                 imageUrl.isNotEmpty
                     ? imageUrl
@@ -39,24 +40,28 @@ class CustomCardMarvelChars extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            // Información en la parte inferior de la Card
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
+            Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 109, 5, 5),
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(12.0)),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Título (nombre del personaje)
                   Expanded(
                     child: Text(
                       title,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
-                        fontSize: 16,
+                        fontSize: 18,
+                        color: Color.fromARGB(255, 255, 255, 255),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  // Icono (opcional)
                   if (trailingIcon != null) trailingIcon!,
                 ],
               ),
@@ -67,4 +72,3 @@ class CustomCardMarvelChars extends StatelessWidget {
     );
   }
 }
-

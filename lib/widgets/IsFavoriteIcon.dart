@@ -4,41 +4,58 @@ import 'package:flutter_application_1/helpers/preferences.dart';
 class IsFavoriteIcon extends StatefulWidget {
   final String id;
   final Color color;
-  final double size; // Nuevo parámetro para el color del ícono
+  final double size;
 
-  const IsFavoriteIcon(
-      {super.key,
-      required this.id,
-      this.color = Colors.white,
-      this.size = 24}); // Color por defecto
+  const IsFavoriteIcon({
+    super.key,
+    required this.id,
+    this.color = Colors.white,
+    this.size = 24,
+  });
 
   @override
   State<IsFavoriteIcon> createState() => _IsFavoriteIconState();
 }
 
 class _IsFavoriteIconState extends State<IsFavoriteIcon> {
-  late bool isFav = false;
+  late bool isFav;
 
-  List<String> favs = Preferences.favs;
+  bool darkMode = false;
+
   @override
-  initState() {
+  void initState() {
     super.initState();
+    isFav = Preferences.favs.contains(widget.id);
+    darkMode = Preferences.darkmode;
+  }
+
+  Color invertirColor(Color color) {
+    if (color == Colors.yellow)
+      return color; // Juan lo agrege para que no me invierta el amarillo
+    return Color.fromARGB(
+      color.alpha,
+      255 - color.red,
+      255 - color.green,
+      255 - color.blue,
+    );
+  }
+
+  void toggleFavorite() {
     setState(() {
-      isFav = favs.contains(widget.id);
+      isFav = !isFav;
     });
+    Preferences.setFav = widget.id;
   }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () {
-          print(Preferences.favs);
-          Preferences.setFav = widget.id;
-          setState(() {
-            isFav = !isFav;
-          });
-        },
-        child:
-            (isFav ? const Icon(Icons.star) : const Icon(Icons.star_border)));
+      onTap: toggleFavorite,
+      child: Icon(
+        isFav ? Icons.star : Icons.star_border,
+        color: darkMode ? invertirColor(widget.color) : widget.color,
+        size: widget.size,
+      ),
+    );
   }
 }

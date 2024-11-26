@@ -11,53 +11,6 @@ import 'package:flutter_application_1/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class DrawerMenu extends StatelessWidget {
-  // ignore: unused_field
-  final List<Map<String, String>> _menuItems = <Map<String, String>>[
-    {'route': 'home', 'title': 'Home', 'subtitle': 'Home + counter app'},
-    {'route': 'design', 'title': 'Diseños', 'subtitle': 'Estructura y diseño'},
-    {'route': 'listview_builder', 'title': 'Listview Builder', 'subtitle': ''},
-    {
-      'route': 'clientesList',
-      'title': 'Clientes',
-      'subtitle': 'Lista de clientes registrados'
-    },
-    {
-      'route': 'listview_separated',
-      'title': 'Listview Separated',
-      'subtitle': ''
-    },
-    {'route': 'list_card', 'title': 'Listview Cards', 'subtitle': ''},
-    {
-      'route': 'animated_container',
-      'title': 'Animated Cointainer',
-      'subtitle': ''
-    },
-    {'route': 'counter', 'title': 'Counter', 'subtitle': ''},
-    {'route': 'flexbox', 'title': 'Ejemplos de Flexbox', 'subtitle': ''},
-    {'route': 'swipper_card', 'title': 'Card Swipper', 'subtitle': ''},
-    {'route': 'alert', 'title': 'Alertas', 'subtitle': ''},
-    {'route': 'stack', 'title': 'Stack', 'subtitle': ''},
-    {'route': 'infinite_scroll', 'title': 'Scroll Infinito', 'subtitle': ''},
-    {'route': 'custom_list', 'title': 'Custom list', 'subtitle': ''},
-    {'route': 'material_library', 'title': 'Material Library', 'subtitle': ''},
-    {'route': 'profile', 'title': 'Perfil usuario', 'subtitle': ''},
-    {
-      'route': 'provider_navigation_bar',
-      'title': 'Bottom Navigation',
-      'subtitle': 'Manejo con SetState'
-    },
-    {
-      'route': 'provider_navigation_bar_provider',
-      'title': 'Bottom Navigation',
-      'subtitle': '(Provider demo)'
-    },
-    {
-      'route': 'list_people',
-      'title': 'Lista Mock Api',
-      'subtitle': '(Provider)'
-    },
-  ];
-
   DrawerMenu({super.key});
 
   @override
@@ -113,7 +66,7 @@ class _DrawerHeaderAlternative extends StatefulWidget {
 class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
   bool darkMode = false;
   List<Offset> positions = [];
-  late Timer timer;
+  Timer? timer; // Declarar el Timer como nullable
 
   @override
   void initState() {
@@ -122,7 +75,9 @@ class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
     positions = List.generate(30, (_) => getStartPosition());
 
     timer = Timer.periodic(const Duration(milliseconds: 1500), (_) {
-      changePositions();
+      if (mounted) {
+        changePositions();
+      }
     });
   }
 
@@ -140,21 +95,31 @@ class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
     });
   }
 
-  getRandomTopPosition(int max) {
+  double getRandomTopPosition(int max) {
     return Random().nextDouble() * max;
   }
 
-  getRandomLeftPosition() {
+  double getRandomLeftPosition() {
     return Random().nextDouble() * (widget.screenWidth * 0.8);
   }
 
-  getRandomSide(int max) {
+  double getRandomSide(int max) {
     return Random().nextDouble() * max;
   }
 
-  getRandomColor() {
-    return Color.fromRGBO(Random().nextInt(255), Random().nextInt(255),
-        Random().nextInt(255), Random().nextDouble() * 1);
+  Color getRandomColor() {
+    return Color.fromRGBO(
+      Random().nextInt(255),
+      Random().nextInt(255),
+      Random().nextInt(255),
+      Random().nextDouble(),
+    );
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel(); // Cancela el Timer al destruir el widget
+    super.dispose();
   }
 
   @override
@@ -173,26 +138,28 @@ class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
       },
       child: DrawerHeader(
         padding: EdgeInsets.zero,
-        child: Stack(children: [
-          ...List.generate(30, (index) {
-            return AnimatedPositioned(
-              duration:
-                  const Duration(milliseconds: 1500), // Duración de la animación
-              curve: Curves.easeInOut, // Curva de animación
-              top: positions[index].dy,
-              left: positions[index].dx,
-              child: Container(
-                width: getRandomSide(50),
-                height: getRandomSide(50),
-                decoration: BoxDecoration(
-                  color: getRandomColor(),
-                  borderRadius: BorderRadius.circular(10),
+        child: Stack(
+          children: [
+            ...List.generate(30, (index) {
+              return AnimatedPositioned(
+                duration: const Duration(
+                    milliseconds: 1500), // Duración de la animación
+                curve: Curves.easeInOut, // Curva de animación
+                top: positions[index].dy,
+                left: positions[index].dx,
+                child: Container(
+                  width: getRandomSide(50),
+                  height: getRandomSide(50),
+                  decoration: BoxDecoration(
+                    color: getRandomColor(),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  transform: Matrix4.rotationZ(Random().nextDouble()),
                 ),
-                transform: Matrix4.rotationZ(Random().nextDouble() * 1),
-              ),
-            );
-          }),
-        ]),
+              );
+            }),
+          ],
+        ),
       ),
     );
   }

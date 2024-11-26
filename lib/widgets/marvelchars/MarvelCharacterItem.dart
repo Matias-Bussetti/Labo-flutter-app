@@ -18,6 +18,7 @@ class MarvelCharacterItem extends StatelessWidget {
       trailingIcon: IsFavoriteIcon(
         id: character.name,
         color: Colors.yellow,
+        size: 32,
       ),
       onTap: () {
         Navigator.pushNamed(
@@ -29,4 +30,3 @@ class MarvelCharacterItem extends StatelessWidget {
     );
   }
 }
-
