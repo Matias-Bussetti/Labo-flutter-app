@@ -54,7 +54,7 @@ class _HarryPotterListPageState extends State<HarryPotterListPage> {
                   ),
                   title: Text(character.name),
                   subtitle: Text(houseValues.reverse[character.house] ?? 'Sin casa'),
-                  trailing: IsFavoriteIcon(id: character.id.toString()), // Ícono de favorito
+                  trailing: IsFavoriteIcon(id: character.id.toString(), color: Color.fromARGB(255, 212, 212, 0)), // Ícono de favorito
                   onTap: () {
                     Navigator.pushNamed(
                       context,

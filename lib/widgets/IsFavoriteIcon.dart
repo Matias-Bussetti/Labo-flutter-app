@@ -3,8 +3,8 @@ import 'package:flutter_application_1/helpers/preferences.dart';
 
 class IsFavoriteIcon extends StatefulWidget {
   final String id;
-  final Color color; // Color del ícono
-  final double size; // Tamaño del ícono
+  final Color color; 
+  final double size; 
 
   const IsFavoriteIcon({
     super.key,
@@ -20,17 +20,28 @@ class IsFavoriteIcon extends StatefulWidget {
 class _IsFavoriteIconState extends State<IsFavoriteIcon> {
   late bool isFav;
 
+  bool darkMode = false;
+
   @override
   void initState() {
     super.initState();
     isFav = Preferences.favs.contains(widget.id);
+    darkMode = Preferences.darkmode;
   }
+  Color invertirColor(Color color) {
+  return Color.fromARGB(
+    color.alpha, 
+    255 - color.red, 
+    255 - color.green, 
+    255 - color.blue, 
+  );
+}
 
   void toggleFavorite() {
     setState(() {
       isFav = !isFav;
     });
-    Preferences.setFav = widget.id; // Esto debe manejar el agregar/remover
+    Preferences.setFav = widget.id; 
   }
 
   @override
@@ -39,10 +50,11 @@ class _IsFavoriteIconState extends State<IsFavoriteIcon> {
       onTap: toggleFavorite,
       child: Icon(
         isFav ? Icons.star : Icons.star_border,
-        color: widget.color,
+        color: darkMode ? invertirColor(widget.color) : widget.color,
         size: widget.size,
       ),
     );
   }
+  
 }
 
