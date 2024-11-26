@@ -15,16 +15,15 @@ class MarvelCharacterDescription extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          // SliverAppBar: esta barra será fija en la parte superior
           SliverAppBar(
             expandedHeight: screenWidth,
             floating: false,
-            pinned: true, // Mantiene el título y la imagen fija al hacer scroll
-            automaticallyImplyLeading: false, // Elimina el ícono de "atrás"
+            pinned: true, 
+            automaticallyImplyLeading: false, 
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
               title: Padding(
-                padding: const EdgeInsets.only(top: 10), // Ajusta la posición del texto
+                padding: const EdgeInsets.only(top: 10), 
                 child: Text(
                   character.name,
                   textAlign: TextAlign.center,
@@ -58,7 +57,6 @@ class MarvelCharacterDescription extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Icono de favorito en la esquina superior derecha
                   Positioned(
                     top: 14.0,
                     right: 8.0,
@@ -72,11 +70,9 @@ class MarvelCharacterDescription extends StatelessWidget {
               ),
             ),
           ),
-          // Aquí empieza el contenido que se puede desplazar
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                // Descripción del personaje
                 if (character.description.isNotEmpty)
                   RowData(
                     icon: Icons.description,
@@ -96,7 +92,6 @@ class MarvelCharacterDescription extends StatelessWidget {
                       ),
                     ],
                   ),
-                // Series en las que aparece el personaje
                 if (character.series.isNotEmpty)
                   RowData(
                     icon: Icons.tv,

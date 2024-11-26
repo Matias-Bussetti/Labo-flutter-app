@@ -18,26 +18,31 @@ class MarvelCharactersList extends StatefulWidget {
 
 class _MarvelCharactersListState extends State<MarvelCharactersList> {
   late List<MarvelChars> _characters;
-  bool _isSearching = false; // Indicador de búsqueda activa
-  String _searchQuery = ""; // Consulta actual
+  bool _isSearching = false;
+  String _searchQuery = "";
+  int _currentPage = 0;
+  final int _limit = 20;
+  bool _isLoadingMore = false;
+  bool _hasMore = true;
+  late ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
-    // Inicializa los personajes con el método estático correcto
     _characters = MarvelChars.listFromJson(widget.data);
+    _scrollController = ScrollController();
+    _scrollController.addListener(_onScroll);
   }
 
-  void _handleSearch(String value) {
-    setState(() {
-      _searchQuery = value;
-      _isSearching = value.isNotEmpty;
-    });
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
-  Future<List<MarvelChars>> _fetchSearchResults(String query) async {
+  Future<List<MarvelChars>> _fetchSearchResults(String query, int offset) async {
     final url =
-        "https://tup-labo-4-grupo-15.onrender.com/api/v1/marvel/chars?nameStartsWith=$query";
+        "https://tup-labo-4-grupo-15.onrender.com/api/v1/marvel/chars?nameStartsWith=$query&limit=$_limit&offset=$offset";
 
     final response = await http.get(Uri.parse(url));
 
@@ -47,6 +52,46 @@ class _MarvelCharactersListState extends State<MarvelCharactersList> {
     } else {
       throw Exception('Error fetching search results');
     }
+  }
+
+  Future<void> _fetchMoreCharacters() async {
+    if (_isLoadingMore || !_hasMore) return;
+
+    setState(() {
+      _isLoadingMore = true;
+    });
+
+    try {
+      final newCharacters = await _fetchSearchResults(_searchQuery, _currentPage * _limit);
+      setState(() {
+        _characters.addAll(newCharacters);
+        _hasMore = newCharacters.length == _limit;
+        _currentPage++;
+      });
+    } catch (error) {
+      debugPrint('Error fetching more characters: $error');
+    } finally {
+      setState(() {
+        _isLoadingMore = false;
+      });
+    }
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 200) {
+      _fetchMoreCharacters();
+    }
+  }
+
+  void _handleSearch(String value) {
+    setState(() {
+      _searchQuery = value;
+      _isSearching = value.isNotEmpty;
+      _currentPage = 0;
+      _hasMore = true;
+      _characters.clear();
+    });
+    _fetchMoreCharacters();
   }
 
   @override
@@ -75,46 +120,24 @@ class _MarvelCharactersListState extends State<MarvelCharactersList> {
           ),
         ),
         Expanded(
-          child: _isSearching
-              ? FutureBuilder<List<MarvelChars>>(
-                  future: _fetchSearchResults(_searchQuery),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else if (snapshot.hasError) {
-                      return Center(
-                        child: Text(
-                          "Error: ${snapshot.error}",
-                          style: TextStyle(color: Colors.red),
-                        ),
-                      );
-                    } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                      return const Center(
-                        child: Text("No se encontraron resultados."),
-                      );
-                    } else {
-                      return ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          MarvelChars character = snapshot.data![index];
-                          return MarvelCharacterItem(character: character);
-                        },
-                      );
-                    }
-                  },
-                )
-              : ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: _characters.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    MarvelChars character = _characters[index];
-                    return MarvelCharacterItem(character: character);
-                  },
-                ),
+          child: ListView.builder(
+            controller: _scrollController,
+            shrinkWrap: true,
+            itemCount: _characters.length + (_isLoadingMore ? 1 : 0),
+            itemBuilder: (BuildContext context, int index) {
+              if (index == _characters.length) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              final character = _characters[index];
+              return MarvelCharacterItem(character: character);
+            },
+          ),
         ),
+        if (!_hasMore && _characters.isNotEmpty)
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text("No hay más resultados."),
+          ),
       ],
     );
   }

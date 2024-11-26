@@ -14,7 +14,7 @@ class MarvelCharsListPage extends StatelessWidget {
       ),
       body: Center(
         child: FutureFetcher(
-          url: "https://tup-labo-4-grupo-15.onrender.com/api/v1/marvel/chars/all",
+          url: "https://tup-labo-4-grupo-15.onrender.com/api/v1/marvel/chars?limit=20&offset=0",
           widget: (data) {
             return MarvelCharactersList(data: data);
           },
