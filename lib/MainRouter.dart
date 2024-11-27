@@ -51,7 +51,7 @@ class MainRouter {
         path: '/marvelchars/',
         widget: const MarvelCharsListPage(),
         icon: const Icon(Icons.star_border),
-        title: "Personajes de Marvel",
+        title: "Lista de Personajes de Marvel",
         show: true),
     Route(
         id: "marvelCharsSpidermanGame",
