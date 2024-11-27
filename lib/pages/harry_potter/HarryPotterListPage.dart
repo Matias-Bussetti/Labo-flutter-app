@@ -5,6 +5,8 @@ import 'package:flutter_application_1/widgets/search/HarryPotterSearchDelegate.d
 import 'package:flutter_application_1/widgets/IsFavoriteIcon.dart';
 
 class HarryPotterListPage extends StatefulWidget {
+  const HarryPotterListPage({super.key});
+
   @override
   _HarryPotterListPageState createState() => _HarryPotterListPageState();
 }
@@ -17,10 +19,10 @@ class _HarryPotterListPageState extends State<HarryPotterListPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber[500],
-        title: Text("Lista de Personajes de Harry Potter"),
+        title: const Text("Lista de Personajes de Harry Potter"),
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             onPressed: () {
               if (characters.isNotEmpty) {
                 showSearch(
@@ -29,7 +31,7 @@ class _HarryPotterListPageState extends State<HarryPotterListPage> {
                 );
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("Datos aún no cargados.")),
+                  const SnackBar(content: Text("Datos aún no cargados.")),
                 );
               }
             },
@@ -39,7 +41,7 @@ class _HarryPotterListPageState extends State<HarryPotterListPage> {
       body: FutureFetcher(
         url: "https://tup-labo-4-grupo-15.onrender.com/api/v1/personajes", // URL de la API
         widget: (data) {
-          if (data is Map<String, dynamic> && data['data'] is List) {
+          if (data['data'] is List) {
             characters = List<Datum>.from(
               data['data'].map((item) => Datum.fromJson(item)),
             );
@@ -54,7 +56,7 @@ class _HarryPotterListPageState extends State<HarryPotterListPage> {
                   ),
                   title: Text(character.name),
                   subtitle: Text(houseValues.reverse[character.house] ?? 'Sin casa'),
-                  trailing: IsFavoriteIcon(id: character.id.toString(), color: Color.fromARGB(255, 212, 212, 0)), // Ícono de favorito
+                  trailing: IsFavoriteIcon(id: character.id.toString(), color: const Color.fromARGB(255, 212, 212, 0)), // Ícono de favorito
                   onTap: () {
                     Navigator.pushNamed(
                       context,
@@ -66,7 +68,7 @@ class _HarryPotterListPageState extends State<HarryPotterListPage> {
               },
             );
           } else {
-            return Center(child: Text("Error al cargar los personajes."));
+            return const Center(child: Text("Error al cargar los personajes."));
           }
         },
       ),

@@ -16,10 +16,11 @@ class FetcherPokemon {
       final response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200) {
-        // Si la respuesta es correcta, decodificamos el JSON
-        final data = jsonDecode(response.body);
-        // Convierte los datos decodificados a una lista de objetos Pokemon
-        return Pokemon.listFromJson(data);
+        final Map<String, dynamic> data = jsonDecode(response.body);
+
+        final List<dynamic> pokemonData = data["data"];
+
+        return pokemonData.map((pokemon) => Pokemon.fromJson(pokemon)).toList();
       } else {
         throw Exception('Error al cargar los Pokémon');
       }

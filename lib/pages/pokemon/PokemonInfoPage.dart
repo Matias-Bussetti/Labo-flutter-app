@@ -19,14 +19,6 @@ class _PokemonInfoPageState extends State<PokemonInfoPage> {
     final args =
         ModalRoute.of(context)!.settings.arguments as PokemonInfoPageArguments;
 
-    if (args.id == null) {
-      return const Scaffold(
-        body: Center(
-          child: Text("No se pudo cargar la información del Pokémon"),
-        ),
-      );
-    }
-
     return Scaffold(
       body: Center(
         child: FutureFetcher(

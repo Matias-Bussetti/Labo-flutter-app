@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/pokemon/Pokemon.dart';
 import 'package:flutter_application_1/classes/pokemon/PokemonInfoPageArguments.dart';
+import 'package:flutter_application_1/helpers/TypeColorsPokemon.dart';
 
 class PokemonItem extends StatelessWidget {
   final Pokemon pokemon;
@@ -19,7 +20,7 @@ class PokemonItem extends StatelessWidget {
           '/pokemon-info',
           arguments: PokemonInfoPageArguments(pokemon.id),
         );
-            },
+      },
       child: Container(
         decoration: BoxDecoration(
           image: const DecorationImage(
@@ -71,7 +72,11 @@ class PokemonItem extends StatelessWidget {
               children: pokemon.types.map((type) {
                 return Chip(
                   label: Text(type),
-                  backgroundColor: const Color.fromARGB(255, 202, 226, 247),
+                  backgroundColor: TypeColorPokemon(type),
+                  labelStyle: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 );
               }).toList(),
             ),

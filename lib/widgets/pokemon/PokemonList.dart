@@ -16,82 +16,135 @@ class PokemonList extends StatefulWidget {
 }
 
 class _PokemonListState extends State<PokemonList> {
-  late final List<Pokemon> _pokemon = [];
-  final int _limit = 20; // Número de Pokémon a cargar por página
-  int _offset = 0; // Desde dónde empezar
+  late List<Pokemon> _pokemon = [];
+  late List<Pokemon> _filteredPokemon = [];
+  int _limit = 20;
+  int _offset = 0;
   bool _isLoading = false;
+  bool _isFetching =
+      false;
   final ScrollController _scrollController =
-      ScrollController(); // Controlador para el desplazamiento
+      ScrollController();
+  final TextEditingController _searchController =
+      TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _fetchMorePokemons(); // Carga inicial
+    _fetchMorePokemons();
   }
 
   Future<void> _fetchMorePokemons() async {
-    if (_isLoading) return;
+    if (_isLoading || _isFetching) return;
 
     setState(() {
       _isLoading = true;
+      _isFetching = true;
     });
 
     try {
-      // Usamos el PokemonFetcher en lugar de hacer la solicitud directamente
       final fetcher = FetcherPokemon(limit: _limit, offset: _offset);
       final newPokemons = await fetcher.fetchPokemons();
 
       setState(() {
         _pokemon.addAll(newPokemons);
-        _offset += _limit; // Incrementa el offset para la próxima carga
+        _filteredPokemon =
+            _pokemon;
+        _offset += _limit;
       });
     } catch (e) {
       print("Error al cargar más Pokémon: $e");
     } finally {
       setState(() {
         _isLoading = false;
+        _isFetching =
+            false; 
       });
     }
+  }
+
+  void _filterPokemons(String query) {
+    setState(() {
+      if (query.isEmpty) {
+        _filteredPokemon =
+            _pokemon; 
+      } else {
+        _filteredPokemon = _pokemon
+            .where((pokemon) =>
+                pokemon.name.toLowerCase().contains(query.toLowerCase()))
+            .toList(); 
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NotificationListener<ScrollNotification>(
-        onNotification: (scrollInfo) {
-          if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent &&
-              !_isLoading) {
-            _fetchMorePokemons(); // Carga más cuando llegue al final
-          }
-          return false;
-        },
-        child: GridView.builder(
-          controller: _scrollController, // Asocia el controlador
-          padding: const EdgeInsets.all(8),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
-            childAspectRatio: 1,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _searchController,
+              onChanged: _filterPokemons,
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: const Color(0xfff1f1f1),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide.none,
+                ),
+                hintText: "Buscar Pokémon por nombre...",
+                hintStyle: const TextStyle(
+                  color: Colors.black,
+                ),
+                prefixIcon: const Icon(Icons.search),
+                contentPadding: const EdgeInsets.symmetric(vertical: 12),
+                prefixIconColor: Colors.black,
+              ),
+            ),
           ),
-          itemCount: _pokemon.length,
-          itemBuilder: (context, index) {
-            final pokemon = _pokemon[index];
-            return PokemonItem(pokemon: pokemon);
-          },
-        ),
+
+          Expanded(
+            child: NotificationListener<ScrollNotification>(
+              onNotification: (scrollInfo) {
+                if (scrollInfo.metrics.pixels ==
+                        scrollInfo.metrics.maxScrollExtent &&
+                    !_isLoading) {
+                  _fetchMorePokemons();
+                }
+                return false;
+              },
+              child: GridView.builder(
+                controller: _scrollController,
+                padding: const EdgeInsets.all(8),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
+                  childAspectRatio: 1,
+                ),
+                itemCount: _filteredPokemon.length,
+                itemBuilder: (context, index) {
+                  final pokemon = _filteredPokemon[index];
+                  return PokemonItem(pokemon: pokemon);
+                },
+              ),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _scrollController.animateTo(
-            0, // Desplázate hasta la parte superior
+            0,
             duration: const Duration(
-                milliseconds: 300), // Duración del desplazamiento
-            curve: Curves.easeInOut, // Tipo de curva de desplazamiento
+                milliseconds: 300),
+            curve: Curves.easeInOut,
           );
-        }, // Icono del botón
+        },
+        child: const Icon(Icons.arrow_upward), 
         backgroundColor: Colors.blue,
-        child: const Icon(Icons.arrow_upward), // Color del botón
       ),
     );
   }

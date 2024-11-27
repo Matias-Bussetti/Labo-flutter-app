@@ -11,7 +11,7 @@ import 'package:flutter_application_1/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class DrawerMenu extends StatelessWidget {
-  DrawerMenu({super.key});
+  const DrawerMenu({super.key});
 
   @override
   Widget build(BuildContext context) {

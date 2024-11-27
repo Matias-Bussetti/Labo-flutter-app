@@ -63,7 +63,7 @@ class PatientItem extends StatelessWidget {
                 Expanded(
                     flex: 0,
                     child: Row(
-                      children: [IsFavoriteIcon(id: 'patient-${patient.id}', color: Color.fromARGB(255, 48, 48, 48))],
+                      children: [IsFavoriteIcon(id: 'patient-${patient.id}', color: const Color.fromARGB(255, 48, 48, 48))],
                     )),
               ],
             ),

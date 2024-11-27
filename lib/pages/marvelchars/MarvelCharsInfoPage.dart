@@ -21,7 +21,7 @@ class _MarvelCharsInfoPageState extends State<MarvelCharsInfoPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Personaje de Marvel"),
+        title: const Text("Personaje de Marvel"),
       ),
       body: Center(
         child: FutureFetcher(
