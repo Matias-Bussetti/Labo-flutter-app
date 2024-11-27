@@ -18,11 +18,11 @@ class PokemonList extends StatefulWidget {
 }
 
 class _PokemonListState extends State<PokemonList> {
-  late List<Pokemon> _pokemon = []; // Lista general
-  String _searchQuery = ""; // Texto de búsqueda
-  bool _isSearching = false; // Indicador de búsqueda activa
-  bool _isLoading = false; // Indicador de carga inicial
-  bool _isLoadingMore = false; // Indicador de carga al obtener más datos
+  late List<Pokemon> _pokemon = []; 
+  String _searchQuery = "";
+  bool _isSearching = false;
+  bool _isLoading = false;
+  bool _isLoadingMore = false;
   final ScrollController _scrollController = ScrollController();
   int _limit = 20;
   int _offset = 0;
@@ -32,11 +32,9 @@ class _PokemonListState extends State<PokemonList> {
     super.initState();
     _fetchInitialPokemons();
 
-    // Agregar listener para detectar cuando llegamos al final del scroll
     _scrollController.addListener(() {
       if (_scrollController.position.pixels >=
           _scrollController.position.maxScrollExtent - 100) {
-        // Solo cargar más si no estamos en búsqueda
         if (!_isSearching && !_isLoadingMore) {
           _fetchMorePokemons();
         }
@@ -112,7 +110,6 @@ class _PokemonListState extends State<PokemonList> {
       _searchQuery = value;
       _isSearching = value.isNotEmpty;
       if (!_isSearching) {
-        // Si la búsqueda está vacía, resetear la lista y cargar los Pokémon nuevamente
         _pokemon.clear();
         _offset = 0;
         _fetchInitialPokemons();
@@ -201,10 +198,9 @@ class _PokemonListState extends State<PokemonList> {
                           childAspectRatio: 1,
                         ),
                         itemCount: _pokemon.length +
-                            1, // Añadir uno para el cargando más
+                            1, 
                         itemBuilder: (context, index) {
                           if (index == _pokemon.length) {
-                            // Indicador de carga más
                             return const Center(
                               child: CircularProgressIndicator(),
                             );
