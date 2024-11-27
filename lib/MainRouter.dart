@@ -86,7 +86,7 @@ class MainRouter {
         path: '/harryPotterList',
         widget: HarryPotterListPage(),
         icon: Icon(Icons.school),
-        title: "Lista de Personajes de Harry Potter",
+        title: "MariaEugeniaLosada_21787 - API de Harry Potter",
         show: true),
     Route(
         id: "harryPotterGuessColor",
