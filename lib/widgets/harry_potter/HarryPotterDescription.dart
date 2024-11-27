@@ -8,7 +8,7 @@ class HarryPotterDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Determinamos los colores del degradado según la casa
+    // los colores del degradado segun la casa
     List<Color> houseColors = _getHouseColors(data.house);
 
     return Container(
@@ -23,14 +23,14 @@ class HarryPotterDescription extends StatelessWidget {
       ),
       child: Column(
         children: [
-          // Imagen o ícono si no hay imagen
+          // Icono si no hay imagen
           if (data.image.isNotEmpty) ...[
             Container(
               height: 250,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(data.image),
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

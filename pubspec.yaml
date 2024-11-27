@@ -80,6 +80,7 @@ flutter:
       - lib/assets/images/slytherin.png
       - lib/assets/images/hufflepuff.png
       - lib/assets/images/ravenclaw.png
+      - lib/assets/images/ministry_of_magic.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

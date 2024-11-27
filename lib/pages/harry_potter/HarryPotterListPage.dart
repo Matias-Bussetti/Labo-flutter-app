@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/custom/FutureFetcher.dart';
-import 'package:flutter_application_1/classes/HarryPotterCharacters.dart';
+import 'package:flutter_application_1/classes/classes.dart';
 import 'package:flutter_application_1/widgets/search/HarryPotterSearchDelegate.dart';
 import 'package:flutter_application_1/widgets/IsFavoriteIcon.dart';
 
@@ -52,7 +52,10 @@ class _HarryPotterListPageState extends State<HarryPotterListPage> {
                 final character = characters[index];
                 return ListTile(
                   leading: CircleAvatar(
-                    backgroundImage: NetworkImage(character.image),
+                    backgroundImage: character.image.isNotEmpty
+                        ? NetworkImage(character.image)
+                        : AssetImage('lib/assets/images/ministry_of_magic.png') as ImageProvider, 
+                  
                   ),
                   title: Text(character.name),
                   subtitle: Text(houseValues.reverse[character.house] ?? 'Sin casa'),

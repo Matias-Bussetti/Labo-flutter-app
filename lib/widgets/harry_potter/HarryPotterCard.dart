@@ -32,18 +32,12 @@ class HarryPotterCard extends StatelessWidget {
             Row(
               children: [
                 CircleAvatar(
-                  radius: 50,
+                  radius: 60,
                   backgroundColor: Colors.transparent, // Fondo transparente
                   backgroundImage: character.image.isNotEmpty
                       ? NetworkImage(character.image)
-                      : null,
-                  child: character.image.isEmpty
-                      ? const Icon(
-                          Icons.person,
-                          size: 50,
-                          color: Colors.white, // Ícono visible sobre fondo gris
-                        )
-                      : null,
+                      : AssetImage('lib/assets/images/ministry_of_magic.png'), // Imagen predeterminada
+                   
                 ),
                 const SizedBox(width: 16.0),
                 Expanded(
