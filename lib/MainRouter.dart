@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/Clientes/ClientesListPage.dart';
 import 'package:flutter_application_1/pages/clientes/ClienteInfoPage.dart';
-import 'package:flutter_application_1/pages/harry_potter/HarryPotterInfoPage.dart';
-import 'package:flutter_application_1/pages/harry_potter/HarryPotterListPage.dart';
+import 'package:flutter_application_1/pages/harry_potter/harry_potter_screens.dart';
 import 'package:flutter_application_1/pages/marvelchars/MarvelCharsInfoPage.dart';
 import 'package:flutter_application_1/pages/marvelchars/MarvelCharsListPage.dart';
 import 'package:flutter_application_1/pages/patients/PatientsMapPage.dart';
 import 'package:flutter_application_1/pages/patients/PatientsListPage.dart';
 import 'package:flutter_application_1/pages/ProfilePage.dart';
 import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
-import 'package:flutter_application_1/widgets/harry_potter/AdivinaElColor.dart';
+import 'package:flutter_application_1/widgets/harry_potter/harry_potter_widgets.dart';
 import 'package:flutter_application_1/widgets/marvelchars/SpidermanGame.dart';
 import 'package:flutter_application_1/pages/pokemon/PokemonListPage.dart';
 import 'package:flutter_application_1/pages/pokemon/PokemonInfoPage.dart';
@@ -86,7 +85,7 @@ class MainRouter {
         id: "harryPotterList",
         path: '/harryPotterList',
         widget: HarryPotterListPage(),
-        icon: Icon(Icons.account_box),
+        icon: Icon(Icons.school),
         title: "Lista de Personajes de Harry Potter",
         show: true),
     Route(
