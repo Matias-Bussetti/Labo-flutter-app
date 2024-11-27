@@ -7,19 +7,19 @@ class CustomCardMarvelChars extends StatelessWidget {
   final VoidCallback onTap;
 
   const CustomCardMarvelChars({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.title,
     this.trailingIcon,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: Card(
-        elevation: 4.0, // Sombras para dar efecto de profundidad
+        elevation: 4.0, 
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
@@ -27,29 +27,28 @@ class CustomCardMarvelChars extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Imagen en la parte superior de la Card
             ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
-              child: Image.network(
-                imageUrl.isNotEmpty
-                    ? imageUrl
-                    : 'https://wallpapers.com/images/hd/marvel-logo-in-red-background-3p16v5avq80km4ns.jpg',
-                height: 150, // Altura de la imagen
+              child: Image.network( // Acá hice esto porque la API tira una imagen por default re fea cuando no tiene imagen el PJ
+                (imageUrl.isEmpty || imageUrl == 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg')
+                    ? 'https://wallpapers.com/images/hd/marvel-logo-in-red-background-3p16v5avq80km4ns.jpg'
+                    : imageUrl,
+                height: 150, 
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
             ),
-            // Información en la parte inferior de la Card
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
               decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 109, 5, 5),
-                borderRadius: BorderRadius.vertical(bottom: Radius.circular(12.0)),
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(12.0)),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Título (nombre del personaje)
                   Expanded(
                     child: Text(
                       title,
@@ -61,7 +60,6 @@ class CustomCardMarvelChars extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Icono (opcional)
                   if (trailingIcon != null) trailingIcon!,
                 ],
               ),
@@ -72,4 +70,3 @@ class CustomCardMarvelChars extends StatelessWidget {
     );
   }
 }
-
