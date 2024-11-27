@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/HarryPotterCharacters.dart';
-import 'package:flutter_application_1/helpers/house_colors.dart'; // Importa la función
+import 'package:flutter_application_1/classes/classes.dart';
+import 'package:flutter_application_1/helpers/house_colors.dart'; 
 
 class HarryPotterInfoPage extends StatelessWidget {
   const HarryPotterInfoPage({super.key});
@@ -35,18 +35,25 @@ class HarryPotterInfoPage extends StatelessWidget {
               child: character.image.isNotEmpty
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image.network(
-                        character.image,
-                        height: 300,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: Image.network(
+                          character.image,
+                          height: 300,
+                          width: double.infinity,
+                          fit: BoxFit.fitWidth,
+                          alignment: Alignment.topCenter,
+                        ),
                       ),
                     )
-                  : Container(
-                      height: 300,
-                      width: double.infinity,
-                      color: Colors.grey[300], // Fondo gris para falta de imagen
-                      child: const Icon(Icons.person, size: 100, color: Colors.grey),
+                    : ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.asset(
+                            'lib/assets/images/ministry_of_magic.png', // Imagen predeterminada
+                            height: 300,
+                            width: double.infinity,
+                            fit: BoxFit.fitWidth, 
+                          ),
                     ),
             ),
             const SizedBox(height: 16.0),

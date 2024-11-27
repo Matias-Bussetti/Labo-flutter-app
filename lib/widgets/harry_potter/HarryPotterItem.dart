@@ -15,7 +15,7 @@ class HarryPotterItem extends StatelessWidget {
           Navigator.pushNamed(
             context,
             '/harryPotterInfo',
-            arguments: character, // Pasamos el objeto completo.
+            arguments: character,
           );
         },
         child: Container(
