@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Cliente.dart';
 import 'package:flutter_application_1/classes/ClienteInfoPageArguments.dart';
+import 'package:flutter_application_1/widgets/IsFavoriteIcon.dart';
 
 class ClienteItem extends StatelessWidget {
   final Cliente cliente;
@@ -99,10 +100,15 @@ class ClienteItem extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.star,
+                      cliente.bip ? Icons.verified_user : Icons.shield_outlined,
                       color: cliente.bip
-                          ? Colors.yellow
-                          : Colors.grey, // Color según VIP
+                          ? const Color.fromARGB(255, 255, 59, 59)
+                          : const Color.fromARGB(
+                              255, 255, 0, 0), // Color según VIP
+                    ),
+                    IsFavoriteIcon(
+                      id: cliente.id,
+                      color: Color.fromARGB(255, 185, 0, 0),
                     ),
                   ],
                 ),
