@@ -17,8 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 
 PONIN ERIC 21889 - API DE CLIENTES - 
-
-lib/assets/cliente/documentacion/DetalleCliente.jpg
+![lib/assets/cliente/documentacion/](DetalleCLiente.JPG)
 ### 1. **Detalle del Cliente**
    **Contenido:**
    - La pantalla muestra información detallada de un cliente específico:
