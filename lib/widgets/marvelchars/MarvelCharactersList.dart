@@ -1,9 +1,10 @@
-// ignore_for_file: unused_field
+// ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/MarvelCharacters.dart';
 import 'package:flutter_application_1/widgets/marvelchars/MarvelCharacterItem.dart';
 import 'package:http/http.dart' as http;
+import 'dart:async';
 import 'dart:convert';
 
 class MarvelCharactersList extends StatefulWidget {
@@ -27,6 +28,7 @@ class _MarvelCharactersListState extends State<MarvelCharactersList> {
   bool _isLoadingMore = false;
   bool _hasMore = true;
   late ScrollController _scrollController;
+  Timer? _debounce; // Declaramos el debounce
 
   @override
   void initState() {
@@ -39,6 +41,7 @@ class _MarvelCharactersListState extends State<MarvelCharactersList> {
   @override
   void dispose() {
     _scrollController.dispose();
+    _debounce?.cancel(); // Liberamos el Timer
     super.dispose();
   }
 
@@ -89,14 +92,20 @@ class _MarvelCharactersListState extends State<MarvelCharactersList> {
   }
 
   void _handleSearch(String value) {
-    setState(() {
-      _searchQuery = value;
-      _isSearching = value.isNotEmpty;
-      _currentPage = 0;
-      _hasMore = true;
-      _characters.clear();
+    // Cancelamos cualquier temporizador previo
+    if (_debounce?.isActive ?? false) _debounce!.cancel();
+
+    // Configuramos un nuevo debounce
+    _debounce = Timer(const Duration(milliseconds: 500), () {
+      setState(() {
+        _searchQuery = value;
+        _isSearching = value.isNotEmpty;
+        _currentPage = 0;
+        _hasMore = true;
+        _characters.clear();
+      });
+      _fetchMoreCharacters();
     });
-    _fetchMoreCharacters();
   }
 
   @override
