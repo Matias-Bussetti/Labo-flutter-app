@@ -22,24 +22,19 @@ class _HarryPotterListPageState extends State<HarryPotterListPage> {
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
-              if (characters.isNotEmpty) {
-                showSearch(
-                  context: context,
-                  delegate: HarryPotterSearchDelegate(),
-                );
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("Datos aún no cargados.")),
-                );
-              }
+              showSearch(
+                context: context,
+                delegate: HarryPotterSearchDelegate(), 
+              );
             },
           ),
+
         ],
       ),
       body: FutureFetcher(
-        url: "https://tup-labo-4-grupo-15.onrender.com/api/v1/personajes", // URL de la API
+        url: "https://tup-labo-4-grupo-15.onrender.com/api/v1/todoslospersonajes", // URL de la API
         widget: (data) {
-          if (data is Map<String, dynamic> && data['data'] is List) {
+          if (data['data'] is List) {
             characters = List<Datum>.from(
               data['data'].map((item) => Datum.fromJson(item)),
             );
@@ -52,7 +47,7 @@ class _HarryPotterListPageState extends State<HarryPotterListPage> {
                   leading: CircleAvatar(
                     backgroundImage: character.image.isNotEmpty
                         ? NetworkImage(character.image)
-                        : AssetImage('lib/assets/images/ministry_of_magic.png') as ImageProvider, 
+                        : const AssetImage('lib/assets/images/ministry_of_magic.png') as ImageProvider, 
                   
                   ),
                   title: Text(character.name),

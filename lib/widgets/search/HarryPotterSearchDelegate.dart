@@ -8,7 +8,7 @@ class HarryPotterSearchDelegate extends SearchDelegate {
     return [
       IconButton(
         icon: Icon(Icons.clear),
-        onPressed: () => query = '', // Resetea el texto directamente
+        onPressed: () => query = '', // Limpiar la búsqueda
       ),
     ];
   }
@@ -17,14 +17,14 @@ class HarryPotterSearchDelegate extends SearchDelegate {
   Widget? buildLeading(BuildContext context) {
     return IconButton(
       icon: Icon(Icons.arrow_back),
-      onPressed: () => close(context, null), // Cierra la búsqueda
+      onPressed: () => close(context, null), // Cerrar la búsqueda
     );
   }
 
   @override
   Widget buildResults(BuildContext context) {
     return FutureBuilder<List<dynamic>>(
-      future: _fetchCharacters(query),
+      future: _fetchCharacters(query), //Busca en la api con el texto ingresado
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
@@ -49,7 +49,7 @@ class HarryPotterSearchDelegate extends SearchDelegate {
                 subtitle: Text(
                     'Casa: ${character['house'] ?? 'Sin información'}'),
                 onTap: () {
-                  // Aquí se puede manejar la navegación
+                  
                 },
               );
             },
@@ -66,14 +66,15 @@ class HarryPotterSearchDelegate extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     if (query.isEmpty) {
-      return Container();
+      return Container(); // Sin sugerencias si no hay texto
     }
-    return buildResults(context); // Reutilizamos buildResults para mostrar resultados dinámicos
+    return buildResults(context); // Reutiliza buildResults
   }
 
+  // Realizar la búsqueda en la API pasando el parámetro "name"
   Future<List<dynamic>> _fetchCharacters(String query) async {
     final url =
-        "https://tup-labo-4-grupo-15.onrender.com/api/v1/personajes?name=$query&limit=50&page=1";
+        "https://tup-labo-4-grupo-15.onrender.com/api/v1/todoslospersonajes?name=$query";
 
     final response = await http.get(Uri.parse(url));
 
