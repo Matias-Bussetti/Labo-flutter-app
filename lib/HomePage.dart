@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(title),
       ),
-      drawer: DrawerMenu(),
+      drawer: const DrawerMenu(),
       body: Container(
         alignment: Alignment.topLeft,
         child: ListView(

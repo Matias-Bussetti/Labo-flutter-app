@@ -54,7 +54,7 @@ class _HarryPotterListPageState extends State<HarryPotterListPage> {
                   leading: CircleAvatar(
                     backgroundImage: character.image.isNotEmpty
                         ? NetworkImage(character.image)
-                        : AssetImage('lib/assets/images/ministry_of_magic.png') as ImageProvider, 
+                        : const AssetImage('lib/assets/images/ministry_of_magic.png') as ImageProvider, 
                   
                   ),
                   title: Text(character.name),
