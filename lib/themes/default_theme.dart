@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/HarryPotterCharacters.dart'; 
-
+import 'package:flutter_application_1/classes/HarryPotterCharacters.dart';
 
 class DefaultTheme {
   static const Color primary = Colors.red;
@@ -47,11 +46,32 @@ class DefaultTheme {
 
   static final ThemeData darkTheme = ThemeData.dark().copyWith(
     primaryColor: Colors.greenAccent,
-    appBarTheme:
-        const AppBarTheme(backgroundColor: Colors.red, foregroundColor: Colors.white),
+    appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.red, foregroundColor: Colors.white),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: primary,
       foregroundColor: Colors.white,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true, // Para habilitar el color de fondo
+      fillColor: Colors.black87, // Color de fondo
+      iconColor: Colors.grey, // Color del ícono
+      labelStyle: TextStyle(color: Colors.grey), // Color del texto del label
+      hintStyle: TextStyle(color: Colors.grey), // Color del hint text
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.0), // Borde redondeado
+        borderSide: BorderSide(color: Colors.blue), // Color del borde
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        borderSide:
+            BorderSide(color: Colors.grey), // Borde cuando está habilitado
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        borderSide:
+            BorderSide(color: Colors.blue, width: 2.0), // Borde al enfocar
+      ),
     ),
   );
 }

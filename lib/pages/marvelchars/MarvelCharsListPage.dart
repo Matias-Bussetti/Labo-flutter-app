@@ -10,11 +10,12 @@ class MarvelCharsListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber[500],
-        title: const Text("Lista de personajes de Marvel"),
+        title: const Text("Marvel - Personajes"),
       ),
       body: Center(
         child: FutureFetcher(
-          url: "https://tup-labo-4-grupo-15.onrender.com/api/v1/marvel/chars?limit=20&offset=0",
+          url:
+              "https://tup-labo-4-grupo-15.onrender.com/api/v1/marvel/chars?limit=20&offset=0",
           widget: (data) {
             return MarvelCharactersList(data: data);
           },

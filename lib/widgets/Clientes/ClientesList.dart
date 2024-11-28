@@ -58,15 +58,12 @@ class _ClientesListState extends State<ClientesList> {
             child: TextField(
               onChanged: _handleSearch,
               decoration: InputDecoration(
-                filled: true,
-                fillColor: const Color(0xfff1f1f1),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide.none,
                 ),
                 hintText: "Buscar por Nombre",
                 prefixIcon: const Icon(Icons.search),
-                prefixIconColor: Colors.black,
               ),
             ),
           ),

@@ -26,7 +26,8 @@ class _HarryPotterListState extends State<HarryPotterList> {
         filteredCharacters = widget.characters;
       } else {
         filteredCharacters = widget.characters
-            .where((character) => character.name.toLowerCase().contains(query.toLowerCase()))
+            .where((character) =>
+                character.name.toLowerCase().contains(query.toLowerCase()))
             .toList();
       }
     });
@@ -42,8 +43,6 @@ class _HarryPotterListState extends State<HarryPotterList> {
             onChanged: _filterCharacters,
             decoration: InputDecoration(
               hintText: "Buscar personaje",
-              filled: true,
-              fillColor: Colors.grey[200],
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none,
