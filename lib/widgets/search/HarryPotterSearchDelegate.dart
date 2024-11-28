@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/classes/HarryPotterCharacters.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class HarryPotterSearchDelegate extends SearchDelegate<Datum?> {
-  final List<Datum> characters;
-
-  HarryPotterSearchDelegate(this.characters);
-
+class HarryPotterSearchDelegate extends SearchDelegate {
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
       IconButton(
         icon: Icon(Icons.clear),
-        onPressed: () {
-          query = ''; // Limpiamos el texto de búsqueda
-        },
+        onPressed: () => query = '', // Resetea el texto directamente
       ),
     ];
   }
@@ -22,59 +17,71 @@ class HarryPotterSearchDelegate extends SearchDelegate<Datum?> {
   Widget? buildLeading(BuildContext context) {
     return IconButton(
       icon: Icon(Icons.arrow_back),
-      onPressed: () {
-        close(context, null); // Cerramos el buscador
-      },
+      onPressed: () => close(context, null), // Cierra la búsqueda
     );
   }
 
   @override
   Widget buildResults(BuildContext context) {
-    final results = characters.where((character) {
-      return character.name.toLowerCase().contains(query.toLowerCase());
-    }).toList();
-
-    return ListView.builder(
-      itemCount: results.length,
-      itemBuilder: (context, index) {
-        final character = results[index];
-
-        return ListTile(
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(character.image),
-          ),
-          title: Text(character.name),
-          subtitle: Text(houseValues.reverse[character.house] ?? 'Sin casa'),
-          onTap: () {
-            Navigator.pushNamed(context, '/harryPotterInfo', arguments: character);
-          },
-        );
+    return FutureBuilder<List<dynamic>>(
+      future: _fetchCharacters(query),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (snapshot.hasError) {
+          return const Center(
+            child: Icon(
+              Icons.error,
+              color: Colors.red,
+              size: 80,
+            ),
+          );
+        }
+        if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+          final characters = snapshot.data!;
+          return ListView.builder(
+            itemCount: characters.length,
+            itemBuilder: (context, index) {
+              final character = characters[index];
+              return ListTile(
+                title: Text(character['name']),
+                subtitle: Text(
+                    'Casa: ${character['house'] ?? 'Sin información'}'),
+                onTap: () {
+                  // Aquí se puede manejar la navegación
+                },
+              );
+            },
+          );
+        } else {
+          return const Center(
+            child: Text("No se encontraron resultados."),
+          );
+        }
       },
     );
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final suggestions = characters.where((character) {
-      return character.name.toLowerCase().contains(query.toLowerCase());
-    }).toList();
+    if (query.isEmpty) {
+      return Container();
+    }
+    return buildResults(context); // Reutilizamos buildResults para mostrar resultados dinámicos
+  }
 
-    return ListView.builder(
-      itemCount: suggestions.length,
-      itemBuilder: (context, index) {
-        final character = suggestions[index];
+  Future<List<dynamic>> _fetchCharacters(String query) async {
+    final url =
+        "https://tup-labo-4-grupo-15.onrender.com/api/v1/personajes?name=$query&limit=50&page=1";
 
-        return ListTile(
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(character.image),
-          ),
-          title: Text(character.name),
-          onTap: () {
-            query = character.name;
-            showResults(context);
-          },
-        );
-      },
-    );
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body)['data'];
+      return data;
+    } else {
+      throw Exception('Error al buscar personajes');
+    }
   }
 }

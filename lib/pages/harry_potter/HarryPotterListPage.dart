@@ -25,7 +25,7 @@ class _HarryPotterListPageState extends State<HarryPotterListPage> {
               if (characters.isNotEmpty) {
                 showSearch(
                   context: context,
-                  delegate: HarryPotterSearchDelegate(characters),
+                  delegate: HarryPotterSearchDelegate(),
                 );
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
