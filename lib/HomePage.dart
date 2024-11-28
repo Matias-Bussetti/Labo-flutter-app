@@ -3,8 +3,6 @@ import 'package:flutter_application_1/MainRouter.dart';
 import 'package:flutter_application_1/widgets/NavigatorCardWidget.dart';
 import 'package:flutter_application_1/widgets/DrawerMenu.dart';
 
-
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key, required this.title});
   final String title;
@@ -37,10 +35,13 @@ class HomePage extends StatelessWidget {
             ...MainRouter.routes
                 .map((route) => route.show
                     ? NavigatorCardWidget(
-                        title: route.title, route: route.path, icon: route.icon)
+                        title: route.title,
+                        route: route.path,
+                        icon: route.icon,
+                        subtitle: route.subtitle,
+                      )
                     : null)
                 .whereType<Widget>()
-                
           ],
         ),
       ),

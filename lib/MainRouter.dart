@@ -21,6 +21,7 @@ class MainRouter {
         widget: const ProfilePage(),
         icon: const Icon(Icons.settings),
         title: "Perfil de Usuario",
+        subtitle: "",
         show: true),
     //Rutas Matias Bussetti
     Route(
@@ -29,6 +30,7 @@ class MainRouter {
         widget: const PatientsPage(),
         icon: const Icon(Icons.person_search_rounded),
         title: "Lista de Pacientes",
+        subtitle: "Matias Bussetti",
         show: true),
 
     Route(
@@ -37,6 +39,7 @@ class MainRouter {
         widget: const PatientsMapPage(),
         icon: const Icon(Icons.map),
         title: "Mapa de Pacientes",
+        subtitle: "Matias Bussetti",
         show: true),
     Route(
         id: "patientInfo",
@@ -44,6 +47,7 @@ class MainRouter {
         widget: const PatientInfoPage(),
         icon: const Icon(Icons.accessibility_new_rounded),
         title: "Paciente",
+        subtitle: "",
         show: false),
     //Rutas Otro
     Route(
@@ -52,6 +56,7 @@ class MainRouter {
         widget: const MarvelCharsListPage(),
         icon: const Icon(Icons.star_border),
         title: "Lista de Personajes de Marvel",
+        subtitle: "Juan Chaparro",
         show: true),
     Route(
         id: "marvelCharsSpidermanGame",
@@ -59,6 +64,7 @@ class MainRouter {
         widget: const SpidermanCatchGame(),
         icon: const Icon(Icons.star_border),
         title: "Juego de Marvel Spider-Man - Atrapá a Venom",
+        subtitle: "Juan Chaparro",
         show: true),
     Route(
         id: "marvelCharsInfo",
@@ -66,6 +72,7 @@ class MainRouter {
         widget: const MarvelCharsInfoPage(),
         icon: const Icon(Icons.star_border),
         title: "Personajes de Marvel",
+        subtitle: "",
         show: false),
     Route(
         id: "pokemonList",
@@ -73,6 +80,7 @@ class MainRouter {
         widget: const PokemonListPage(),
         icon: const Icon(Icons.catching_pokemon),
         title: "Lista de Pokémon",
+        subtitle: "Diego Bruno",
         show: true),
     Route(
         id: "pokemonInfo",
@@ -80,6 +88,7 @@ class MainRouter {
         widget: const PokemonInfoPage(),
         icon: const Icon(Icons.info),
         title: "Detalle de Pokémon",
+        subtitle: "",
         show: false),
     Route(
         id: "harryPotterList",
@@ -87,6 +96,7 @@ class MainRouter {
         widget: HarryPotterListPage(),
         icon: Icon(Icons.school),
         title: "Lista de Personajes de Harry Potter",
+        subtitle: "Eugenia Losada",
         show: true),
     Route(
         id: "harryPotterGuessColor",
@@ -94,6 +104,7 @@ class MainRouter {
         widget: const AdivinaElColor(),
         icon: const Icon(Icons.palette),
         title: "Juego: Adivina el Color",
+        subtitle: "Eugenia Losada",
         show: true),
     Route(
         id: "harryPotterInfo",
@@ -101,13 +112,15 @@ class MainRouter {
         widget: const HarryPotterInfoPage(),
         icon: const Icon(Icons.info),
         title: "Detalles del Personaje",
+        subtitle: "",
         show: false),
     Route(
         id: "clientesList",
         path: '/clientes',
         widget: const ClientesListPage(),
         icon: const Icon(Icons.people),
-        title: "Ponin Eric 21889 - API de Clientes",
+        title: "Lista de Clientes",
+        subtitle: "Ponin Eric",
         show: true),
     Route(
         id: "clienteInfo",
@@ -115,6 +128,7 @@ class MainRouter {
         widget: const ClienteInfoPage(),
         icon: const Icon(Icons.person),
         title: "Detalle del Cliente",
+        subtitle: "",
         show: false),
   ];
 
@@ -132,6 +146,7 @@ class Route {
   final String path;
   final Widget widget;
   final String title;
+  final String subtitle;
   final bool show;
   final Icon icon;
 
@@ -140,6 +155,7 @@ class Route {
     required this.path,
     required this.widget,
     required this.title,
+    required this.subtitle,
     required this.icon,
     required this.show,
   });

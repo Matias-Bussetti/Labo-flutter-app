@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class NavigatorCardWidget extends StatelessWidget {
   final String title;
+  final String subtitle;
   final Icon icon;
   final String route;
 
@@ -9,7 +10,8 @@ class NavigatorCardWidget extends StatelessWidget {
       {super.key,
       required this.title,
       required this.route,
-      required this.icon});
+      required this.icon,
+      required this.subtitle});
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,14 @@ class NavigatorCardWidget extends StatelessWidget {
               ListTile(
                 leading: icon,
                 title: Text(title),
+                subtitle: subtitle == ""
+                    ? null
+                    : Row(
+                        children: [
+                          Icon(Icons.person),
+                          Text(subtitle),
+                        ],
+                      ),
               ),
             ],
           ),
