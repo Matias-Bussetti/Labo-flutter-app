@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/MarvelCharacters.dart';
 import 'package:flutter_application_1/widgets/marvelchars/MarvelCharacterItem.dart';
+import 'package:flutter_application_1/widgets/search/MarvelSearchDelegate.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
@@ -28,7 +29,7 @@ class _MarvelCharactersListState extends State<MarvelCharactersList> {
   bool _isLoadingMore = false;
   bool _hasMore = true;
   late ScrollController _scrollController;
-  Timer? _debounce; // Declaramos el debounce
+  Timer? _debounce; // declaro el debounce para el timer
 
   @override
   void initState() {
@@ -41,7 +42,7 @@ class _MarvelCharactersListState extends State<MarvelCharactersList> {
   @override
   void dispose() {
     _scrollController.dispose();
-    _debounce?.cancel(); // Liberamos el Timer
+    _debounce?.cancel(); // libero el timer
     super.dispose();
   }
 
@@ -92,10 +93,8 @@ class _MarvelCharactersListState extends State<MarvelCharactersList> {
   }
 
   void _handleSearch(String value) {
-    // Cancelamos cualquier temporizador previo
     if (_debounce?.isActive ?? false) _debounce!.cancel();
 
-    // Configuramos un nuevo debounce
     _debounce = Timer(const Duration(milliseconds: 500), () {
       setState(() {
         _searchQuery = value;
@@ -111,43 +110,33 @@ class _MarvelCharactersListState extends State<MarvelCharactersList> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-          child: TextField(
-            onChanged: _handleSearch,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide.none,
-              ),
-              hintText: "Buscar personaje por nombre...",
-              prefixIcon: const Icon(Icons.search),
-              contentPadding: const EdgeInsets.symmetric(vertical: 12),
-            ),
-          ),
-        ),
-        Expanded(
-          child: ListView.builder(
-            controller: _scrollController,
-            shrinkWrap: true,
-            itemCount: _characters.length + (_isLoadingMore ? 1 : 0),
-            itemBuilder: (BuildContext context, int index) {
-              if (index == _characters.length) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              final character = _characters[index];
-              return MarvelCharacterItem(character: character);
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Marvel - Characters'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: MarvelSearchDelegate(),
+              );
             },
           ),
-        ),
-        if (!_hasMore && _characters.isNotEmpty)
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text("No hay más resultados."),
-          ),
-      ],
+        ],
+      ),
+      body: ListView.builder(
+        controller: _scrollController,
+        shrinkWrap: true,
+        itemCount: _characters.length + (_isLoadingMore ? 1 : 0),
+        itemBuilder: (BuildContext context, int index) {
+          if (index == _characters.length) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          final character = _characters[index];
+          return MarvelCharacterItem(character: character);
+        },
+      ),
     );
   }
 }

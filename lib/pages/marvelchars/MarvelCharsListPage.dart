@@ -8,11 +8,7 @@ class MarvelCharsListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.amber[500],
-        title: const Text("Marvel - Personajes"),
-      ),
-      body: Center(
+        body: Center(
         child: FutureFetcher(
           url:
               "https://tup-labo-4-grupo-15.onrender.com/api/v1/marvel/chars?limit=20&offset=0",
