@@ -37,11 +37,15 @@ assets/cliente/documentacion/ListaCliente.jpg
 ### 2. **Lista de Clientes**
    **Contenido:**
    - La pantalla presenta una lista de clientes con un campo de búsqueda para filtrar por nombre.
-   - En este caso como la API no proporciona imagenes se cargaron avatars de forma local y carga de manera aleatoria segun el genero una imagen para los clientes.
+   - En este caso como la API no proporciona imagenes se cargaron avatars de forma local y carga de manera aleatoria segun el genero una imagen para los clientes..
+   - Cada cliente en la lista muestra: Nombre completo y correo electronico.
+   - Muestra un escudo pintado con un tilde si el cliente es VIP.
+   -Y un boton para marcarle una estrella.
 
    **Función:**
    - Es una vista principal para navegar entre los clientes registrados en la aplicación.
    - El campo de búsqueda permite al usuario encontrar un cliente rápidamente escribiendo su nombre.
+   -Al hacer click en el cliente se puede ver mas informacion de el.
 
 ---
 assets/cliente/documentacion/Principal.jpg
