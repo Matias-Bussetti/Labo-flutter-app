@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/Patient.dart';
 
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
 
 class Patientdescription extends StatelessWidget {
   final Map<String, dynamic> data;
@@ -98,7 +96,7 @@ class RowData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
+      padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
       child: Row(
         children: [
           Expanded(

@@ -7,14 +7,17 @@ import 'package:latlong2/latlong.dart';
 class PatientsMap extends StatelessWidget {
   final Map<String, dynamic> data;
 
-  const PatientsMap({Key? key, required this.data}) : super(key: key);
+  const PatientsMap({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
 
     List<Patient> patients = Patient.listFromJson(data);
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/dev
     List<Marker> markers = patients.map((patient) {
       return Marker(
         point: LatLng(

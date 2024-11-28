@@ -5,7 +5,7 @@ import 'package:flutter_application_1/classes/Patient.dart';
 class PatientCard extends StatelessWidget {
   final Patient patient;
 
-  const PatientCard({Key? key, required this.patient}) : super(key: key);
+  const PatientCard({super.key, required this.patient});
 
   @override
   Widget build(BuildContext context) {
