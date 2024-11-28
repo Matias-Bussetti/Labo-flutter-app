@@ -96,6 +96,7 @@ class _MarvelCharactersListState extends State<MarvelCharactersList> {
       _hasMore = true;
       _characters.clear();
     });
+
     _fetchMoreCharacters();
   }
 
@@ -108,19 +109,13 @@ class _MarvelCharactersListState extends State<MarvelCharactersList> {
           child: TextField(
             onChanged: _handleSearch,
             decoration: InputDecoration(
-              filled: true,
-              fillColor: const Color(0xfff1f1f1),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide.none,
               ),
               hintText: "Buscar personaje por nombre...",
-              hintStyle: const TextStyle(
-                color: Colors.black,
-              ),
               prefixIcon: const Icon(Icons.search),
               contentPadding: const EdgeInsets.symmetric(vertical: 12),
-              prefixIconColor: Colors.black,
             ),
           ),
         ),

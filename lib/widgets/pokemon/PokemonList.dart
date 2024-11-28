@@ -18,7 +18,7 @@ class PokemonList extends StatefulWidget {
 }
 
 class _PokemonListState extends State<PokemonList> {
-  late List<Pokemon> _pokemon = []; 
+  late List<Pokemon> _pokemon = [];
   String _searchQuery = "";
   bool _isSearching = false;
   bool _isLoading = false;
@@ -127,19 +127,13 @@ class _PokemonListState extends State<PokemonList> {
             child: TextField(
               onChanged: _handleSearch,
               decoration: InputDecoration(
-                filled: true,
-                fillColor: const Color(0xfff1f1f1),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide.none,
                 ),
                 hintText: "Buscar Pokémon por nombre...",
-                hintStyle: const TextStyle(
-                  color: Colors.black,
-                ),
                 prefixIcon: const Icon(Icons.search),
                 contentPadding: const EdgeInsets.symmetric(vertical: 12),
-                prefixIconColor: Colors.black,
               ),
             ),
           ),
@@ -197,8 +191,7 @@ class _PokemonListState extends State<PokemonList> {
                           mainAxisSpacing: 8,
                           childAspectRatio: 1,
                         ),
-                        itemCount: _pokemon.length +
-                            1, 
+                        itemCount: _pokemon.length + 1,
                         itemBuilder: (context, index) {
                           if (index == _pokemon.length) {
                             return const Center(
