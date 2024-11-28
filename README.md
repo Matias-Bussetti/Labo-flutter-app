@@ -18,7 +18,7 @@ samples, guidance on mobile development, and a full API reference.
 
 PONIN ERIC 21889 - API DE CLIENTES - 
 
-assets/cliente/documentacion/DetalleCliente.jpg
+lib/assets/cliente/documentacion/DetalleCliente.jpg
 ### 1. **Detalle del Cliente**
    **Contenido:**
    - La pantalla muestra información detallada de un cliente específico:
@@ -33,7 +33,7 @@ assets/cliente/documentacion/DetalleCliente.jpg
    - Esta vista es utilizada para mostrar los datos completos de un cliente seleccionado desde una lista previa. Es útil para consultar información específica y detallada.
 
 ---
-assets/cliente/documentacion/ListaCliente.jpg
+lib/assets/cliente/documentacion/ListaCliente.jpg
 ### 2. **Lista de Clientes**
    **Contenido:**
    - La pantalla presenta una lista de clientes con un campo de búsqueda para filtrar por nombre.
@@ -48,7 +48,7 @@ assets/cliente/documentacion/ListaCliente.jpg
    -Al hacer click en el cliente se puede ver mas informacion de el.
 
 ---
-assets/cliente/documentacion/Principal.jpg
+lib/assets/cliente/documentacion/Principal.jpg
 ### 3. **Pantalla Principal**
    **Contenido:**
    - Es la vista de menú o página principal que ofrece múltiples opciones:
