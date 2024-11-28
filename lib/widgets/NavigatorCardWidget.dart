@@ -31,7 +31,7 @@ class NavigatorCardWidget extends StatelessWidget {
                     ? null
                     : Row(
                         children: [
-                          Icon(Icons.person),
+                          const Icon(Icons.person),
                           Text(subtitle),
                         ],
                       ),

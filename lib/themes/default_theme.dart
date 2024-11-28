@@ -56,21 +56,21 @@ class DefaultTheme {
       filled: true, // Para habilitar el color de fondo
       fillColor: Colors.black87, // Color de fondo
       iconColor: Colors.grey, // Color del ícono
-      labelStyle: TextStyle(color: Colors.grey), // Color del texto del label
-      hintStyle: TextStyle(color: Colors.grey), // Color del hint text
+      labelStyle: const TextStyle(color: Colors.grey), // Color del texto del label
+      hintStyle: const TextStyle(color: Colors.grey), // Color del hint text
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0), // Borde redondeado
-        borderSide: BorderSide(color: Colors.blue), // Color del borde
+        borderSide: const BorderSide(color: Colors.blue), // Color del borde
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
         borderSide:
-            BorderSide(color: Colors.grey), // Borde cuando está habilitado
+            const BorderSide(color: Colors.grey), // Borde cuando está habilitado
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
         borderSide:
-            BorderSide(color: Colors.blue, width: 2.0), // Borde al enfocar
+            const BorderSide(color: Colors.blue, width: 2.0), // Borde al enfocar
       ),
     ),
   );

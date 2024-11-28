@@ -18,7 +18,7 @@ class PokemonList extends StatefulWidget {
 }
 
 class _PokemonListState extends State<PokemonList> {
-  late List<Pokemon> _pokemon = [];
+  late final List<Pokemon> _pokemon = [];
   String _searchQuery = "";
   bool _isSearching = false;
   bool _isLoading = false;
