@@ -86,20 +86,23 @@ class _PokemonListState extends State<PokemonList> {
 
   Future<List<Pokemon>> _fetchSearchResults(String query) async {
     final url =
-        "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/search?name=$query";
+        "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/name/$query";
 
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
 
-      if (data['status'] == 200 && data['data'] is List) {
-        return data['data']
-            .map<Pokemon>((item) => Pokemon.fromJson(item))
-            .toList();
-      } else {
-        throw Exception('Respuesta de la API inesperada: ${response.body}');
+      if (data['status'] == 200) {
+        if (data['data'] is Map<String, dynamic>) {
+          return [Pokemon.fromJson(data['data'])];
+        } else if (data['data'] is List) {
+          return data['data']
+              .map<Pokemon>((item) => Pokemon.fromJson(item))
+              .toList();
+        }
       }
+      throw Exception('Respuesta de la API inesperada: ${response.body}');
     } else {
       throw Exception('Error al buscar Pokémon');
     }
