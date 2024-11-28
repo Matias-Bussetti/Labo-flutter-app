@@ -18,13 +18,13 @@ class PokemonList extends StatefulWidget {
 }
 
 class _PokemonListState extends State<PokemonList> {
-  late List<Pokemon> _pokemon = [];
+  late final List<Pokemon> _pokemon = [];
   String _searchQuery = "";
   bool _isSearching = false;
   bool _isLoading = false;
   bool _isLoadingMore = false;
   final ScrollController _scrollController = ScrollController();
-  int _limit = 20;
+  final int _limit = 20;
   int _offset = 0;
 
   @override
@@ -213,8 +213,8 @@ class _PokemonListState extends State<PokemonList> {
             curve: Curves.easeInOut,
           );
         },
-        child: const Icon(Icons.arrow_upward),
         backgroundColor: Colors.blue,
+        child: const Icon(Icons.arrow_upward),
       ),
     );
   }

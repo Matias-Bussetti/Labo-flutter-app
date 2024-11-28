@@ -93,8 +93,8 @@ class MainRouter {
     Route(
         id: "harryPotterList",
         path: '/harryPotterList',
-        widget: HarryPotterListPage(),
-        icon: Icon(Icons.school),
+        widget: const HarryPotterListPage(),
+        icon: const Icon(Icons.school),
         title: "Lista de Personajes de Harry Potter",
         subtitle: "Eugenia Losada",
         show: true),
