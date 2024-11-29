@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/custom/FutureFetcher.dart';
-import 'package:flutter_application_1/classes/classes.dart';
+import 'package:flutter_application_1/classes/HarryPotterResponse.dart';
+import 'package:flutter_application_1/widgets/harry_potter/HarryPotterItem.dart';
 import 'package:flutter_application_1/widgets/search/HarryPotterSearchDelegate.dart';
-import 'package:flutter_application_1/widgets/IsFavoriteIcon.dart';
+import 'package:flutter_application_1/helpers/preferences.dart'; // Importa para detectar dark mode
 
 class HarryPotterListPage extends StatefulWidget {
   const HarryPotterListPage({super.key});
@@ -12,62 +13,46 @@ class HarryPotterListPage extends StatefulWidget {
 }
 
 class _HarryPotterListPageState extends State<HarryPotterListPage> {
-  List<Datum> characters = []; // Lista de personajes cargados
-
   @override
   Widget build(BuildContext context) {
+    bool darkMode = Preferences.darkmode; // Detecta modo oscuro
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber[500],
-        title: const Text("Lista de Personajes de Harry Potter"),
+        backgroundColor: darkMode ? Colors.black : Colors.blueAccent, // Ajuste de color
+        title: Text(
+          "Lista de Personajes de Harry Potter",
+          style: TextStyle(
+            color: darkMode ? Colors.redAccent : Colors.white, // Color dinámico
+          ),
+        ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search),
+            icon: Icon(
+              Icons.search,
+              color: darkMode ? Colors.redAccent : Colors.white,
+            ),
             onPressed: () {
               showSearch(
                 context: context,
-                delegate: HarryPotterSearchDelegate(), 
+                delegate: HarryPotterSearchDelegate(),
               );
             },
           ),
-
         ],
       ),
       body: FutureFetcher(
-        url: "https://tup-labo-4-grupo-15.onrender.com/api/v1/todoslospersonajes", // URL de la API
+        url: "https://tup-labo-4-grupo-15.onrender.com/api/v1/todoslospersonajes",
         widget: (data) {
-          if (data['data'] is List) {
-            characters = List<Datum>.from(
-              data['data'].map((item) => Datum.fromJson(item)),
-            );
+          final response = HarryPotterResponse.fromJson(data);
 
-            return ListView.builder(
-              itemCount: characters.length,
-              itemBuilder: (context, index) {
-                final character = characters[index];
-                return ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: character.image.isNotEmpty
-                        ? NetworkImage(character.image)
-                        : const AssetImage('lib/assets/images/ministry_of_magic.png') as ImageProvider, 
-                  
-                  ),
-                  title: Text(character.name),
-                  subtitle: Text(houseValues.reverse[character.house] ?? 'Sin casa'),
-                  trailing: IsFavoriteIcon(id: character.id.toString(), color: const Color.fromARGB(255, 212, 212, 0)), // Ícono de favorito
-                  onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/harryPotterInfo',
-                      arguments: character,
-                    );
-                  },
-                );
-              },
-            );
-          } else {
-            return const Center(child: Text("Error al cargar los personajes."));
-          }
+          return ListView.builder(
+            itemCount: response.characters.length,
+            itemBuilder: (context, index) {
+              final character = response.characters[index];
+              return HarryPotterItem(character: character);
+            },
+          );
         },
       ),
     );
