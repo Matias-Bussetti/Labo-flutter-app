@@ -229,7 +229,7 @@ Para la lista de pokemon se utilizó: "https://tup-labo-4-grupo-15.onrender.com/
 
 Para mostrar los detalles del pokemon se utilizó: "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/:id"
 
-Para el paginado y la carga de pokemon a la lista se utilizó (modificando los limits): "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/search?limit=int&offset=int"
+Para el paginado y la carga de pokemon a la lista se utilizó (modificando los parametros): "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/search?limit=int&offset=int"
 
 Para la busqueda de pokemon por nombre se utilizó: "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/name/'nombre_pokemon'"
 
