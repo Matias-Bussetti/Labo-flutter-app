@@ -37,7 +37,7 @@ PONIN ERIC 21889 - API DE CLIENTES -
 ---
 ### 2. **Lista de Clientes**
 
-![lib/assets/cliente/documentacion/](ListaCLientes.JPG)
+![lib/assets/cliente/documentacion/](ListaClientes.JPG)
 
    **Contenido:**
    - La pantalla presenta una lista de clientes con un campo de búsqueda para filtrar por nombre.
