@@ -87,12 +87,39 @@ class PokemonItem extends StatelessWidget {
               spacing: 4,
               alignment: WrapAlignment.center,
               children: pokemon.types.map((type) {
-                return Chip(
-                  label: Text(type),
-                  backgroundColor: TypeColorPokemon(type),
-                  labelStyle: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+                return Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: TypeColorPokemon(type),
+                      border: Border.all(
+                        color: Colors.black26,
+                        width: 1,
+                      )),
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  child: Stack(
+                    children: [
+                      // Texto con borde negro
+                      Text(
+                        type.toUpperCase(),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w200,
+                          foreground: Paint()
+                            ..style = PaintingStyle.stroke
+                            ..strokeWidth = 2.0 // Grosor del borde
+                            ..color = Colors.black26, // Color del borde
+                        ),
+                      ),
+                      // Texto blanco superpuesto
+                      Text(
+                        type.toUpperCase(),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w200,
+                          color: Colors.white, // Color del relleno del texto
+                        ),
+                      ),
+                    ],
                   ),
                 );
               }).toList(),
@@ -103,3 +130,12 @@ class PokemonItem extends StatelessWidget {
     );
   }
 }
+//  return Chip(
+    
+//     label: Text(type),
+//     backgroundColor: TypeColorPokemon(type),
+//     labelStyle: const TextStyle(
+//       color: Colors.white,
+//       fontWeight: FontWeight.bold,
+//     ),
+//   );

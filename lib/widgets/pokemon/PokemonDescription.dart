@@ -22,9 +22,8 @@ class PokemonDescription extends StatelessWidget {
               LinearProgressIndicator(
                 value: value / 150,
                 backgroundColor: Colors.grey[300],
-                valueColor:
-                    AlwaysStoppedAnimation<Color>(color),
-                minHeight: 10, 
+                valueColor: AlwaysStoppedAnimation<Color>(color),
+                minHeight: 10,
               ),
               const SizedBox(height: 8),
             ],
@@ -75,22 +74,45 @@ class PokemonDescription extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
               Wrap(
                 spacing: 8,
-                children: pokemon.types
-                    .map(
-                      (type) => Chip(
-                        label: Text(type),
-                        backgroundColor:
-                            TypeColorPokemon(type),
-                        labelStyle: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                children: pokemon.types.map((type) {
+                  return Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: TypeColorPokemon(type),
+                        border: Border.all(
+                          color: Colors.black26,
+                          width: 1,
+                        )),
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    child: Stack(
+                      children: [
+                        // Texto con borde negro
+                        Text(
+                          type.toUpperCase(),
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w200,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 2.0 // Grosor del borde
+                              ..color = Colors.black26, // Color del borde
+                          ),
                         ),
-                      ),
-                    )
-                    .toList(),
+                        // Texto blanco superpuesto
+                        Text(
+                          type.toUpperCase(),
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w200,
+                            color: Colors.white, // Color del relleno del texto
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }).toList(),
               ),
               const SizedBox(height: 16),
               _buildStatRow("HP", pokemon.stats.hp, Icons.favorite, Colors.red),
