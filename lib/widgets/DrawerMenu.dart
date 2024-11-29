@@ -66,25 +66,19 @@ class _DrawerHeaderAlternative extends StatefulWidget {
 class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
   bool darkMode = false;
   List<Offset> positions = [];
-<<<<<<< HEAD
-=======
   Timer? timer; // Declarar el Timer como nullable
->>>>>>> origin/dev
 
   @override
   void initState() {
     super.initState();
     darkMode = Preferences.darkmode;
     positions = List.generate(30, (_) => getStartPosition());
-<<<<<<< HEAD
-=======
 
     timer = Timer.periodic(const Duration(milliseconds: 1500), (_) {
       if (mounted) {
         changePositions();
       }
     });
->>>>>>> origin/dev
   }
 
   Offset getRandomPosition() {
@@ -95,9 +89,6 @@ class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
     return Offset(widget.screenWidth * 0.5, -100);
   }
 
-<<<<<<< HEAD
-  getRandomTopPosition(int max) {
-=======
   void changePositions() {
     setState(() {
       positions = List.generate(30, (_) => getRandomPosition());
@@ -105,7 +96,6 @@ class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
   }
 
   double getRandomTopPosition(int max) {
->>>>>>> origin/dev
     return Random().nextDouble() * max;
   }
 

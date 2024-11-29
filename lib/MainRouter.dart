@@ -8,15 +8,10 @@ import 'package:flutter_application_1/pages/patients/PatientsMapPage.dart';
 import 'package:flutter_application_1/pages/patients/PatientsListPage.dart';
 import 'package:flutter_application_1/pages/ProfilePage.dart';
 import 'package:flutter_application_1/pages/patients/PatientInfoPage.dart';
-<<<<<<< HEAD
-import 'package:flutter_application_1/pages/pokemons/PokemonsPage.dart';
-import 'package:flutter_application_1/widgets/pokemons/PokemonsList.dart';
-=======
 import 'package:flutter_application_1/widgets/harry_potter/harry_potter_widgets.dart';
 import 'package:flutter_application_1/widgets/marvelchars/SpidermanGame.dart';
 import 'package:flutter_application_1/pages/pokemon/PokemonListPage.dart';
 import 'package:flutter_application_1/pages/pokemon/PokemonInfoPage.dart';
->>>>>>> origin/dev
 
 class MainRouter {
   static List<Route> routes = <Route>[
@@ -54,13 +49,6 @@ class MainRouter {
         title: "Paciente",
         subtitle: "",
         show: false),
-    Route(
-        id: "pokemonsList",
-        path: '/pokemons',
-        widget: PokemonsPage(),
-        icon: Icon(Icons.wheelchair_pickup_rounded),
-        title: "Pokemon",
-        show: true),
     //Rutas Otro
     Route(
         id: "marvelCharsList",
