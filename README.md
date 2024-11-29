@@ -224,8 +224,7 @@ a. CustomCardMarvelChars.
 
 b. DrawerMenu.
 
-c.	FutureFetcher.
-
+c. FutureFetcher.
 
 ## 4 Documentacion de la API de Pokemon - Bruno Diego Leg. 21754
 
@@ -239,8 +238,6 @@ Para el paginado y la carga de pokemon a la lista se utilizó (modificando los p
 
 Para la busqueda de pokemon por nombre se utilizó: "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/name/'nombre_pokemon'"
 
-
-
 ### 1. Detalles Técnicos.
 
     • Emulador usado: Pixel 8 Pro API 35, resolución 1344 x 2992
@@ -251,19 +248,19 @@ Para la busqueda de pokemon por nombre se utilizó: "https://tup-labo-4-grupo-15
 
 ### 2. Lista de Pokemon.
 
-  Descripción:
-  
+Descripción:
+
     • Lista de pokemon con su imagen, id correspondiente y tipo/s. Donde cada pokemon proviene de un widget reutilizable llamado PokemonItem.dart.
 
 ![imagen](https://github.com/user-attachments/assets/22a18770-8e1b-4fcf-8288-e69fd38cb41e)
 
     • Barra de búsqueda para poder filtrar el pokemon que desee por su nombre.
-    
+
 ![imagen](https://github.com/user-attachments/assets/e4342c7e-e338-4fef-9790-1183820f5347)
 
 ### 3. Detalles del pokemon.
 
-  Descripción:
+Descripción:
 
     • Pantalla donde se muestra la descripción del pokemon:
       o Boton para agregarlo a tus favoritos (Arriba a la derecha)
@@ -272,7 +269,7 @@ Para la busqueda de pokemon por nombre se utilizó: "https://tup-labo-4-grupo-15
       o Su/s Tipo/s
       o Sus estadisticas en formato de barras
 
-  ![imagen](https://github.com/user-attachments/assets/8b24ae9d-8c0b-43bb-b089-f821f0ef1f36)
+![imagen](https://github.com/user-attachments/assets/8b24ae9d-8c0b-43bb-b089-f821f0ef1f36)
 
 ### 4. Widgets Reutilizables utilizados:
 
@@ -284,11 +281,22 @@ c. FutureFetcher
 
 d. FetcherPokemon
 
-
-## 5 Documentación: Consumo de API pacientes con Flutter (Matias Bussetti)
+## 5 Documentación: Consumo de API pacientes con UI desarrollada en Flutter (Matias Bussetti 21731)
 
 ### 1. Recursos Consumidos API
 
 1. Rutas (recurso: Patients):
-   - https://tup-labo-4-grupo-15.onrender.com/api/v1/patients
-   - https://tup-labo-4-grupo-15.onrender.com/api/v1/patients/where?name
+
+   1. https://tup-labo-4-grupo-15.onrender.com/api/v1/patients
+   2. https://tup-labo-4-grupo-15.onrender.com/api/v1/patients/:id
+   3. https://tup-labo-4-grupo-15.onrender.com/api/v1/patients/where?name=:name
+
+2. Equipo de desarrollo
+   1. Se utilizo un S10 plus para realizar las interfaces gráficas.
+
+| Widgets                                                                                                                                                    | UI                                                                           | Descripción                                                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Widget: [PatientMap.dart](lib\widgets\patients\PatientsMap.dart) <br> Page: [PatientMapPage.dart](lib\pages\patients\PatientsMapPage.dart)                 | <img src="doc/patients/map.jpg" alt="drawing" width="200"/>                  | Utilizando un mapa para mostrar la ubicación de los pacientes, dando uso de las propiedades en latlog del recurso.                                                             |
+| Widget: [PatientsList.dart](lib\widgets\patients\PatientsList.dart) <br> Page: [PatientListPage.dart](lib\pages\patients\PatientsListPage.dart)            | <img src="doc/patients/list.jpg" alt="drawing" width="200"/>                 | Se muestra una lista utilizando un listview para mostrar todos los recursos obteneidos por la ruta 1.1. .                                                                      |
+| Widget: [PatientDescription.dart](lib\widgets\patients\PatientDescription.dart) <br> Page: [PatientInfoPage.dart](lib\pages\patients\PatientInfoPage.dart) | <img src="doc/patients/description.jpg" alt="drawing" width="200"/>          | Se muesta la información de un paciente utilizado la ruta para obtener un solo recuros (ruta 1. 2.).                                                                           |
+| Widget: [PatientsList.dart](lib\widgets\patients\PatientsList.dart) <br>                                                                                   | <img src="doc/patients/search wit debouncer.gif" alt="drawing" width="200"/> | Utilizando la ruta 1.3. obtengo una lista dependiendo del valor del input, utilizado un debounce que espera 2 segundos para hacer la petición después de terminar de escribir. |
