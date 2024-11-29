@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/pokemon/Pokemon.dart';
 import 'package:flutter_application_1/classes/pokemon/PokemonInfoPageArguments.dart';
 import 'package:flutter_application_1/helpers/TypeColorsPokemon.dart';
+import 'package:flutter_application_1/helpers/PokemonTypeTranslator.dart';
 
 class PokemonItem extends StatelessWidget {
   final Pokemon pokemon;
@@ -67,60 +68,41 @@ class PokemonItem extends StatelessWidget {
                     fontFamily: "PokemonSolid",
                     foreground: Paint()
                       ..style = PaintingStyle.stroke
-                      ..strokeWidth = 2.0 // Grosor del borde
-                      ..color = Colors.black, // Color del borde
+                      ..strokeWidth = 2.0
+                      ..color = Colors.black,
                   ),
                 ),
-                // Texto blanco superpuesto
                 Text(
                   pokemon.name,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                     fontFamily: "PokemonSolid",
-                    color: Colors.white, // Color del relleno del texto
+                    color: Colors.white,
                   ),
                 ),
               ],
             ),
             Wrap(
-              spacing: 4,
+              spacing: 8,
               alignment: WrapAlignment.center,
               children: pokemon.types.map((type) {
-                return Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: TypeColorPokemon(type),
-                      border: Border.all(
-                        color: Colors.black26,
-                        width: 1,
-                      )),
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  child: Stack(
-                    children: [
-                      // Texto con borde negro
-                      Text(
-                        type.toUpperCase(),
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w200,
-                          foreground: Paint()
-                            ..style = PaintingStyle.stroke
-                            ..strokeWidth = 2.0 // Grosor del borde
-                            ..color = Colors.black26, // Color del borde
-                        ),
-                      ),
-                      // Texto blanco superpuesto
-                      Text(
-                        type.toUpperCase(),
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w200,
-                          color: Colors.white, // Color del relleno del texto
-                        ),
-                      ),
-                    ],
+                return Chip(
+                  label: Text(
+                    _capitalize(
+                      PokemonTypeTranslator.translateToSpanish(type),
+                    ),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
+                  backgroundColor: TypeColorPokemon(type),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  labelPadding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
                 );
               }).toList(),
             ),
@@ -128,6 +110,11 @@ class PokemonItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _capitalize(String text) {
+    if (text.isEmpty) return text;
+    return text[0].toUpperCase() + text.substring(1).toLowerCase();
   }
 }
 //  return Chip(

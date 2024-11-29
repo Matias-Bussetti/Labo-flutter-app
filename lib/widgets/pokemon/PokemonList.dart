@@ -86,7 +86,7 @@ class _PokemonListState extends State<PokemonList> {
 
   Future<List<Pokemon>> _fetchSearchResults(String query) async {
     final url =
-        "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/name/$query";
+        "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/name/${query.toLowerCase()}";
 
     final response = await http.get(Uri.parse(url));
 
@@ -110,7 +110,7 @@ class _PokemonListState extends State<PokemonList> {
 
   void _handleSearch(String value) {
     setState(() {
-      _searchQuery = value;
+      _searchQuery = value.toLowerCase();
       _isSearching = value.isNotEmpty;
       if (!_isSearching) {
         _pokemon.clear();
