@@ -1,22 +1,7 @@
-# flutter_application_1
+# FLUTTER APP FINAL GRUPO 15 - LABORATORIO IV
+# DOCUMENTACION
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-
-PONIN ERIC 21889 - API DE CLIENTES - 
+## 1 PONIN ERIC 21889 - API DE CLIENTES - 
 
 ### 1. **Detalle del Cliente**
 
@@ -66,7 +51,7 @@ PONIN ERIC 21889 - API DE CLIENTES -
    - Actúa como el hub principal desde donde se puede navegar a otras funcionalidades de la aplicación.
 
 
-Documentación API de Harry Potter – Losada María Eugenia 21787
+## 2 Documentación API de Harry Potter – Losada María Eugenia 21787
 
 API URL: https://tup-labo-4-grupo-15.onrender.com/api/v1/todoslospersonajes
 Emulador Usado: Pixel 4 API 34
@@ -77,7 +62,7 @@ Esta parte de la aplicación está dedicada a los personajes de la saga Harry Po
 
 ---
 
-1. Listado de Personajes
+### 1. Listado de Personajes
    Descripción:
       •	Presenta una lista de personajes con su nombre, casa y actor, además de una imagen y un fondo degradado según la casa de Hogwarts.
 
@@ -93,7 +78,7 @@ Esta parte de la aplicación está dedicada a los personajes de la saga Harry Po
 
 ---
 
-2. Detalle del Personaje
+### 2. Detalle del Personaje
 
    Descripción:
       •	Muestra detalles específicos del personaje seleccionado, como:
@@ -116,7 +101,7 @@ Esta parte de la aplicación está dedicada a los personajes de la saga Harry Po
 
 ---
 
-3. Mini-Juego: Adivina el Color de la Casa
+### 3. Mini-Juego: Adivina el Color de la Casa
 
    Descripción:
       •	Juego interactivo donde el usuario debe adivinar el color de una casa de Hogwarts.
@@ -131,14 +116,14 @@ Esta parte de la aplicación está dedicada a los personajes de la saga Harry Po
 
 ---
 
-Rutas Configuradas
+### Rutas Configuradas
    1.	Lista de Personajes: /harryPotterList
    2.	Detalles del Personaje: /harryPotterInfo
    3.	Juego: Adivina el Color: /harryPotter/guessColor
 
 ---
 
-Widgets Reutilizables
+### Widgets Reutilizables
    1.	HarryPotterCard: Muestra un resumen del personaje con un fondo degradado que corresponde a su casa.
    2.	HarryPotterItem: Elemento de lista que representa al personaje, mostrando nombre, imagen y casa.
    3.	AdivinaElColor: Implementación del juego interactivo para adivinar el color de la casa de Hogwarts.
@@ -146,7 +131,7 @@ Widgets Reutilizables
    5.	FutureFetcher: Maneja peticiones HTTP para obtener datos y renderizar widgets dinámicamente.
 ---
 
-Barrel Files Usados
+### Barrel Files Usados
 
    Para organizar el código, use barrel files para agrupar las exportaciones de clases y widgets. Estos son algunos ejemplos:
 
@@ -167,9 +152,60 @@ Barrel Files Usados
 
 ---
 
-Detalles Técnicos
+### Detalles Técnicos
       •	Emulador Usado: Pixel 4 API 34.
       •	Persistencia de Datos: SharedPreferences para almacenar preferencias como tema oscuro y personajes favoritos.
       •	Gestión de Estado: Provider para cambiar entre tema claro y oscuro.
       •	Peticiones HTTP: Uso de FutureBuilder para gestionar solicitudes a la API.
 
+
+
+## 3 Documentacion de la API de Marvel - Chaparro Juan Jose Leg. 21737
+
+API URL Utilizadas: 
+Para la lista, paginado y búsqueda: "https://tup-labo-4-grupo-15.onrender.com/api/v1/marvel/chars?nameStartsWith=$query&limit=$_limit&offset=$offset";
+Para mostrar los detalles de cada personaje: "https://tup-labo-4-grupo-15.onrender.com/api/v1/marvel/chars/${character.id}"
+
+En esta parte de la aplicacion se muestra una lista de personajes de marvel, se puede buscar por nombre, y se puede ver los detalles de cada personaje.
+
+### 1. Detalles Técnicos.
+   •	Emulador Usado: Pixel 7 API 33, resolución 1080x2400.
+   •	Persistencia de Datos: SharedPreferences para almacenar preferencias como tema oscuro y personajes favoritos.
+   •	Gestión de Estado: Provider para cambiar entre tema claro y oscuro.
+   •	Peticiones HTTP: Uso de FutureBuilder para gestionar solicitudes a la API.
+   •	Font personalizada: "assets/fonts/Marvel.ttf" extraida de la pagina https://www.dafont.com/es/marvel.font.
+
+### 2. Lista de Personajes.
+   Descripción:
+      •	Lista de personajes de Marvel con su imagen, nombre y estrella que marca favoritos, cada item que se carga proviene de una card rehutilizable "CustomCardMarvelChars.dart".
+
+      ![Lista de Personajes](lib/assets/images/DocuMarvelChars/MarvelCharsList.png)
+
+      •	Sistema de búsqueda utilizando SearchDelegate, que optimiza las consultas a la API mediante un temporizador.
+
+      ![Búsqueda de Personajes](lib/assets/images/DocuMarvelChars/MarvelCharsSearch.png)
+
+### 3. Detalle del Personaje.
+   Descripción:
+      •	Pantalla que muestra la descripcion del personaje:
+         o	Nombre y estrella para agregar o quitar de favoritos.
+         o	Imagen.
+         o	Descripcion.
+         o	Series en las que aparece.
+
+      ![Detalle del Personaje](lib/assets/images/DocuMarvelChars/MarvelCharsItem.png)
+
+      •	Para que el nombre me quede en la parte superior utilize un SilverAppBar, y para que el resto de la informacion quede debajo de la barra de navegacion utilice un SingleChildListDelegate.
+
+      ![Detalle del Personaje](lib/assets/images/DocuMarvelChars/MarvelCharsItem2.png)
+
+### 4. Mini-Juego: Spider-Man: Atrapa a Venom!.
+   Descripción: Moverse de un lado al otro atrapando  a Venom.
+
+   ![Mini-Juego](lib/assets/images/DocuMarvelChars/MarvelCharsGame.png)
+
+
+### 5. Widgets Reutilizables utilizados:
+   a.	CustomCardMarvelChars.
+   d.	DrawerMenu.
+   e.	FutureFetcher.
