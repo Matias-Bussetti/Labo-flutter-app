@@ -102,15 +102,13 @@ class ClienteItem extends StatelessWidget {
                     Icon(
                       cliente.bip ? Icons.verified_user : Icons.shield_outlined,
                       color: cliente.bip
-                          ? const Color.fromARGB(255, 255, 59, 59)
-                          : const Color.fromARGB(
-                              255, 255, 0, 0), // Color según VIP
+                          ? Color.fromARGB(255, 0, 126, 185)
+                          : Color.fromARGB(255, 0, 126, 185), // Color según VIP
                     ),
                     IsFavoriteIcon(
                       id: cliente.id,
-                      color: Color.fromARGB(255, 185, 0, 0),
+                      color: Color.fromARGB(255, 0, 126, 185),
                     ),
-                    IsFavoriteIcon(id: cliente.id, color: const Color.fromARGB(255, 185, 0, 0),),
                   ],
                 ),
               ),

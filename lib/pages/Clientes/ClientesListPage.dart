@@ -9,7 +9,7 @@ class ClientesListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber[500],
+        backgroundColor: Color.fromARGB(255, 0, 126, 185),
         title: const Text("Pantalla de Clientes"),
       ),
       body: Center(
