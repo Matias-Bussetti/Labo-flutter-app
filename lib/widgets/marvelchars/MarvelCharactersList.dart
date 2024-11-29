@@ -22,6 +22,7 @@ class MarvelCharactersList extends StatefulWidget {
 
 class _MarvelCharactersListState extends State<MarvelCharactersList> {
   late List<MarvelChars> _characters;
+  // ignore: unused_field
   bool _isSearching = false;
   String _searchQuery = "";
   int _currentPage = 0;
