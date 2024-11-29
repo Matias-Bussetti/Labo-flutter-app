@@ -163,12 +163,15 @@ Esta parte de la aplicación está dedicada a los personajes de la saga Harry Po
 ## 3 Documentacion de la API de Marvel - Chaparro Juan Jose Leg. 21737
 
 API URL Utilizadas: 
+
 Para la lista, paginado y búsqueda: "https://tup-labo-4-grupo-15.onrender.com/api/v1/marvel/chars?nameStartsWith=$query&limit=$_limit&offset=$offset";
+
 Para mostrar los detalles de cada personaje: "https://tup-labo-4-grupo-15.onrender.com/api/v1/marvel/chars/${character.id}"
 
 En esta parte de la aplicacion se muestra una lista de personajes de marvel, se puede buscar por nombre, y se puede ver los detalles de cada personaje.
 
 ### 1. Detalles Técnicos.
+
    •	Emulador Usado: Pixel 7 API 33, resolución 1080x2400.
    •	Persistencia de Datos: SharedPreferences para almacenar preferencias como tema oscuro y personajes favoritos.
    •	Gestión de Estado: Provider para cambiar entre tema claro y oscuro.
@@ -176,7 +179,9 @@ En esta parte de la aplicacion se muestra una lista de personajes de marvel, se 
    •	Font personalizada: "assets/fonts/Marvel.ttf" extraida de la pagina https://www.dafont.com/es/marvel.font.
 
 ### 2. Lista de Personajes.
+
    Descripción:
+
       •	Lista de personajes de Marvel con su imagen, nombre y estrella que marca favoritos, cada item que se carga proviene de una card rehutilizable "CustomCardMarvelChars.dart".
 
    ![Lista de Personajes](lib/assets/images/DocuMarvelChars/MarvelCharsList.png)
@@ -186,7 +191,9 @@ En esta parte de la aplicacion se muestra una lista de personajes de marvel, se 
    ![Búsqueda de Personajes](lib/assets/images/DocuMarvelChars/MarvelCharsSearch.png)
 
 ### 3. Detalle del Personaje.
+
    Descripción:
+
       •	Pantalla que muestra la descripcion del personaje:
          o	Nombre y estrella para agregar o quitar de favoritos.
          o	Imagen.
@@ -200,12 +207,13 @@ En esta parte de la aplicacion se muestra una lista de personajes de marvel, se 
 ![Detalle del Personaje](lib/assets/images/DocuMarvelChars/MarvelCharsItem2.png)
 
 ### 4. Mini-Juego: Spider-Man: Atrapa a Venom!.
+
    Descripción: Moverse de un lado al otro atrapando  a Venom.
 
    ![Mini-Juego](lib/assets/images/DocuMarvelChars/MarvelCharsGame.png)
 
 
 ### 5. Widgets Reutilizables utilizados:
-   a.	CustomCardMarvelChars.
-   d.	DrawerMenu.
-   e.	FutureFetcher.
+a.	CustomCardMarvelChars.
+b.	DrawerMenu.
+c.	FutureFetcher.
