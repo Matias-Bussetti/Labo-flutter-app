@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter_application_1/classes/HarryPotterCharacters.dart';
+import 'package:flutter_application_1/widgets/harry_potter/HarryPotterItem.dart';
 
 class HarryPotterSearchDelegate extends SearchDelegate {
   @override
@@ -27,8 +29,8 @@ class HarryPotterSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return FutureBuilder<List<dynamic>>(
-      future: _fetchCharacters(query), //Busca en la api con el texto ingresado
+    return FutureBuilder<List<Datum>>(
+      future: _fetchCharacters(query), // Busca en la API con el texto ingresado
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
@@ -47,15 +49,7 @@ class HarryPotterSearchDelegate extends SearchDelegate {
           return ListView.builder(
             itemCount: characters.length,
             itemBuilder: (context, index) {
-              final character = characters[index];
-              return ListTile(
-                title: Text(character['name']),
-                subtitle: Text(
-                    'Casa: ${character['house'] ?? 'Sin información'}'),
-                onTap: () {
-                  
-                },
-              );
+              return HarryPotterItem(character: characters[index]);
             },
           );
         } else {
@@ -72,19 +66,20 @@ class HarryPotterSearchDelegate extends SearchDelegate {
     if (query.isEmpty) {
       return Container(); // Sin sugerencias si no hay texto
     }
-    return buildResults(context); // Reutiliza buildResults
+    return buildResults(context); // Reutiliza buildResults para mostrar resultados similares
   }
 
   // Realizar la búsqueda en la API pasando el parámetro "name"
-  Future<List<dynamic>> _fetchCharacters(String query) async {
+  Future<List<Datum>> _fetchCharacters(String query) async {
     final url =
         "https://tup-labo-4-grupo-15.onrender.com/api/v1/todoslospersonajes?name=$query";
 
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
-      final data = jsonDecode(response.body)['data'];
-      return data;
+      final data = jsonDecode(response.body)['data'] as List<dynamic>;
+      // Convierte los resultados en objetos Datum
+      return data.map((json) => Datum.fromJson(json)).toList();
     } else {
       throw Exception('Error al buscar personajes');
     }
