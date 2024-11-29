@@ -133,7 +133,7 @@ class _DrawerHeaderAlternativeState extends State<_DrawerHeaderAlternative> {
           Preferences.darkmode = darkMode;
           darkMode ? temaProvider.setDark() : temaProvider.setLight();
           // Cambiar posiciones al hacer tap
-          changePositions();
+          positions = List.generate(30, (_) => getRandomPosition());
         });
       },
       child: DrawerHeader(
