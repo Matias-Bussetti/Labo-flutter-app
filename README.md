@@ -220,3 +220,60 @@ a.	CustomCardMarvelChars.
 b.	DrawerMenu.
 
 c.	FutureFetcher.
+
+## 4 Documentacion de la API de Pokemon - Bruno Diego Leg. 21754
+
+API URL Utilizadas:
+
+Para la lista de pokemon se utilizó: "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/all"
+
+Para mostrar los detalles del pokemon se utilizó: "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/:id"
+
+Para el paginado y la carga de pokemon a la lista se utilizó (modificando los limits): "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/search?limit=int&offset=int"
+
+Para la busqueda de pokemon por nombre se utilizó: "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/name/'nombre_pokemon'"
+
+
+
+### 1. Detalles Técnicos.
+
+    • Emulador usado: Pixel 8 Pro API 35, resolución 1344 x 2992
+    • Persistencia de datos: SharedPreferences para almacenar personajes favoritos y para el tema oscuro.
+    • Gestión de estados: Provider para cambiar entre el tema claro y oscuro
+    • Peticiones HTTP: Usado para gestionar las solicitudes a la API, como en el buscador, en la selección del personaje para ver su descripción.
+    • Fuente personalizada: "assets/fonts/Pokemon_Hollow.ttf" y "assets/fonts/Pokemon_Solid.ttf"
+
+### 2. Lista de Pokemon.
+
+  Descripción:
+  
+    • Lista de pokemon con su imagen, id correspondiente y tipo/s. Donde cada pokemon proviene de un widget reutilizable llamado PokemonItem.dart.
+
+![imagen](https://github.com/user-attachments/assets/22a18770-8e1b-4fcf-8288-e69fd38cb41e)
+
+    • Barra de búsqueda para poder filtrar el pokemon que desee por su nombre.
+    
+![imagen](https://github.com/user-attachments/assets/e4342c7e-e338-4fef-9790-1183820f5347)
+
+### 3. Detalles del pokemon.
+
+  Descripción:
+
+    • Pantalla donde se muestra la descripción del pokemon:
+      o Boton para agregarlo a tus favoritos (Arriba a la derecha)
+      o Imagen
+      o Nombre e id
+      o Su/s Tipo/s
+      o Sus estadisticas en formato de barras
+
+  ![imagen](https://github.com/user-attachments/assets/8b24ae9d-8c0b-43bb-b089-f821f0ef1f36)
+
+### 4. Widgets Reutilizables utilizados:
+
+a. PokemonItem
+
+b. PokemonDescription
+
+c. FutureFetcher
+
+d. FetcherPokemon
