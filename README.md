@@ -81,11 +81,12 @@ Esta parte de la aplicación está dedicada a los personajes de la saga Harry Po
    Descripción:
       •	Presenta una lista de personajes con su nombre, casa y actor, además de una imagen y un fondo degradado según la casa de Hogwarts.
 
-![lib/assets/images/DocuHarryPotter/](Lista_de_Personaje_de_HPotter.png)
+![Lista de Personajes](lib/assets/images/DocuHarryPotter/Lista_de_Personajes_de_HPotter.png)
 
       •	Sistema de búsqueda interactivo utilizando SearchDelegate, que optimiza las consultas a la API mediante un temporizador para evitar peticiones excesivas.
 
-![lib/assets/images/DocuHarryPotter/](busqueda_api_hPotter.png)
+![Búsqueda de Personajes](lib/assets/images/DocuHarryPotter/busqueda_api_hPotter.png)
+
 
    Función:
       •	Facilita la búsqueda y selección de personajes, mostrando resultados rápidos y precisos.
@@ -104,9 +105,11 @@ Esta parte de la aplicación está dedicada a los personajes de la saga Harry Po
 
       •	Fondo degradado que varía según la casa, con una opción gris para personajes sin casa y una imagen predeterminada para aquellos sin foto disponible.
 
-![lib/assets/images/DocuHarryPotter/](Personaje_elegido.png)
+![Detalle del Personaje](lib/assets/images/DocuHarryPotter/Personaje_elegido.png)
 
-![lib/assets/images/DocuHarryPotter/](personaje_con_scroll_HPotter.png)
+
+![Detalle con Scroll](lib/assets/images/DocuHarryPotter/personaje_con_scroll_HPotter.png)
+
 
    Función:
       •	Proporciona información detallada y visualmente atractiva sobre los personajes seleccionados.
@@ -120,7 +123,8 @@ Esta parte de la aplicación está dedicada a los personajes de la saga Harry Po
       •	Retroalimentación visual inmediata que indica si la elección fue correcta o incorrecta.
       •	Muestra una imagen representativa de la casa tras cada intento.
 
-![lib/assets/images/DocuHarryPotter/](capturas_del_adivinador.png)
+![Mini-Juego](lib/assets/images/DocuHarryPotter/capturas_del_adivinador.png)
+
 
    Función:
       •	Ayuda a aprender los colores de las casas de forma divertida y didáctica. Es una herramienta educativa para familiarizarse con los colores de cada casa.
