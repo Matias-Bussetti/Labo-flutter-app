@@ -51,12 +51,13 @@ class CustomCardMarvelChars extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      title,
+                      title.toUpperCase(), 
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
+                        fontFamily: "MarvelRegular",
                         fontSize: 18,
                         color: Color.fromARGB(255, 255, 255, 255),
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w900 
                       ),
                     ),
                   ),
