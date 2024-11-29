@@ -9,12 +9,7 @@ class PatientsMapPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-<<<<<<< HEAD
         title: Text("Mapa de Pacientes"),
-=======
-        backgroundColor: Colors.amber[500],
-        title: const Text("Mapa de Pacientes"),
->>>>>>> origin/dev
       ),
       body: Center(
         child: FutureFetcher(

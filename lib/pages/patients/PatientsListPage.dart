@@ -9,12 +9,7 @@ class PatientsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-<<<<<<< HEAD
         title: Text("Pantalla de Pacientes"),
-=======
-        backgroundColor: Colors.amber[500],
-        title: const Text("Pantalla de Pacientes"),
->>>>>>> origin/dev
       ),
       body: Center(
         child: FutureFetcher(

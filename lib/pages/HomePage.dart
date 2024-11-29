@@ -168,7 +168,11 @@ class HomePage extends StatelessWidget {
             ...MainRouter.routes
                 .map((route) => route.show
                     ? NavigatorCardWidget(
-                        title: route.title, route: route.path, icon: route.icon)
+                        title: route.title,
+                        route: route.path,
+                        icon: route.icon,
+                        subtitle: route.subtitle,
+                      )
                     : null)
                 .whereType<Widget>()
                 .toList()
