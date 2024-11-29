@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/classes/pokemon/Pokemon.dart';
 import 'package:flutter_application_1/widgets/IsFavoriteIcon.dart';
 import 'package:flutter_application_1/helpers/TypeColorsPokemon.dart';
+import 'package:flutter_application_1/helpers/PokemonTypeTranslator.dart';
 
 class PokemonDescription extends StatelessWidget {
   final Pokemon pokemon;
@@ -22,9 +23,8 @@ class PokemonDescription extends StatelessWidget {
               LinearProgressIndicator(
                 value: value / 150,
                 backgroundColor: Colors.grey[300],
-                valueColor:
-                    AlwaysStoppedAnimation<Color>(color),
-                minHeight: 10, 
+                valueColor: AlwaysStoppedAnimation<Color>(color),
+                minHeight: 10,
               ),
               const SizedBox(height: 8),
             ],
@@ -75,22 +75,28 @@ class PokemonDescription extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
               Wrap(
                 spacing: 8,
-                children: pokemon.types
-                    .map(
-                      (type) => Chip(
-                        label: Text(type),
-                        backgroundColor:
-                            TypeColorPokemon(type),
-                        labelStyle: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                alignment: WrapAlignment.center,
+                children: pokemon.types.map((type) {
+                  return Chip(
+                    label: Text(
+                      _capitalize(
+                        PokemonTypeTranslator.translateToSpanish(type),
                       ),
-                    )
-                    .toList(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    backgroundColor: TypeColorPokemon(type),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    labelPadding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                  );
+                }).toList(),
               ),
               const SizedBox(height: 16),
               _buildStatRow("HP", pokemon.stats.hp, Icons.favorite, Colors.red),
@@ -109,5 +115,10 @@ class PokemonDescription extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _capitalize(String text) {
+    if (text.isEmpty) return text;
+    return text[0].toUpperCase() + text.substring(1).toLowerCase();
   }
 }
