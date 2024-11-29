@@ -172,11 +172,11 @@ En esta parte de la aplicacion se muestra una lista de personajes de marvel, se 
 
 ### 1. Detalles Técnicos.
 
-   •	Emulador Usado: Pixel 7 API 33, resolución 1080x2400.
-   •	Persistencia de Datos: SharedPreferences para almacenar preferencias como tema oscuro y personajes favoritos.
-   •	Gestión de Estado: Provider para cambiar entre tema claro y oscuro.
-   •	Peticiones HTTP: Uso de FutureBuilder para gestionar solicitudes a la API.
-   •	Font personalizada: "assets/fonts/Marvel.ttf" extraida de la pagina https://www.dafont.com/es/marvel.font.
+•	Emulador Usado: Pixel 7 API 33, resolución 1080x2400.
+•	Persistencia de Datos: SharedPreferences para almacenar preferencias como tema oscuro y personajes favoritos.
+•	Gestión de Estado: Provider para cambiar entre tema claro y oscuro.
+•	Peticiones HTTP: Uso de FutureBuilder para gestionar solicitudes a la API.
+•	Font personalizada: "assets/fonts/Marvel.ttf" extraida de la pagina https://www.dafont.com/es/marvel.font.
 
 ### 2. Lista de Personajes.
 
@@ -214,6 +214,9 @@ En esta parte de la aplicacion se muestra una lista de personajes de marvel, se 
 
 
 ### 5. Widgets Reutilizables utilizados:
+
 a.	CustomCardMarvelChars.
+
 b.	DrawerMenu.
+
 c.	FutureFetcher.
