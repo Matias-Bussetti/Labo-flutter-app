@@ -18,13 +18,13 @@ class PokemonList extends StatefulWidget {
 }
 
 class _PokemonListState extends State<PokemonList> {
-  late List<Pokemon> _pokemon = [];
+  late final List<Pokemon> _pokemon = [];
   String _searchQuery = "";
   bool _isSearching = false;
   bool _isLoading = false;
   bool _isLoadingMore = false;
   final ScrollController _scrollController = ScrollController();
-  int _limit = 20;
+  final int _limit = 20;
   int _offset = 0;
 
   @override
@@ -86,20 +86,23 @@ class _PokemonListState extends State<PokemonList> {
 
   Future<List<Pokemon>> _fetchSearchResults(String query) async {
     final url =
-        "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/search?name=$query";
+        "https://tup-labo-4-grupo-15.onrender.com/api/v1/pokemon/name/$query";
 
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
 
-      if (data['status'] == 200 && data['data'] is List) {
-        return data['data']
-            .map<Pokemon>((item) => Pokemon.fromJson(item))
-            .toList();
-      } else {
-        throw Exception('Respuesta de la API inesperada: ${response.body}');
+      if (data['status'] == 200) {
+        if (data['data'] is Map<String, dynamic>) {
+          return [Pokemon.fromJson(data['data'])];
+        } else if (data['data'] is List) {
+          return data['data']
+              .map<Pokemon>((item) => Pokemon.fromJson(item))
+              .toList();
+        }
       }
+      throw Exception('Respuesta de la API inesperada: ${response.body}');
     } else {
       throw Exception('Error al buscar Pokémon');
     }
@@ -213,8 +216,8 @@ class _PokemonListState extends State<PokemonList> {
             curve: Curves.easeInOut,
           );
         },
-        child: const Icon(Icons.arrow_upward),
         backgroundColor: Colors.blue,
+        child: const Icon(Icons.arrow_upward),
       ),
     );
   }

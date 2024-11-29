@@ -1,6 +1,3 @@
-// To parse this JSON data, do
-//
-//     final welcome = welcomeFromJson(jsonString);
 
 import 'dart:convert';
 
@@ -79,18 +76,22 @@ class Datum {
 enum Ancestry {
     EMPTY,
     HALF_BLOOD,
+    HALF_VEELA,
     MUGGLE,
     MUGGLEBORN,
     PURE_BLOOD,
+    QUARTER_VEELA,
     SQUIB
 }
 
 final ancestryValues = EnumValues({
     "": Ancestry.EMPTY,
     "half-blood": Ancestry.HALF_BLOOD,
+    "half-veela": Ancestry.HALF_VEELA,
     "muggle": Ancestry.MUGGLE,
     "muggleborn": Ancestry.MUGGLEBORN,
     "pure-blood": Ancestry.PURE_BLOOD,
+    "quarter-veela": Ancestry.QUARTER_VEELA,
     "squib": Ancestry.SQUIB
 });
 

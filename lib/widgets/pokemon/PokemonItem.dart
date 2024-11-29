@@ -43,14 +43,11 @@ class PokemonItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.network(
-                pokemon.image,
-                width: 100,
-                height: 100,
-                fit: BoxFit.cover,
-              ),
+            Image.network(
+              pokemon.image,
+              width: 90,
+              height: 90,
+              fit: BoxFit.cover,
             ),
             Text(
               "#${pokemon.id}",
@@ -59,12 +56,32 @@ class PokemonItem extends StatelessWidget {
                 fontSize: 16,
               ),
             ),
-            Text(
-              pokemon.name,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+            Stack(
+              children: [
+                // Texto con borde negro
+                Text(
+                  pokemon.name,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "PokemonSolid",
+                    foreground: Paint()
+                      ..style = PaintingStyle.stroke
+                      ..strokeWidth = 2.0 // Grosor del borde
+                      ..color = Colors.black, // Color del borde
+                  ),
+                ),
+                // Texto blanco superpuesto
+                Text(
+                  pokemon.name,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: "PokemonSolid",
+                    color: Colors.white, // Color del relleno del texto
+                  ),
+                ),
+              ],
             ),
             Wrap(
               spacing: 4,

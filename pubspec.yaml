@@ -60,6 +60,13 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  fonts:
+    - family: PokemonHollow
+      fonts:
+        - asset: lib/assets/fonts/Pokemon_Hollow.ttf
+    - family: PokemonSolid
+      fonts:
+        - asset: lib/assets/fonts/Pokemon_Solid.ttf
   assets:
       - lib/assets/images/spiderman.png
       - lib/assets/images/venom.png

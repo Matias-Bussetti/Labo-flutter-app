@@ -36,7 +36,7 @@ class HarryPotterCard extends StatelessWidget {
                   backgroundColor: Colors.transparent, // Fondo transparente
                   backgroundImage: character.image.isNotEmpty
                       ? NetworkImage(character.image)
-                      : AssetImage('lib/assets/images/ministry_of_magic.png'), // Imagen predeterminada
+                      : const AssetImage('lib/assets/images/ministry_of_magic.png'), // Imagen predeterminada
                    
                 ),
                 const SizedBox(width: 16.0),
