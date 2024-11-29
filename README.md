@@ -1,55 +1,62 @@
 # FLUTTER APP FINAL GRUPO 15 - LABORATORIO IV
+
 # DOCUMENTACION
 
-## 1 PONIN ERIC 21889 - API DE CLIENTES - 
+## 1 PONIN ERIC 21889 - API DE CLIENTES -
 
 ### 1. **Detalle del Cliente**
 
 ![lib/assets/cliente/documentacion/](DetalleCLiente.JPG)
 
-   **Contenido:**
-   - La pantalla muestra información detallada de un cliente específico:
-     - Nombre: *Nombre Apellido*.
-     - Dirección: *Calle False 123*.
-     - Fecha de nacimiento: *01/01/2000*.
-     - DNI: *00000000*.
-     - Género: *Male*.
-     - Estado VIP: *True*.
+**Contenido:**
 
-   **Función:**
-   - Esta vista es utilizada para mostrar los datos completos de un cliente seleccionado desde una lista previa. Es útil para consultar información específica y detallada.
+- La pantalla muestra información detallada de un cliente específico:
+  - Nombre: _Nombre Apellido_.
+  - Dirección: _Calle False 123_.
+  - Fecha de nacimiento: _01/01/2000_.
+  - DNI: _00000000_.
+  - Género: _Male_.
+  - Estado VIP: _True_.
+
+**Función:**
+
+- Esta vista es utilizada para mostrar los datos completos de un cliente seleccionado desde una lista previa. Es útil para consultar información específica y detallada.
 
 ---
+
 ### 2. **Lista de Clientes**
 
 ![lib/assets/cliente/documentacion/](ListaClientes.JPG)
 
-   **Contenido:**
-   - La pantalla presenta una lista de clientes con un campo de búsqueda para filtrar por nombre.
-   - En este caso como la API no proporciona imagenes se cargaron avatars de forma local y carga de manera aleatoria segun el genero una imagen para los clientes..
-   - Cada cliente en la lista muestra: Nombre completo y correo electronico.
-   - Muestra un escudo pintado con un tilde si el cliente es VIP.
-   -Y un boton para marcarle una estrella.
+**Contenido:**
 
-   **Función:**
-   - Es una vista principal para navegar entre los clientes registrados en la aplicación.
-   - El campo de búsqueda permite al usuario encontrar un cliente rápidamente escribiendo su nombre.
-   -Al hacer click en el cliente se puede ver mas informacion de el.
+- La pantalla presenta una lista de clientes con un campo de búsqueda para filtrar por nombre.
+- En este caso como la API no proporciona imagenes se cargaron avatars de forma local y carga de manera aleatoria segun el genero una imagen para los clientes..
+- Cada cliente en la lista muestra: Nombre completo y correo electronico.
+- Muestra un escudo pintado con un tilde si el cliente es VIP.
+  -Y un boton para marcarle una estrella.
+
+**Función:**
+
+- Es una vista principal para navegar entre los clientes registrados en la aplicación.
+- El campo de búsqueda permite al usuario encontrar un cliente rápidamente escribiendo su nombre.
+  -Al hacer click en el cliente se puede ver mas informacion de el.
 
 ---
+
 ### 3. **Pantalla Principal**
 
 ![lib/assets/cliente/documentacion/](Principal.JPG)
 
+**Contenido:**
 
-   **Contenido:**
-   - Es la vista de menú o página principal que ofrece múltiples opciones:
-     - *Perfil de Usuario*.
-     - *Lista de Clientes*.
+- Es la vista de menú o página principal que ofrece múltiples opciones:
+  - _Perfil de Usuario_.
+  - _Lista de Clientes_.
 
-   **Función:**
-   - Actúa como el hub principal desde donde se puede navegar a otras funcionalidades de la aplicación.
+**Función:**
 
+- Actúa como el hub principal desde donde se puede navegar a otras funcionalidades de la aplicación.
 
 ## 2 Documentación API de Harry Potter – Losada María Eugenia 21787
 
@@ -63,8 +70,9 @@ Esta parte de la aplicación está dedicada a los personajes de la saga Harry Po
 ---
 
 ### 1. Listado de Personajes
-   Descripción:
-      •	Presenta una lista de personajes con su nombre, casa y actor, además de una imagen y un fondo degradado según la casa de Hogwarts.
+
+Descripción:
+• Presenta una lista de personajes con su nombre, casa y actor, además de una imagen y un fondo degradado según la casa de Hogwarts.
 
 ![Lista de Personajes](lib/assets/images/DocuHarryPotter/Lista_de_Personajes_de_HPotter.png)
 
@@ -72,16 +80,15 @@ Esta parte de la aplicación está dedicada a los personajes de la saga Harry Po
 
 ![Búsqueda de Personajes](lib/assets/images/DocuHarryPotter/busqueda_api_hPotter.png)
 
-
-   Función:
-      •	Facilita la búsqueda y selección de personajes, mostrando resultados rápidos y precisos.
+Función:
+• Facilita la búsqueda y selección de personajes, mostrando resultados rápidos y precisos.
 
 ---
 
 ### 2. Detalle del Personaje
 
-   Descripción:
-      •	Muestra detalles específicos del personaje seleccionado, como:
+Descripción:
+• Muestra detalles específicos del personaje seleccionado, como:
 
          o	Nombre.
          o	Casa de Hogwarts.
@@ -92,48 +99,48 @@ Esta parte de la aplicación está dedicada a los personajes de la saga Harry Po
 
 ![Detalle del Personaje](lib/assets/images/DocuHarryPotter/Personaje_elegido.png)
 
-
 ![Detalle con Scroll](lib/assets/images/DocuHarryPotter/personaje_con_scroll_HPotter.png)
 
-
-   Función:
-      •	Proporciona información detallada y visualmente atractiva sobre los personajes seleccionados.
+Función:
+• Proporciona información detallada y visualmente atractiva sobre los personajes seleccionados.
 
 ---
 
 ### 3. Mini-Juego: Adivina el Color de la Casa
 
-   Descripción:
-      •	Juego interactivo donde el usuario debe adivinar el color de una casa de Hogwarts.
-      •	Retroalimentación visual inmediata que indica si la elección fue correcta o incorrecta.
-      •	Muestra una imagen representativa de la casa tras cada intento.
+Descripción:
+• Juego interactivo donde el usuario debe adivinar el color de una casa de Hogwarts.
+• Retroalimentación visual inmediata que indica si la elección fue correcta o incorrecta.
+• Muestra una imagen representativa de la casa tras cada intento.
 
 ![Mini-Juego](lib/assets/images/DocuHarryPotter/capturas_del_adivinador.png)
 
-
-   Función:
-      •	Ayuda a aprender los colores de las casas de forma divertida y didáctica. Es una herramienta educativa para familiarizarse con los colores de cada casa.
+Función:
+• Ayuda a aprender los colores de las casas de forma divertida y didáctica. Es una herramienta educativa para familiarizarse con los colores de cada casa.
 
 ---
 
 ### Rutas Configuradas
-   1.	Lista de Personajes: /harryPotterList
-   2.	Detalles del Personaje: /harryPotterInfo
-   3.	Juego: Adivina el Color: /harryPotter/guessColor
+
+1.  Lista de Personajes: /harryPotterList
+2.  Detalles del Personaje: /harryPotterInfo
+3.  Juego: Adivina el Color: /harryPotter/guessColor
 
 ---
 
 ### Widgets Reutilizables
-   1.	HarryPotterCard: Muestra un resumen del personaje con un fondo degradado que corresponde a su casa.
-   2.	HarryPotterItem: Elemento de lista que representa al personaje, mostrando nombre, imagen y casa.
-   3.	AdivinaElColor: Implementación del juego interactivo para adivinar el color de la casa de Hogwarts.
-   4.	DrawerMenu: Menú lateral que facilita la navegación entre pantallas.
-   5.	FutureFetcher: Maneja peticiones HTTP para obtener datos y renderizar widgets dinámicamente.
+
+1.  HarryPotterCard: Muestra un resumen del personaje con un fondo degradado que corresponde a su casa.
+2.  HarryPotterItem: Elemento de lista que representa al personaje, mostrando nombre, imagen y casa.
+3.  AdivinaElColor: Implementación del juego interactivo para adivinar el color de la casa de Hogwarts.
+4.  DrawerMenu: Menú lateral que facilita la navegación entre pantallas.
+5.  FutureFetcher: Maneja peticiones HTTP para obtener datos y renderizar widgets dinámicamente.
+
 ---
 
 ### Barrel Files Usados
 
-   Para organizar el código, use barrel files para agrupar las exportaciones de clases y widgets. Estos son algunos ejemplos:
+Para organizar el código, use barrel files para agrupar las exportaciones de clases y widgets. Estos son algunos ejemplos:
 
       1.	lib/classes/classes.dart
             export 'HarryPotterCharacters.dart';
@@ -153,16 +160,15 @@ Esta parte de la aplicación está dedicada a los personajes de la saga Harry Po
 ---
 
 ### Detalles Técnicos
+
       •	Emulador Usado: Pixel 4 API 34.
       •	Persistencia de Datos: SharedPreferences para almacenar preferencias como tema oscuro y personajes favoritos.
       •	Gestión de Estado: Provider para cambiar entre tema claro y oscuro.
       •	Peticiones HTTP: Uso de FutureBuilder para gestionar solicitudes a la API.
 
-
-
 ## 3 Documentacion de la API de Marvel - Chaparro Juan Jose Leg. 21737
 
-API URL Utilizadas: 
+API URL Utilizadas:
 
 Para la lista, paginado y búsqueda: "https://tup-labo-4-grupo-15.onrender.com/api/v1/marvel/chars?nameStartsWith=$query&limit=$_limit&offset=$offset";
 
@@ -172,27 +178,27 @@ En esta parte de la aplicacion se muestra una lista de personajes de marvel, se 
 
 ### 1. Detalles Técnicos.
 
-•	Emulador Usado: Pixel 7 API 33, resolución 1080x2400.
-•	Persistencia de Datos: SharedPreferences para almacenar preferencias como tema oscuro y personajes favoritos.
-•	Gestión de Estado: Provider para cambiar entre tema claro y oscuro.
-•	Peticiones HTTP: Uso de FutureBuilder para gestionar solicitudes a la API.
-•	Font personalizada: "assets/fonts/Marvel.ttf" extraida de la pagina https://www.dafont.com/es/marvel.font.
+• Emulador Usado: Pixel 7 API 33, resolución 1080x2400.
+• Persistencia de Datos: SharedPreferences para almacenar preferencias como tema oscuro y personajes favoritos.
+• Gestión de Estado: Provider para cambiar entre tema claro y oscuro.
+• Peticiones HTTP: Uso de FutureBuilder para gestionar solicitudes a la API.
+• Font personalizada: "assets/fonts/Marvel.ttf" extraida de la pagina https://www.dafont.com/es/marvel.font.
 
 ### 2. Lista de Personajes.
 
-   Descripción:
+Descripción:
 
       •	Lista de personajes de Marvel con su imagen, nombre y estrella que marca favoritos, cada item que se carga proviene de una card rehutilizable "CustomCardMarvelChars.dart".
 
-   ![Lista de Personajes](lib/assets/images/DocuMarvelChars/MarvelCharsList.png)
+![Lista de Personajes](lib/assets/images/DocuMarvelChars/MarvelCharsList.png)
 
       •	Sistema de búsqueda utilizando SearchDelegate, que optimiza las consultas a la API mediante un temporizador.
 
-   ![Búsqueda de Personajes](lib/assets/images/DocuMarvelChars/MarvelCharsSearch.png)
+![Búsqueda de Personajes](lib/assets/images/DocuMarvelChars/MarvelCharsSearch.png)
 
 ### 3. Detalle del Personaje.
 
-   Descripción:
+Descripción:
 
       •	Pantalla que muestra la descripcion del personaje:
          o	Nombre y estrella para agregar o quitar de favoritos.
@@ -208,15 +214,22 @@ En esta parte de la aplicacion se muestra una lista de personajes de marvel, se 
 
 ### 4. Mini-Juego: Spider-Man: Atrapa a Venom!.
 
-   Descripción: Moverse de un lado al otro atrapando  a Venom.
+Descripción: Moverse de un lado al otro atrapando a Venom.
 
-   ![Mini-Juego](lib/assets/images/DocuMarvelChars/MarvelCharsGame.png)
-
+![Mini-Juego](lib/assets/images/DocuMarvelChars/MarvelCharsGame.png)
 
 ### 5. Widgets Reutilizables utilizados:
 
-a.	CustomCardMarvelChars.
+a. CustomCardMarvelChars.
 
-b.	DrawerMenu.
+b. DrawerMenu.
 
-c.	FutureFetcher.
+c. FutureFetcher.
+
+## 3 Documentación: Consumo de API pacientes con Flutter (Matias Bussetti)
+
+### 1. Recursos Consumidos API
+
+1. Rutas (recurso: Patients):
+   - https://tup-labo-4-grupo-15.onrender.com/api/v1/patients
+   - https://tup-labo-4-grupo-15.onrender.com/api/v1/patients/where?name
