@@ -2,6 +2,8 @@
 //
 //     final Pokemon = PokemonFromJson(jsonString);
 
+// ignore_for_file: unused_import
+
 import 'dart:convert';
 
 class Pokemon {

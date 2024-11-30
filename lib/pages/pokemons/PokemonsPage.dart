@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/widgets/custom/FutureFetcher.dart';
-import 'package:flutter_application_1/widgets/patients/PatientsList.dart';
 import 'package:flutter_application_1/widgets/pokemons/PokemonsList.dart';
 
 class PokemonsPage extends StatelessWidget {

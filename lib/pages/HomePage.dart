@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/MainRouter.dart';
 import 'package:flutter_application_1/widgets/NavigatorCardWidget.dart';
@@ -24,10 +26,10 @@ class HomePage extends StatelessWidget {
             Container(
               alignment: Alignment.topLeft,
               padding: const EdgeInsets.fromLTRB(26, 30, 24, 24),
-              child: Row(
+              child: const Row(
                 children: [
                   Icon(Icons.app_shortcut_sharp),
-                  const Text(
+                  Text(
                     "  Home",
                     textAlign: TextAlign.left,
                     style: TextStyle(

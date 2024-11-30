@@ -6,7 +6,7 @@
 
 ### 1. **Detalle del Cliente**
 
-![lib/assets/cliente/documentacion/](DetalleCLiente.JPG)
+![lib/assets/cliente/documentacion/](doc/DetalleCLiente.JPG)
 
 **Contenido:**
 
@@ -26,7 +26,7 @@
 
 ### 2. **Lista de Clientes**
 
-![lib/assets/cliente/documentacion/](ListaClientes.JPG)
+![lib/assets/cliente/documentacion/](doc/ListaClientes.JPG)
 
 **Contenido:**
 
@@ -46,7 +46,7 @@
 
 ### 3. **Pantalla Principal**
 
-![lib/assets/cliente/documentacion/](Principal.JPG)
+![lib/assets/cliente/documentacion/](doc/Principal.JPG)
 
 **Contenido:**
 
