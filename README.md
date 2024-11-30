@@ -4,6 +4,8 @@
 
 ## 1 PONIN ERIC 21889 - API DE CLIENTES -
 
+Emulador Usado: Pixel 5 API 33
+
 ### 1. **Detalle del Cliente**
 
 ![lib/assets/cliente/documentacion/](doc/DetalleCLiente.JPG)
